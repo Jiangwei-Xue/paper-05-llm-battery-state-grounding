@@ -1,0 +1,164 @@
+{
+  "artifact_hash_checks": {
+    "F0_optional_plan": true,
+    "F1_run_plan": true,
+    "analysis": true,
+    "common": true,
+    "control_rows": true,
+    "controls": true,
+    "method_delta": true,
+    "method_delta_markdown": true,
+    "models": true,
+    "parser": true,
+    "preflight_verifier": true,
+    "prompt_fixtures": true,
+    "prompt_template": true,
+    "protocol_md": true,
+    "protocol_yaml": true,
+    "runner": true,
+    "schema": true,
+    "smoke_acceptance_schema": true,
+    "smoke_run_plan": true,
+    "task_manifest": true,
+    "tests": true,
+    "v1_source_manifest": true,
+    "v1_supersession": true,
+    "variable_control_markdown": true,
+    "variable_freeze_spec": true,
+    "variable_inventory": true
+  },
+  "checks": {
+    "F0_30_unique_blocks_120_calls": true,
+    "F1_120_unique_blocks_480_calls": true,
+    "all_frozen_hashes_match": true,
+    "balanced_branch_positions": true,
+    "duplicate_request_hash_identity": true,
+    "explicit_live_authorization_absent": true,
+    "fixtures_have_no_global_t_rows": true,
+    "manifest_execution_hold": true,
+    "no_network_attempts": true,
+    "no_provider_calls": true,
+    "old_evidence_immutable": true,
+    "provider_free_controls_pass": true,
+    "smoke_4_unique_blocks_16_calls": true,
+    "synthetic_analysis_complete_case_gate": true,
+    "synthetic_analysis_parser_failure_not_zero_action": true
+  },
+  "live_smoke_authorized": false,
+  "network_attempts": 0,
+  "next_gate": "separate explicit authorization for isolated 16-call live smoke",
+  "provider_calls_performed": 0,
+  "schema_version": "e2b_v2_preflight_verification_v1",
+  "status": "pass",
+  "synthetic_analysis": {
+    "analysis_population": "F1",
+    "bootstrap_resamples": 100,
+    "bootstrap_seed": 20260716,
+    "complete_block_gate": 0.8,
+    "model_reports": {
+      "deepseek_formal": {
+        "complete_block_rate": 0.6666666666666666,
+        "complete_blocks": 2,
+        "metrics": {
+          "between_carrier_B_kwh": {
+            "ci95": [
+              0.0,
+              5.0
+            ],
+            "mean": 2.5,
+            "median": 2.5,
+            "n_scenarios": 2,
+            "negative": 0,
+            "positive": 1,
+            "zero": 1
+          },
+          "energy_distance_ED_kwh": {
+            "ci95": [
+              0.0,
+              10.0
+            ],
+            "mean": 5.0,
+            "median": 5.0,
+            "n_scenarios": 2,
+            "negative": 0,
+            "positive": 1,
+            "zero": 1
+          },
+          "mpc_alignment_kwh": {
+            "ci95": [
+              0.0,
+              5.0
+            ],
+            "mean": 2.5,
+            "median": 2.5,
+            "n_scenarios": 2,
+            "negative": 0,
+            "positive": 1,
+            "zero": 1
+          },
+          "normalized_between_difference_kw": {
+            "ci95": [
+              0.0,
+              10.0
+            ],
+            "mean": 5.0,
+            "median": 5.0,
+            "n_scenarios": 2,
+            "negative": 0,
+            "positive": 1,
+            "zero": 1
+          },
+          "terminal_alignment_kwh": {
+            "ci95": [
+              0.0,
+              20.0
+            ],
+            "mean": 10.0,
+            "median": 10.0,
+            "n_scenarios": 2,
+            "negative": 0,
+            "positive": 1,
+            "zero": 1
+          },
+          "within_canonical_Wc_kwh": {
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "mean": 0.0,
+            "median": 0.0,
+            "n_scenarios": 2,
+            "negative": 0,
+            "positive": 0,
+            "zero": 2
+          },
+          "within_stale_Ws_kwh": {
+            "ci95": [
+              0.0,
+              0.0
+            ],
+            "mean": 0.0,
+            "median": 0.0,
+            "n_scenarios": 2,
+            "negative": 0,
+            "positive": 0,
+            "zero": 2
+          }
+        },
+        "parsed_branches": 11,
+        "parser_failure_codes": {
+          "invalid_json": 1
+        },
+        "planned_blocks": 3,
+        "planned_branches": 12,
+        "responsiveness_status": "exploratory_interface_gate_failed"
+      }
+    },
+    "network_attempts_by_analysis": 0,
+    "parser_failures_encoded_as_zero_action": false,
+    "pooled_results_are_descriptive_only": true,
+    "provider_calls_performed_by_analysis": 0,
+    "records": 3,
+    "schema_version": "e2b_v2_analysis_v1"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "claim_bearing_evidence_rows": 2940,
+  "dual_replay_comparison_rows": 1800,
+  "independent_physics_rows": 4620,
+  "record_counts": {
+    "E1": 240,
+    "E2": 360,
+    "F0": 30,
+    "F1": 120,
+    "QWEN37": 75
+  },
+  "saved_provider_calls": 3538,
+  "schema_version": "state_grounding_vcr_h5e5_expected_v1"
+}

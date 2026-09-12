@@ -1,0 +1,22 @@
+You are scheduling one battery over the displayed post-event suffix. Return one JSON object and no other text.
+
+The only top-level field is `actions`. Every action item has exactly three fields: `start_offset`, `end_offset_exclusive`, and `power_kw`.
+
+Valid example:
+{"actions":[{"start_offset":0,"end_offset_exclusive":4,"power_kw":10.0}]}
+
+Offsets are local to the displayed suffix. Offset 0 is the first displayed interval. Segments must be sorted and non-overlapping. Uncovered offsets mean 0.0 kW. At most H segments are allowed, where H is the displayed suffix length. Positive `power_kw` charges the battery; negative `power_kw` discharges it.
+
+Battery dynamics use 15-minute intervals:
+- If power_kw[t] >= 0: soc[t+1] = soc[t] + 0.95 * power_kw[t] * 0.25.
+- If power_kw[t] < 0: soc[t+1] = soc[t] + power_kw[t] * 0.25 / 0.95.
+- At every interval: -discharge_limit_kw[t] <= power_kw[t] <= charge_limit_kw[t].
+- At every interval: reserve_kwh[t] <= soc[t+1] <= usable_capacity_kwh[t].
+- grid_kw[t] = load_kw[t] - pv_forecast_kw[t] + power_kw[t].
+- Raw battery actions must satisfy grid_kw[t] >= -export_limit_kw[t]. No automatic curtailment repairs the raw action.
+- The terminal target is 325.0 kWh. The primary engineering endpoint is abs(soc[H] - 325.0) <= 1.0 kWh.
+
+The raw action is scored exactly as requested before clipping, projection, or repair. Do not return state, timestamps, aliases, markdown, explanations, or fields outside the stated schema.
+
+Task JSON:
+{{TASK_CONTRACT_JSON}}

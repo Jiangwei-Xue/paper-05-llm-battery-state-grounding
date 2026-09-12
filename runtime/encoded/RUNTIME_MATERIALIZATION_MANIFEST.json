@@ -1,0 +1,41 @@
+{
+  "encoding": "RFC 4648 base64",
+  "files": [
+    {
+      "encoded_path": "pandas/_libs/tslib.cpython-312-darwin.so.b64",
+      "encoded_sha256": "156d0803892cba5e366c41a0ce4f656ba2396b580b6379db77e265ac34efdcd7",
+      "runtime_path": "pandas/_libs/tslib.cpython-312-darwin.so",
+      "runtime_sha256": "488e62dbcaf5638eefe6af8c945571dd56332ce9c77da6cefb6c88a3a0e895b1",
+      "size_bytes": 172992
+    },
+    {
+      "encoded_path": "scipy/sparse/_base.py.b64",
+      "encoded_sha256": "757efe337fe5de4843fd43e671a8883cf2b8725562f5bf725d0cbeb982d14373",
+      "runtime_path": "scipy/sparse/_base.py",
+      "runtime_sha256": "2777ee7b5b3c6b47b2cc7830c96243b66e1b42678770a54bc43f33d21df387c9",
+      "size_bytes": 63724
+    },
+    {
+      "encoded_path": "scipy/io/_fast_matrix_market/_fmm_core.cpython-312-darwin.so.b64",
+      "encoded_sha256": "161145631391cfa0a6da88110ff4a6bc49d6124910c4174f8b2c28364ba826af",
+      "runtime_path": "scipy/io/_fast_matrix_market/_fmm_core.cpython-312-darwin.so",
+      "runtime_sha256": "6cf17722e80f93a95b1ef571d04a82a440187b11f188fb33a40676d1474de9b4",
+      "size_bytes": 2178496
+    },
+    {
+      "encoded_path": "scipy/optimize/_highspy/_core.cpython-312-darwin.so.b64",
+      "encoded_sha256": "41159f2af7f137adaaba2c96123f31349f50b62cf576a80cd81be03a6d05c6db",
+      "runtime_path": "scipy/optimize/_highspy/_core.cpython-312-darwin.so",
+      "runtime_sha256": "83964acedc1180ffb9cdab9b45bf5c2dba9dcf388cfbaf83bb325b0a9dc82fb0",
+      "size_bytes": 5312552
+    },
+    {
+      "encoded_path": "numpy/random/_generator.cpython-312-darwin.so.b64",
+      "encoded_sha256": "93361c821849b561cc6134074b70b979d9ed3cbd32a3261eb7f483de520c35ab",
+      "runtime_path": "numpy/random/_generator.cpython-312-darwin.so",
+      "runtime_sha256": "2daa508972d22ec7427c99510ad42caddb179590ed1c48b45381b15828f1dffc",
+      "size_bytes": 651664
+    }
+  ],
+  "schema_version": 1
+}

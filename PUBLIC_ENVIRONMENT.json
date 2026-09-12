@@ -1,0 +1,15 @@
+{
+  "schema_version": "state_grounding_public_environment_v1",
+  "python_required": "CPython 3.12",
+  "tested_compatibility": "macOS arm64",
+  "timestamp_semantics": "explicit UTC timestamps",
+  "host_timezone_dependency": false,
+  "dependencies": {
+    "PyYAML": "6.0.3",
+    "numpy": "2.5.1",
+    "pandas": "3.0.3",
+    "scipy": "1.18.0"
+  },
+  "provider_calls_performed_by_reproduction": 0,
+  "network_attempts_performed_by_reproduction": 0
+}

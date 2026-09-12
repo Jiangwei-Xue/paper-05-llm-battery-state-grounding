@@ -1,0 +1,85 @@
+schema_version: qwen37plus_f1f0_protocol_v1
+protocol_id: energybench-qwen37plus-e2b-sensitivity-v1
+status: PRE_CALL_FROZEN
+evidence_tier: prospective_model_capability_sensitivity
+purpose: >-
+  Add one independently frozen Qwen3.7-Plus direct condition to the existing
+  E2b task substrate. This tier does not replace or pool historical F1/F0
+  evidence and does not change any historical denominator.
+source_tasks:
+  f1_scenarios: 60
+  f0_scenarios: 15
+  source_run: e2_20260801T054708Z
+  task_selection: inherited_byte_identical_e2b_v2_task_manifest
+  new_scenario_selection: forbidden
+matrix:
+  f1_blocks: 60
+  f0_blocks: 15
+  branches: [C1, C2, S1, S2]
+  calls_per_block: 4
+  planned_calls: 300
+  smoke_blocks: 2
+  smoke_calls: 8
+  repetitions: 1
+controls:
+  branch_order_seed: 20260814
+  run_order_seed: 20260814
+  concurrency: 8
+  solver_threads: 1
+  direct_route_only: true
+  fallback: disabled
+  cache: disabled
+  tools: disabled
+  web_search: disabled
+  temperature: 0.0
+  max_output_tokens: 16000
+  response_format: json_object
+  max_transport_attempts: 3
+  retryable_http_statuses: [429, 502, 503, 504]
+  content_retry: forbidden
+  branch_retry: forbidden
+  save_exact_prompt: true
+  save_exact_request_payload: true
+  save_raw_response: true
+  provider_call_counter: true
+  network_attempt_counter: true
+model_condition:
+  condition_id: qwen37_plus_direct_v1
+  provider: qwen
+  configured_model_id: qwen3.7-plus
+  expected_returned_model: qwen3.7-plus
+  endpoint: https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions
+  route: direct
+  identity_policy: exact_configured_and_returned_model
+  thinking: disabled
+  credentials_env: QWEN_API_KEY
+  credential_file_fallback: null
+task_contract:
+  prompt_template: protocol/E2B_PROMPT_TEMPLATE_V2.txt
+  schema: protocol/E2B_SCHEMA_V2.json
+  parser: scripts/e2b_parser_v2.py
+  branches: >-
+    C1/C2 receive byte-identical canonical carriers; S1/S2 receive
+    byte-identical stale-SOC carriers. No timestamps or global indices are
+    added to the output contract.
+  parser_repair: forbidden
+  manual_output_repair: forbidden
+physics_and_scoring:
+  inherited_from: protocol/E2B_PROTOCOL_V2.yaml
+  step_hours: 0.25
+  terminal_target_kwh: 325.0
+  engineering_terminal_tolerance_kwh: 1.0
+  raw_replay_clipping: forbidden
+  failure_accounting: failure_as_zero
+evidence:
+  record_fields: [task, prompt_text, prompt_sha256, request_payload, request_payload_bytes_sha256, response, parsed, score]
+  duplicate_identity_check: C1_equals_C2_and_S1_equals_S2
+  returned_model_check: required
+  provider_calls_performed_pre_call: 0
+  network_attempts_pre_call: 0
+  partial_files: forbidden
+authorization:
+  smoke_required_before_formal: true
+  smoke_is_excluded_from_formal_denominator: true
+  formal_execution_requires_explicit_user_authorization: true
+  historical_e2b_and_f0_files_are_immutable: true

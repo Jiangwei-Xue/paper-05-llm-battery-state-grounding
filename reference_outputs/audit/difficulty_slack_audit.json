@@ -1,0 +1,23 @@
+{
+  "component_definitions": {
+    "aggregate_normalized_slack": "minimum of the four components",
+    "initial_soc_lower_slack": "initial SOC minus reserve, divided by usable SOC width",
+    "initial_soc_upper_slack": "capacity minus initial SOC, divided by usable SOC width",
+    "passive_export_slack": "minimum no-battery grid headroom normalized by export limit and gross load/PV magnitude",
+    "terminal_reachability_slack": "remaining maximum one-direction energy minus terminal SOC need, divided by 500 kWh"
+  },
+  "definition_status": "post_hoc_provider_free_diagnostic_not_registered_admission_rule",
+  "n": 60,
+  "registered_by_diagnostic": {
+    "easy": {
+      "easy": 10,
+      "hard": 11,
+      "medium": 6
+    },
+    "medium": {
+      "easy": 11,
+      "hard": 7,
+      "medium": 15
+    }
+  }
+}

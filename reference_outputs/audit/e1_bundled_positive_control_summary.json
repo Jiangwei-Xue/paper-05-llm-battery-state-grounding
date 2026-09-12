@@ -1,0 +1,17 @@
+{
+  "I0_rows": 120,
+  "I3_rows": 120,
+  "candidate_source_files": [
+    "experiments_v2/manifests/E1_FROZEN_TASKS.jsonl",
+    "experiments_v2/manifests/E1_ADMISSION_RESULTS.jsonl"
+  ],
+  "changed_together": [
+    "structured_output",
+    "sparse_segments",
+    "non_zero_example_in_prompt"
+  ],
+  "classification": "bundled_positive_control",
+  "provider_calls_performed": 0,
+  "rows": 240,
+  "single_factor_attribution_permitted": false
+}

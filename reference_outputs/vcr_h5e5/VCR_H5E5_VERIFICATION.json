@@ -1,0 +1,90 @@
+{
+  "boundaries": [
+    "Provider calls are not rerun; VCR replays saved responses offline.",
+    "E2 projection evidence retains 53/1800 timeouts and remains partial with timeouts."
+  ],
+  "e5": {
+    "definition": "The frozen environment regenerates deterministic replay, score, comparisons, sensitivities, and tables; independent replay and physics checks show zero disagreement.",
+    "dual_replay": {
+      "historical_F1_F0": {
+        "flag_mismatches": 0,
+        "maximum_absolute_difference": 0.0,
+        "rows": 1200
+      },
+      "qwen37": {
+        "flag_mismatches": 0,
+        "maximum_absolute_difference": 0.0,
+        "rows": 600
+      }
+    },
+    "dual_replay_comparison_rows": 1800,
+    "independent_physics_discrepancies": 0,
+    "independent_physics_rows": 4620,
+    "release_acceptance": "PASS_WITH_BOUNDARIES",
+    "status": "PASS"
+  },
+  "errors": [],
+  "h5": {
+    "claim_bearing_evidence_rows": 2940,
+    "definition": "Claim-bearing rows retain task, prompt/request, raw response or explicit skip, parsed action, score/replay fields, comparison identity, timestamps, and hashes.",
+    "populations": {
+      "E1": {
+        "parsed_action_objects": 480,
+        "planned_calls": 480,
+        "records": 240,
+        "replay_eligible_action_energy_matches": 136,
+        "timestamp_complete_calls": 480
+      },
+      "E2": {
+        "actual_calls": 2158,
+        "claim_bearing_branch_rows": 1800,
+        "comparison_blocks": 360,
+        "planned_calls": 2160,
+        "records": 360,
+        "structured_skips": 2,
+        "timestamp_complete_actual_calls": 2158
+      },
+      "F0": {
+        "claim_bearing_branch_rows": 120,
+        "duplicate_payload_identity_blocks": 30,
+        "planned_and_actual_calls": 120,
+        "records": 30,
+        "replay_eligible_branch_rows": 120,
+        "timestamp_complete_calls": 120
+      },
+      "F1": {
+        "claim_bearing_branch_rows": 480,
+        "duplicate_payload_identity_blocks": 120,
+        "planned_and_actual_calls": 480,
+        "records": 120,
+        "replay_eligible_branch_rows": 480,
+        "timestamp_complete_calls": 480
+      },
+      "QWEN37": {
+        "claim_bearing_branch_rows": 300,
+        "duplicate_payload_identity_blocks": 75,
+        "planned_and_actual_calls": 300,
+        "records": 75,
+        "replay_eligible_branch_rows": 300,
+        "timestamp_complete_calls": 300
+      }
+    },
+    "status": "PASS"
+  },
+  "network_attempts": 0,
+  "provider_calls_performed": 0,
+  "schema_version": "state_grounding_public_vcr_h5e5_v1",
+  "status": "PASS",
+  "vcr": {
+    "definition": "Saved provider outputs are replay inputs; every released record is checked against the public record manifest, retained task/prompt/request/parsed hashes are checked, and all successful response strings are independently re-parsed with the archived parser source.",
+    "parser_replay_mismatches": 0,
+    "release_hash_map": {
+      "rows": 825,
+      "unique_release_files": 825
+    },
+    "saved_provider_calls": 3538,
+    "status": "PASS",
+    "structured_skips": 2,
+    "successful_saved_responses_reparsed": 3526
+  }
+}

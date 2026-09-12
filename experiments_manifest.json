@@ -1,0 +1,95 @@
+{
+  "schema_version": "state_grounding_experiments_manifest_v1",
+  "reproduction_mode": "OFFLINE_VCR_REPLAY",
+  "provider_calls_required": false,
+  "experiments": [
+    {
+      "id": "E1",
+      "role": "supporting interface and activity audit",
+      "records": 240,
+      "stage_calls": 480,
+      "models": ["deepseek-v4-flash", "qwen3.6-flash-2026-04-16"],
+      "conditions": ["I0", "I3"],
+      "controls": "same frozen task, model, and state; interface contract differs",
+      "entry_point": "RUN_ALL_OFFLINE.py",
+      "records_path": "frozen_inputs/project/runs/experiments_v2/e1/e1_20260801T044500Z/records",
+      "task_manifest": "frozen_inputs/project/experiments_v2/manifests/E1_FROZEN_TASKS.jsonl",
+      "admission_manifest": "frozen_inputs/project/experiments_v2/manifests/E1_ADMISSION_RESULTS.jsonl"
+    },
+    {
+      "id": "E2",
+      "role": "historical carrier intervention with duplicate-payload null",
+      "records": 360,
+      "claim_bearing_branch_rows": 1800,
+      "planned_calls": 2160,
+      "saved_actual_calls": 2158,
+      "successful_responses": 2146,
+      "models": ["deepseek-v4-flash", "qwen3.6-flash-2026-04-16"],
+      "branches": ["C", "M", "S", "K", "C2"],
+      "controls": "shared Stage 1, event, suffix horizon, task, model, and request settings; carrier branch varies; C and C2 are byte-identical request controls",
+      "entry_point": "RUN_ALL_OFFLINE.py",
+      "records_path": "frozen_inputs/project/runs/experiments_v2/e2/e2_20260801T054708Z/records",
+      "task_manifest": "frozen_inputs/project/experiments_v2/manifests/E2_FROZEN_TASKS.jsonl",
+      "admission_manifest": "frozen_inputs/project/experiments_v2/manifests/E2_ADMISSION_RESULTS.jsonl",
+      "projection_boundary": "53 of 1800 archived projection rows reached the frozen 120-second timeout"
+    },
+    {
+      "id": "F1",
+      "role": "complete physical-contract dual replay and matched gate analysis",
+      "records": 120,
+      "branch_rows": 480,
+      "models": ["deepseek-v4-flash", "qwen3.6-flash-2026-04-16"],
+      "branches": ["C1", "C2", "S1", "S2"],
+      "controls": "C1/C2 and S1/S2 duplicate-payload pairs; canonical versus stale state; branch order counterbalanced",
+      "entry_point": "RUN_ALL_OFFLINE.py",
+      "run_plan": "frozen_inputs/project/segan_revision_major_v2/reviews/e2b_protocol_v2/E2B_V2_F1_RUN_PLAN.jsonl",
+      "records_path": "frozen_inputs/project/segan_revision_major_v2/runs/e2b_protocol_v2/e2b_v2_f1_20260813/records"
+    },
+    {
+      "id": "F0",
+      "role": "temporally separated old-contract comparison",
+      "records": 30,
+      "branch_rows": 120,
+      "models": ["deepseek-v4-flash", "qwen3.6-flash-2026-04-16"],
+      "branches": ["C1", "C2", "S1", "S2"],
+      "controls": "same four-branch counterbalanced design as F1 under the earlier payload contract",
+      "entry_point": "RUN_ALL_OFFLINE.py",
+      "run_plan": "frozen_inputs/project/segan_revision_major_v2/reviews/f0_formal_v1/F0_FORMAL_RUN_PLAN.jsonl",
+      "records_path": "frozen_inputs/project/segan_revision_major_v2/runs/f0_formal_v1/f0_formal_20260820T_authorized_v1/records"
+    },
+    {
+      "id": "QWEN37",
+      "role": "separate Qwen3.7-Plus sensitivity tier over frozen F1 and F0 payloads",
+      "records": 75,
+      "branch_rows": 300,
+      "models": ["qwen3.7-plus"],
+      "branches": ["C1", "C2", "S1", "S2"],
+      "controls": "frozen F1/F0 tasks, schemas, parser, temperature, token cap, and counterbalanced branch order; model tier is never pooled with historical models",
+      "entry_point": "RUN_ALL_OFFLINE.py",
+      "run_plan": "frozen_inputs/project/segan_revision_major_v2/reviews/qwen37plus_f1f0_v1/QWEN37PLUS_FORMAL_RUN_PLAN.jsonl",
+      "records_path": "frozen_inputs/project/segan_revision_major_v2/runs/qwen37plus_f1f0_v1/qwen37plus_formal_20260826T/records"
+    }
+  ],
+  "shared_contract": {
+    "year": 2024,
+    "resolution_minutes": 15,
+    "horizon_hours": 24,
+    "terminal_soc_target_kwh": 325.0,
+    "temperature": 0.0,
+    "maximum_output_tokens": 16000,
+    "event_families": [
+      "forecast_revision",
+      "battery_capacity_derating",
+      "power_limit_derating",
+      "export_limit_update",
+      "reserve_commitment_update"
+    ],
+    "selection_seed": 20260713,
+    "event_generation_seed": 20260714,
+    "bootstrap_seed": 20260716
+  },
+  "total_public_record_files": 825,
+  "total_claim_bearing_rows": 2940,
+  "saved_provider_calls_represented": 3538,
+  "network_calls_during_reproduction": 0
+}

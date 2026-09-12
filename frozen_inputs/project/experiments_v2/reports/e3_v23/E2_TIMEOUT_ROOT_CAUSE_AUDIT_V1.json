@@ -1,0 +1,445 @@
+{
+  "config_path": "experiments_v2/configs/e2_timeout_root_cause_audit_v1.yaml",
+  "created_utc": "2026-08-02T04:04:14.120533+00:00",
+  "diagnostic_300s_late_solve_count": 11,
+  "distinct_mathematical_problem_fingerprint_count": 25,
+  "distinct_scenario_count": 20,
+  "dominant_observed_bottleneck": {
+    "interpretation": "The dominant difficulty appears after the distance and throughput optima are constrained. Saturated positive M-branch references are strongly associated with timeout, but this audit does not identify a unique mathematical cause inside HiGHS.",
+    "persistent_timeout_count": 51,
+    "stage": "projection_cost_tiebreak"
+  },
+  "e2_projection_readiness": "HOLD",
+  "e3_provider_gate": "HOLD",
+  "execution_incident_report": "experiments_v2/reports/e3_v23/E2_TIMEOUT_ROOT_CAUSE_EXECUTION_INCIDENTS_V1.json",
+  "execution_mode": "isolated_serial",
+  "exposure_analysis": {
+    "applicable_timeout_rates": {
+      "branch": {
+        "C": {
+          "applicable": 256,
+          "timeout_rate": 0.0234375,
+          "timeouts": 6
+        },
+        "C2": {
+          "applicable": 248,
+          "timeout_rate": 0.028225806451612902,
+          "timeouts": 7
+        },
+        "K": {
+          "applicable": 260,
+          "timeout_rate": 0.019230769230769232,
+          "timeouts": 5
+        },
+        "M": {
+          "applicable": 210,
+          "timeout_rate": 0.1523809523809524,
+          "timeouts": 32
+        },
+        "S": {
+          "applicable": 257,
+          "timeout_rate": 0.011673151750972763,
+          "timeouts": 3
+        }
+      },
+      "event_family": {
+        "battery_capacity_derating": {
+          "applicable": 252,
+          "timeout_rate": 0.047619047619047616,
+          "timeouts": 12
+        },
+        "export_limit_update": {
+          "applicable": 231,
+          "timeout_rate": 0.03463203463203463,
+          "timeouts": 8
+        },
+        "forecast_revision": {
+          "applicable": 268,
+          "timeout_rate": 0.055970149253731345,
+          "timeouts": 15
+        },
+        "power_limit_derating": {
+          "applicable": 245,
+          "timeout_rate": 0.0326530612244898,
+          "timeouts": 8
+        },
+        "reserve_commitment_update": {
+          "applicable": 235,
+          "timeout_rate": 0.0425531914893617,
+          "timeouts": 10
+        }
+      },
+      "model_condition": {
+        "deepseek_formal": {
+          "applicable": 831,
+          "timeout_rate": 0.056558363417569195,
+          "timeouts": 47
+        },
+        "qwen_flash": {
+          "applicable": 400,
+          "timeout_rate": 0.015,
+          "timeouts": 6
+        }
+      }
+    },
+    "m_branch_reference_shape_outcomes": {
+      "constant_-230": {
+        "applicable": 1,
+        "computed": 1,
+        "timeout": 0,
+        "timeout_rate": 0.0
+      },
+      "constant_-250": {
+        "applicable": 28,
+        "computed": 28,
+        "timeout": 0,
+        "timeout_rate": 0.0
+      },
+      "constant_250": {
+        "applicable": 28,
+        "computed": 3,
+        "timeout": 25,
+        "timeout_rate": 0.8928571428571429
+      },
+      "multi_value": {
+        "applicable": 17,
+        "computed": 17,
+        "timeout": 0,
+        "timeout_rate": 0.0
+      },
+      "two_value": {
+        "applicable": 42,
+        "computed": 35,
+        "timeout": 7,
+        "timeout_rate": 0.16666666666666666
+      },
+      "zero": {
+        "applicable": 94,
+        "computed": 94,
+        "timeout": 0,
+        "timeout_rate": 0.0
+      }
+    },
+    "timeout_reference_shape_counts": {
+      "C2|multi_value": 1,
+      "C2|two_value": 6,
+      "C|two_value": 6,
+      "K|two_value": 5,
+      "M|constant_250": 25,
+      "M|two_value": 7,
+      "S|two_value": 3
+    }
+  },
+  "formal_primary_results_changed": false,
+  "frozen_timeout_threshold": 0.005,
+  "full_1800_rerun_required_before_gate_reassessment": true,
+  "hash_manifest_entries": 118,
+  "hash_manifest_path": "experiments_v2/manifests/e3_v23/E2_TIMEOUT_ROOT_CAUSE_AUDIT_V1_HASH_MANIFEST.jsonl",
+  "interrupted_audit_attempt_count": 1,
+  "interrupted_diagnostic_rows_reproduced_as_persistent_timeout": 6,
+  "isolated_solved_count": 1,
+  "isolated_solved_rows": [
+    {
+      "branch": "M",
+      "case_id": "e2_0fa5b591f6fef6eed75d__M",
+      "diagnostic_elapsed_seconds": 118.58405850001145,
+      "event_family": "reserve_commitment_update",
+      "isolated_elapsed_seconds": 115.7389465830056,
+      "model_condition": "qwen_flash"
+    }
+  ],
+  "isolated_worker_failure_count": 0,
+  "mathematical_contract_changed": false,
+  "maximum_allowed_primary_timeouts": 9,
+  "network_attempts": 0,
+  "observed_serial_timeout_lower_bound_count": 52,
+  "observed_serial_timeout_lower_bound_rate": 0.028888888888888888,
+  "persistent_timeout_count": 52,
+  "primary_denominator": 1800,
+  "primary_timeout_count": 53,
+  "primary_timeout_rate": 0.029444444444444443,
+  "protocol_path": "experiments_v2/protocol/e2_timeout_root_cause_v1/E2_TIMEOUT_ROOT_CAUSE_AUDIT_V1.md",
+  "provider_calls_performed": 0,
+  "recommended_remediation_order": [
+    "Implement an incremental or direct-HiGHS equivalent formulation that reuses the first two lexicographic solves without changing objectives or constraints.",
+    "Verify objective values and projected actions against all 1178 previously solved sidecars under frozen tolerances.",
+    "Freeze the remediated runner and solver provenance before execution.",
+    "Rerun all 1800 sidecars at 120 seconds; selective replacement of 53 rows is prohibited.",
+    "If the timeout count remains above 9, retain HOLD or create a new mathematical protocol version before any provider call."
+  ],
+  "resource_usage_field_note": "Raw stage traces retain the historical field name maximum_rss_kib. On macOS, resource.getrusage reports ru_maxrss in bytes; the value is diagnostic only and is not used in any gate.",
+  "root_cause_mechanism": "MIXED_CONCURRENCY_SENSITIVITY_AND_PERSISTENT_SOLVER_HARDNESS",
+  "runner_only_remediation_sufficient_for_frozen_gate": false,
+  "schema_version": "e2_timeout_root_cause_audit_v1",
+  "secondary_observed_bottleneck": {
+    "persistent_timeout_count": 1,
+    "stage": "projection_distance"
+  },
+  "software_versions": {
+    "cvxpy": "1.9.2",
+    "highspy": "1.15.1",
+    "numpy": "2.5.1",
+    "pandas": "3.0.3",
+    "platform": "macOS arm64",
+    "python": "3.12.13"
+  },
+  "source_run_label": "e2_20260801T054708Z",
+  "stage_duration_summary": {
+    "projection_cost_tiebreak": {
+      "completed_count": 1,
+      "maximum_seconds": 93.16149162498186,
+      "median_seconds": 93.16149162498186,
+      "minimum_seconds": 93.16149162498186
+    },
+    "projection_distance": {
+      "completed_count": 52,
+      "maximum_seconds": 78.04559833402163,
+      "median_seconds": 1.388741291986662,
+      "minimum_seconds": 0.6241489999811165
+    },
+    "projection_throughput": {
+      "completed_count": 52,
+      "maximum_seconds": 1.9525627919938415,
+      "median_seconds": 0.550642895992496,
+      "minimum_seconds": 0.24071216699667275
+    }
+  },
+  "status": "pass",
+  "summary": {
+    "active_stage_counts": {
+      "projection_cost_tiebreak": 52,
+      "projection_distance": 1
+    },
+    "case_count": 53,
+    "classification_counts": {
+      "CONCURRENCY_SENSITIVE_SOLVED_ISOLATED": 1,
+      "PERSISTENT_SOLVER_HARDNESS": 52
+    },
+    "classification_dimensions": {
+      "CONCURRENCY_SENSITIVE_SOLVED_ISOLATED": {
+        "active_stage": {
+          "projection_cost_tiebreak": 1
+        },
+        "branch": {
+          "M": 1
+        },
+        "event_family": {
+          "reserve_commitment_update": 1
+        },
+        "model_condition": {
+          "qwen_flash": 1
+        }
+      },
+      "PERSISTENT_SOLVER_HARDNESS": {
+        "active_stage": {
+          "projection_cost_tiebreak": 51,
+          "projection_distance": 1
+        },
+        "branch": {
+          "C": 6,
+          "C2": 7,
+          "K": 5,
+          "M": 31,
+          "S": 3
+        },
+        "event_family": {
+          "battery_capacity_derating": 12,
+          "export_limit_update": 8,
+          "forecast_revision": 15,
+          "power_limit_derating": 8,
+          "reserve_commitment_update": 9
+        },
+        "model_condition": {
+          "deepseek_formal": 47,
+          "qwen_flash": 5
+        }
+      }
+    },
+    "diagnostic_flag_counts": {
+      "DIAGNOSTIC_300S_SOLVED": 12,
+      "DIAGNOSTIC_300S_TIMEOUT": 35,
+      "DIAGNOSTIC_INTERRUPTED_OR_INVALID": 6
+    },
+    "dimension_counts": {
+      "activation_step": {
+        "14": 3,
+        "4": 22,
+        "5": 9,
+        "6": 13,
+        "7": 3,
+        "8": 3
+      },
+      "branch": {
+        "C": 6,
+        "C2": 7,
+        "K": 5,
+        "M": 32,
+        "S": 3
+      },
+      "difficulty": {
+        "easy": 23,
+        "hard": 13,
+        "medium": 17
+      },
+      "event_family": {
+        "battery_capacity_derating": 12,
+        "export_limit_update": 8,
+        "forecast_revision": 15,
+        "power_limit_derating": 8,
+        "reserve_commitment_update": 10
+      },
+      "location_id": {
+        "fresno": 13,
+        "los_angeles": 24,
+        "sacramento": 12,
+        "san_diego": 4
+      },
+      "model_condition": {
+        "deepseek_formal": 47,
+        "qwen_flash": 6
+      },
+      "season": {
+        "autumn": 10,
+        "spring": 11,
+        "summer": 23,
+        "winter": 9
+      }
+    },
+    "mathematical_problem_fingerprint_count": 25,
+    "repeated_problem_clusters": [
+      {
+        "case_count": 3,
+        "case_ids": [
+          "e2_116671a04d4b1e32a780__M",
+          "e2_61d5807191c1523a5fee__M",
+          "e2_d49a89c1a72c97e39bd7__M"
+        ],
+        "mathematical_problem_fingerprint": "2caaf30b64abc0b006a4d6f56e2641b35e9525abcfa892d778634eb0ea211a44"
+      },
+      {
+        "case_count": 3,
+        "case_ids": [
+          "e2_071b561a2b4de536a58b__M",
+          "e2_1801f784390ffdef0996__M",
+          "e2_9344bf31177ec991e5ce__M"
+        ],
+        "mathematical_problem_fingerprint": "30aaeb7e4bc15eef8770eaf1e2a1e08e7e36f52642f03125166a4d60a06ab7b8"
+      },
+      {
+        "case_count": 2,
+        "case_ids": [
+          "e2_21d2cfbe63bf2bb6ed39__M",
+          "e2_45e4425fc1520fc741ac__M"
+        ],
+        "mathematical_problem_fingerprint": "317a1ed71381eefb11456b6affa43d7f792e2c248bcbd8a1bfd526b7249ec1df"
+      },
+      {
+        "case_count": 2,
+        "case_ids": [
+          "e2_283a63e1e8b1d778da00__M",
+          "e2_67c7332af6e786822cac__M"
+        ],
+        "mathematical_problem_fingerprint": "49ccd33d969423fc3b2811c875374f99361d9842d876fc636dd8e5f8ea439c08"
+      },
+      {
+        "case_count": 5,
+        "case_ids": [
+          "e2_1ecd53304eff18df2c6a__C",
+          "e2_80d33ab2908a0e73a53c__C",
+          "e2_80d33ab2908a0e73a53c__C2",
+          "e2_acfbfc2b7bbb4bbafccb__C2",
+          "e2_acfbfc2b7bbb4bbafccb__K"
+        ],
+        "mathematical_problem_fingerprint": "5d7f869991d500228e5578e7bd332c26d873a6606523041f0bea922193a6d328"
+      },
+      {
+        "case_count": 2,
+        "case_ids": [
+          "e2_133e5ebe19f17c08f3f8__M",
+          "e2_9924d686e5da2245b439__M"
+        ],
+        "mathematical_problem_fingerprint": "728facb1b1cb2930e42f4337ffdbb789dde8b88aefaeb2d1f3de478e6204c7c3"
+      },
+      {
+        "case_count": 3,
+        "case_ids": [
+          "e2_1f84d752245394fe04e6__M",
+          "e2_65901c291a70713e4e36__M",
+          "e2_86b7fcd5b30b114691c9__M"
+        ],
+        "mathematical_problem_fingerprint": "9a31e77a08a72de9e407c6cef692854bc16104a238e06265e10e1e28642c1f25"
+      },
+      {
+        "case_count": 3,
+        "case_ids": [
+          "e2_31a08143653fad07a78f__S",
+          "e2_808f80fcf81d7f05b86a__S",
+          "e2_d1eebc4f00fb0f1c1ec8__S"
+        ],
+        "mathematical_problem_fingerprint": "9af59a7aa3478c7762c1ce24e15a1fa25541efe07a5c20e787041ce33f447f6f"
+      },
+      {
+        "case_count": 2,
+        "case_ids": [
+          "e2_84b8e5c7ea6de0aec036__K",
+          "e2_c9c9d71b866981c4e677__K"
+        ],
+        "mathematical_problem_fingerprint": "c289807f7987fc76e8390e42d53cf909de91b0c939115869db021436c5d03871"
+      },
+      {
+        "case_count": 2,
+        "case_ids": [
+          "e2_116671a04d4b1e32a780__C",
+          "e2_116671a04d4b1e32a780__C2"
+        ],
+        "mathematical_problem_fingerprint": "cd40dd03cf040d12977d58f98a758105a74f44c56a6cb3a4567589ba1bc87114"
+      },
+      {
+        "case_count": 2,
+        "case_ids": [
+          "e2_4fed1a1a9d39d96c1555__K",
+          "e2_e0eb90e43755d9242ce8__K"
+        ],
+        "mathematical_problem_fingerprint": "ce4671627902ef3657b4fae9890321c2777fb1c0a2f7215c25956ee71c63167d"
+      },
+      {
+        "case_count": 3,
+        "case_ids": [
+          "e2_4fed1a1a9d39d96c1555__M",
+          "e2_e0eb90e43755d9242ce8__M",
+          "e2_f88cc57ca31877129c7e__M"
+        ],
+        "mathematical_problem_fingerprint": "ec79dd8f63ce380bcf13e8c1876846b8fbf1730f726a7f7a613b225dd6b57de8"
+      },
+      {
+        "case_count": 2,
+        "case_ids": [
+          "e2_26f7e46c9320766654fa__M",
+          "e2_ddfa7c0a602a99f74030__M"
+        ],
+        "mathematical_problem_fingerprint": "f00874e9e6ec1e0535ce5f0c482fc4bfda2cc55e8703f4102ae79a1d1a93c551"
+      },
+      {
+        "case_count": 3,
+        "case_ids": [
+          "e2_590eae7c536eaf92a1dd__M",
+          "e2_84b8e5c7ea6de0aec036__M",
+          "e2_c9c9d71b866981c4e677__M"
+        ],
+        "mathematical_problem_fingerprint": "f050b08afa834fcf0a1cd0443b8e7a5e6f7eef0c1ee8ece75e07dbdf71901911"
+      },
+      {
+        "case_count": 6,
+        "case_ids": [
+          "e2_07a028b6fd2bd516b912__C",
+          "e2_07a028b6fd2bd516b912__C2",
+          "e2_b3b643d9d8174b89b1b9__C",
+          "e2_b3b643d9d8174b89b1b9__C2",
+          "e2_b7f790b0b3db2ac4b950__C",
+          "e2_b7f790b0b3db2ac4b950__C2"
+        ],
+        "mathematical_problem_fingerprint": "f7f5e05af2ebfa34597ad1d04e73b3f71721bad88b09fb2ae43fede19aa62f00"
+      }
+    ]
+  }
+}

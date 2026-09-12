@@ -1,0 +1,18 @@
+{
+  "created_utc": "2026-08-29T03:51:28.060277+00:00",
+  "deterministic_reference": {
+    "failed": 0,
+    "rows": 360,
+    "scenarios": 60
+  },
+  "interpretation_boundary": "Provider-free post-hoc sensitivity. It does not redefine the registered gate or scenario admission.",
+  "network_attempts": 0,
+  "objective_order": {
+    "errors": [],
+    "rows": 240,
+    "sample_scenarios": 20,
+    "status": "PASS"
+  },
+  "provider_calls_performed": 0,
+  "schema_version": "offline_optimization_sensitivities_v1"
+}

@@ -1,0 +1,29 @@
+schema_version: experiments_v2_pricing_v1
+status: official_snapshot_recorded
+currency: mixed_provider_billing_currency
+budget_hard_stop: false
+soft_warning_cny: null
+hard_stop_cny: null
+conditions:
+  deepseek_formal:
+    provider: deepseek
+    model_id: deepseek-v4-flash
+    currency: USD
+    input_price_per_million: 0.14
+    cached_input_price_per_million: 0.0028
+    output_price_per_million: 0.28
+    reasoning_token_billing: output_token_rate_when_thinking_is_enabled; P0 disables thinking
+    effective_date: 2026-08-01
+    retrieved_utc: "2026-08-01T03:35:00Z"
+    source_note: https://api-docs.deepseek.com/quick_start/pricing; cache-miss input rate
+  qwen_flash:
+    provider: qwen
+    model_id: qwen3.6-flash-2026-04-16
+    currency: CNY
+    input_price_per_million: 1.2
+    cached_input_price_per_million: null
+    output_price_per_million: 7.2
+    reasoning_token_billing: output token rate when thinking is enabled; P0 disables thinking
+    effective_date: 2026-08-01
+    retrieved_utc: "2026-08-01T03:35:00Z"
+    source_note: https://help.aliyun.com/en/model-studio/model-pricing; China Beijing, 0-256K input tier

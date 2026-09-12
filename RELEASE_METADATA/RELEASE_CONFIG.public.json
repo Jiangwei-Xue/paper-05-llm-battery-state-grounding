@@ -1,0 +1,84 @@
+{
+  "allow_safe_symlinks": false,
+  "documentation": {
+    "commands": [
+      {
+        "command": "env HOME=. python3 tools/VERIFY_ARCHIVE.py verify --archive <ARCHIVE_PATH>",
+        "cwd": ".",
+        "file": "README.md",
+        "id": "verify",
+        "timeout_seconds": 600
+      },
+      {
+        "command": "python3.12 RUN_ALL_OFFLINE.py --archive-context <ARCHIVE_PATH>",
+        "cwd": ".",
+        "file": "README.md",
+        "id": "reproduce",
+        "timeout_seconds": 1800
+      }
+    ]
+  },
+  "public_disclosure_profile": "minimal",
+  "references": {
+    "json_globs": [
+      "CLAIM_TO_EVIDENCE_MAP.json",
+      "LATEST_PAPER.json",
+      "VCR_H5E5_EXPECTED.json",
+      "PUBLIC_ENVIRONMENT.json",
+      "experiments_manifest.json",
+      "results_manifest.json",
+      "saved_records/INDEX.json",
+      "experiment_scaffolding/EXPERIMENT_MAP.json",
+      "experiment_scaffolding/RUNNER_INDEX.json",
+      "runtime/encoded/RUNTIME_MATERIALIZATION_MANIFEST.json"
+    ],
+    "markdown_files": [
+      "README.md",
+      "RELEASE_AUDIT.md",
+      "EVIDENCE_CHAIN.md",
+      "PAPER_EVIDENCE_SCOPE.md",
+      "EXPERIMENT_DESIGN_AUDIT.md",
+      "REPRODUCTION_SCAFFOLDING_AUDIT.md",
+      "RESULT_PROVENANCE_AUDIT.md",
+      "EXPERIMENT_TIMELINE.md",
+      "METHOD_VERSION_HISTORY.md",
+      "docs/experiment_design.md",
+      "docs/reproduction_protocol.md",
+      "docs/paper_results_map.md",
+      "docs/data_provenance.md",
+      "docs/verification_definitions.md",
+      "experiment_scaffolding/README.md",
+      "experiment_scaffolding/EXPERIMENT_MAP.md",
+      "experiment_scaffolding/LIVE_RUNNER_GUIDE.md",
+      "results/README.md",
+      "LICENSE.md",
+      "environment/PLATFORM_BOUNDARY.md"
+    ],
+    "stale_patterns": [
+      "/Users/",
+      "/Volumes/",
+      "/private/var/",
+      "/var/folders/",
+      "file://",
+      "PRIVATE_TO_RELEASE_HASH_MAP",
+      "V1_2_TO_V1_3_HASH_MAP",
+      "TRANSFORMATION_LEDGER",
+      "PRIVACY_DERIVATIVE"
+    ]
+  },
+  "release_class": "public",
+  "release_name": "state_grounding_reproducibility_package_v1_5_1_20260912",
+  "schema_version": 1,
+  "source_date_epoch": 1789171200,
+  "statistical_claims": [],
+  "tool_contract": {
+    "mandatory_public_checks": [
+      "package_integrity",
+      "documentation",
+      "archive_integrity",
+      "reproducibility"
+    ],
+    "name": "experiment-release",
+    "version": "1.2.1"
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "F0|qwen37_plus_direct|battery_only": {
+    "curtailment_used": 0,
+    "mean_battery_correction_l1_kwh": 537.5658723965787,
+    "mechanisms": {
+      "battery_action_and_mode_correction": 30,
+      "battery_magnitude_or_timing_correction": 26,
+      "expanded_curtailment_reduces_battery_correction": 2,
+      "expanded_curtailment_used_without_distance_reduction": 2
+    },
+    "median_battery_correction_l1_kwh": 269.76983684210495,
+    "n": 60,
+    "post_gate_feasible": 60,
+    "sign_change_rows": 34,
+    "zero_to_active_rows": 0
+  },
+  "F0|qwen37_plus_direct|expanded_system": {
+    "curtailment_used": 4,
+    "mean_battery_correction_l1_kwh": 537.4651338976174,
+    "mechanisms": {
+      "battery_action_and_mode_correction": 30,
+      "battery_magnitude_or_timing_correction": 26,
+      "expanded_curtailment_reduces_battery_correction": 2,
+      "expanded_curtailment_used_without_distance_reduction": 2
+    },
+    "median_battery_correction_l1_kwh": 269.76983684210495,
+    "n": 60,
+    "post_gate_feasible": 60,
+    "sign_change_rows": 34,
+    "zero_to_active_rows": 0
+  },
+  "F1|deepseek_formal|battery_only": {
+    "curtailment_used": 0,
+    "mean_battery_correction_l1_kwh": 443.1637978098526,
+    "mechanisms": {
+      "battery_action_and_mode_correction": 227,
+      "battery_magnitude_or_timing_correction": 5,
+      "expanded_curtailment_used_without_distance_reduction": 8
+    },
+    "median_battery_correction_l1_kwh": 131.57904736842104,
+    "n": 240,
+    "post_gate_feasible": 240,
+    "sign_change_rows": 15,
+    "zero_to_active_rows": 220
+  },
+  "F1|deepseek_formal|expanded_system": {
+    "curtailment_used": 8,
+    "mean_battery_correction_l1_kwh": 443.207897909264,
+    "mechanisms": {
+      "battery_action_and_mode_correction": 227,
+      "battery_magnitude_or_timing_correction": 5,
+      "expanded_curtailment_used_without_distance_reduction": 8
+    },
+    "median_battery_correction_l1_kwh": 131.57904736842104,
+    "n": 240,
+    "post_gate_feasible": 240,
+    "sign_change_rows": 13,
+    "zero_to_active_rows": 220
+  },
+  "F1|qwen37_plus_direct|battery_only": {
+    "curtailment_used": 0,
+    "mean_battery_correction_l1_kwh": 710.0468558653612,
+    "mechanisms": {
+      "battery_action_and_mode_correction": 148,
+      "battery_magnitude_or_timing_correction": 84,
+      "expanded_curtailment_reduces_battery_correction": 1,
+      "expanded_curtailment_used_without_distance_reduction": 7
+    },
+    "median_battery_correction_l1_kwh": 233.55273157894734,
+    "n": 240,
+    "post_gate_feasible": 240,
+    "sign_change_rows": 152,
+    "zero_to_active_rows": 1
+  },
+  "F1|qwen37_plus_direct|expanded_system": {
+    "curtailment_used": 8,
+    "mean_battery_correction_l1_kwh": 710.0997988661403,
+    "mechanisms": {
+      "battery_action_and_mode_correction": 148,
+      "battery_magnitude_or_timing_correction": 84,
+      "expanded_curtailment_reduces_battery_correction": 1,
+      "expanded_curtailment_used_without_distance_reduction": 7
+    },
+    "median_battery_correction_l1_kwh": 233.55273157894734,
+    "n": 240,
+    "post_gate_feasible": 240,
+    "sign_change_rows": 152,
+    "zero_to_active_rows": 1
+  },
+  "F1|qwen_flash|battery_only": {
+    "curtailment_used": 0,
+    "mean_battery_correction_l1_kwh": 4739.516245780987,
+    "mechanisms": {
+      "battery_action_and_mode_correction": 231,
+      "battery_magnitude_or_timing_correction": 1,
+      "expanded_curtailment_used_without_distance_reduction": 8
+    },
+    "median_battery_correction_l1_kwh": 5221.838045983471,
+    "n": 240,
+    "post_gate_feasible": 240,
+    "sign_change_rows": 239,
+    "zero_to_active_rows": 0
+  },
+  "F1|qwen_flash|expanded_system": {
+    "curtailment_used": 8,
+    "mean_battery_correction_l1_kwh": 4739.5081573547395,
+    "mechanisms": {
+      "battery_action_and_mode_correction": 231,
+      "battery_magnitude_or_timing_correction": 1,
+      "expanded_curtailment_used_without_distance_reduction": 8
+    },
+    "median_battery_correction_l1_kwh": 5221.838045983471,
+    "n": 240,
+    "post_gate_feasible": 240,
+    "sign_change_rows": 239,
+    "zero_to_active_rows": 0
+  }
+}

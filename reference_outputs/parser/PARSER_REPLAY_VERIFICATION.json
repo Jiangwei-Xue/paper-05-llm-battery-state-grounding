@@ -1,0 +1,40 @@
+{
+  "errors": [],
+  "network_attempts": 0,
+  "not_applicable_provider_failure_or_skip": 14,
+  "parsed_object_mismatches": 0,
+  "parser_source_sha256": {
+    "protocol_code/e2b_parser_v2.py": "cb8826154dfb676570e3699db27a721f73739666715df5e8fec8544a27c6f8ee",
+    "protocol_code/experiments_v2/actions.py": "78b9bd3ec5e836afa17b8ca71f0ee3bdb469186c873c710da83d07a95965eec6",
+    "protocol_code/experiments_v2/hashing.py": "f5ce9b7c19915caa3046da9a42b80b2bcdf331482e967aa95c3691a9d0a775a8",
+    "protocol_code/experiments_v2/p0.py": "e6b344d671048615f816644cb94c8c59b8cbf0480147dbe3b491e87c046f148a"
+  },
+  "populations": {
+    "E1": {
+      "retained_calls": 480,
+      "successful_responses_reparsed": 480
+    },
+    "E2": {
+      "not_applicable_provider_failure_or_skip": 14,
+      "retained_calls": 2160,
+      "successful_responses_reparsed": 2146
+    },
+    "F0": {
+      "retained_calls": 120,
+      "successful_responses_reparsed": 120
+    },
+    "F1": {
+      "retained_calls": 480,
+      "successful_responses_reparsed": 480
+    },
+    "QWEN37": {
+      "retained_calls": 300,
+      "successful_responses_reparsed": 300
+    }
+  },
+  "provider_calls_performed": 0,
+  "retained_calls": 3540,
+  "schema_version": "state_grounding_parser_replay_v1_3",
+  "status": "PASS",
+  "successful_responses_reparsed": 3526
+}

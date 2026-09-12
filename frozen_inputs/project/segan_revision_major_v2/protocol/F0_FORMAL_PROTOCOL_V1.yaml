@@ -1,0 +1,78 @@
+schema_version: f0_formal_protocol_v1
+protocol_id: energybench-f0-stage2-only-carrier-sensitivity-formal-v1
+status: PRE_CALL_FROZEN_HOLD
+parent_protocol_id: energybench-e2b-stage2-only-carrier-sensitivity-v2
+purpose: independent formal execution of the optional F0 bridge after smoke and pilot acceptance
+
+execution:
+  provider_calls_allowed_now: false
+  network_allowed_now: false
+  explicit_user_authorization_required: true
+  planned_blocks: 30
+  planned_provider_calls: 120
+  calls_per_block: 4
+  selective_retry: false
+  parser_retry: false
+  physical_failure_retry: false
+  fallback: disabled
+  route: direct_only
+  concurrency: 8
+  output_root: runs/f0_formal_v1
+
+selection:
+  source_plan: reviews/e2b_protocol_v2/E2B_V2_F0_OPTIONAL_BRIDGE_PLAN.jsonl
+  source_run_label: e2_20260801T054708Z
+  rule: frozen_source_order_all_30_blocks
+  outcome_blind: true
+  model_blind: true
+  scenarios: 15
+  selected_models:
+    - deepseek_formal
+    - qwen_flash
+  event_families:
+    - battery_capacity_derating
+    - export_limit_update
+    - forecast_revision
+    - power_limit_derating
+    - reserve_commitment_update
+
+branches:
+  order_inherited_from_source_block: true
+  branches: [C1, C2, S1, S2]
+  C1: canonical_first_call
+  C2: canonical_duplicate_byte_identity_to_C1
+  S1: stale_soc_first_call
+  S2: stale_soc_duplicate_byte_identity_to_S1
+
+contract:
+  protocol_yaml: protocol/E2B_PROTOCOL_V2.yaml
+  schema: protocol/E2B_SCHEMA_V2.json
+  prompt: protocol/E2B_PROMPT_TEMPLATE_V2.txt
+  parser: scripts/e2b_parser_v2.py
+  local_offsets_only: true
+  timestamps_in_model_output: false
+  raw_clipping: false
+  terminal_target_kwh: 325.0
+
+evidence:
+  raw_response_required: true
+  parsed_action_required: true
+  deterministic_replay_required: true
+  request_payload_hash_required: true
+  returned_model_metadata_required: true
+  no_human_labels: true
+  no_llm_judge: true
+
+gates:
+  smoke_run: runs/f0_pilot_v1/f0_smoke_20260820T_authorized_v4
+  pilot_run: runs/f0_pilot_v1/f0_pilot_20260820T_authorized_v1
+  smoke_status: SMOKE_PASS
+  pilot_status: COMPLETED
+  pilot_denominator_inclusion: false
+  formal_denominator_inclusion: true
+
+readiness:
+  formal_results_exist: false
+  provider_calls_performed: 0
+  network_attempts: 0
+  next_gate: explicit_user_authorization_after_clean_formal_freeze

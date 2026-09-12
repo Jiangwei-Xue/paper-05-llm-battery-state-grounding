@@ -1,0 +1,140 @@
+schema_version: e2b_protocol_v2
+protocol_id: energybench-e2b-stage2-only-carrier-sensitivity-v2
+status: offline_implementation_hold
+supersedes_for_scientific_execution:
+  protocol_id: energybench-e2b-complete-dynamics-carrier-control-v1
+  run_label: e2b_30c_20260813T084000Z
+  disposition: ABORTED_BEFORE_STAGE2
+
+scientific_question: >-
+  With complete battery dynamics and an unambiguous Stage-2 action contract,
+  do canonical and stale SOC carriers induce different raw-action
+  distributions beyond within-carrier hosted-call variability, and is any
+  response directionally aligned with the authoritative physical state?
+
+scope:
+  provider_calls_allowed_now: false
+  network_allowed_now: false
+  archived_e1_e2_mutation_allowed: false
+  archived_e2b_v1_mutation_allowed: false
+  evidence_tier: prospective_e2b_v2_confirmation
+  stage1_provider_calls: 0
+  stage1_output_in_prompt: false
+  source: runs/experiments_v2/e2/e2_20260801T054708Z/records
+
+design:
+  F1:
+    role: confirmatory_repaired_contract
+    scenarios: 60
+    models: [deepseek_formal, qwen_flash]
+    branches: [C1, C2, S1, S2]
+    calls_per_scenario_model: 4
+    planned_blocks: 120
+    planned_provider_calls: 480
+  F0:
+    role: optional_same_window_bundled_bridge
+    scenarios: 15
+    selection: one_scenario_per_event_family_and_soc_divergence_50_75_100_kwh
+    models: [deepseek_formal, qwen_flash]
+    branches: [C1, C2, S1, S2]
+    planned_blocks: 30
+    planned_provider_calls: 120
+    inference: bundled_contract_comparison_only
+  branch_order_seed: 20260814
+  analysis_bootstrap_seed: 20260716
+  bootstrap_resamples: 10000
+  complete_block_gate_per_model: 0.80
+  task_selection_outcome_blind: true
+  task_selection_model_blind: true
+
+carrier_contract:
+  C1: {carrier: canonical, call: 1}
+  C2: {carrier: canonical, call: 2, request_bytes: identical_to_C1}
+  S1: {carrier: stale_soc, call: 1}
+  S2: {carrier: stale_soc, call: 2, request_bytes: identical_to_S1}
+  branch_metadata_outside_provider_payload: true
+  treatment_fields: [carrier_state.soc_kwh]
+  all_other_model_visible_fields_frozen_within_block: true
+
+output_contract:
+  top_level_fields_exactly: [actions]
+  action_fields_exactly: [start_offset, end_offset_exclusive, power_kw]
+  local_offset_only: true
+  model_visible_global_t_forbidden: true
+  timestamps_in_output_forbidden: true
+  maximum_segments: dynamic_horizon_H
+  uncovered_offsets_kw: 0.0
+  action_sign: positive_charge_negative_discharge
+  parser_repair: forbidden
+  alias_mapping: forbidden
+  clipping_before_raw_score: forbidden
+  global_hard_power_envelope_kw: [-250.0, 250.0]
+
+physics:
+  step_hours: 0.25
+  charge_efficiency: 0.95
+  discharge_efficiency: 0.95
+  terminal_target_kwh: 325.0
+  terminal_engineering_tolerance_kwh: 1.0
+  terminal_sensitivity_tolerances_kwh: [0.000001, 1.0, 5.0, 10.0, 25.0]
+  export_interpretation: strict_raw_grid_constraint
+  raw_export_rule: grid_kw_greater_than_or_equal_to_negative_export_limit_kw
+  automatic_curtailment_in_raw_score: false
+
+scoring:
+  primary: non_clipping_raw_replay_v2
+  replay_interpretations: [carrier_consistent_replay, authoritative_replay]
+  executable_replay: secondary_only
+  same_information_mpc_initial_state: authoritative_canonical
+  parser_failures_as_zero_actions: false
+
+estimands:
+  distance: 0.25 * sum_t(abs(action_a_kw - action_b_kw))
+  between_carrier_B: mean(d(C1,S1), d(C1,S2), d(C2,S1), d(C2,S2))
+  within_canonical_Wc: d(C1,C2)
+  within_stale_Ws: d(S1,S2)
+  energy_distance_ED: 2*B-Wc-Ws
+  normalized_difference_kw: distance_kwh / (H*0.25)
+  terminal_alignment: mean(abs_error_S)-mean(abs_error_C)
+  mpc_alignment: mean(distance_S_to_MPC)-mean(distance_C_to_MPC)
+  responsiveness_population: all_four_parse_blocks_only
+  interface_validity_population: all_planned_branches
+  aggregation: block_then_model_over_scenario_clusters
+  cross_model_pooling: descriptive_only
+
+provider_policy:
+  routes: direct_only
+  fallback: disabled
+  response_format: json_object
+  deepseek_thinking: disabled_explicitly
+  qwen_thinking: disabled_explicitly
+  transport_retry_maximum: 2
+  retryable_conditions: [timeout, connection_failure, http_429, http_5xx]
+  parser_or_schema_retry: forbidden
+  physical_failure_retry: forbidden
+  concurrency_min: 5
+  concurrency_max: 10
+  frozen_concurrency: 8
+  save_exact_prompt: true
+  save_exact_request_payload: true
+
+live_smoke:
+  isolated_from_formal_denominator: true
+  selection: shortest_and_longest_suffix_tie_by_scenario_id
+  scenarios: 2
+  models: 2
+  branches: 4
+  planned_provider_calls: 16
+  requires_new_explicit_user_authorization: true
+
+completion_gate:
+  exact_planned_record_count: true
+  exact_planned_provider_call_count: true
+  every_branch_attempted: true
+  branch_failure_does_not_skip_other_branches: true
+  partial_files_forbidden: true
+  frozen_hashes_must_match: true
+  duplicate_request_identity_must_match: true
+  returned_model_must_match: true
+  status_on_any_failure: HOLD_OR_ABORTED
+  completed_on_block_files_alone: forbidden

@@ -1,0 +1,15 @@
+{"artifact":"common","path":"segan_revision_major_v2/scripts/e2b_v2_common.py","sha256":"0f555669f849012a2610b32f93816e9ca31bffc9ee3e00ccad0bee31a11daccd","size_bytes":11683}
+{"artifact":"formal_plan","path":"segan_revision_major_v2/reviews/f0_formal_v1/F0_FORMAL_RUN_PLAN.jsonl","sha256":"0acf9773c2fab8269747123b89c5d25a2f1226a01a92f46449d030fd5a83a0b7","size_bytes":35331}
+{"artifact":"formal_task_manifest","path":"segan_revision_major_v2/reviews/f0_formal_v1/F0_FORMAL_TASK_HASH_MANIFEST.jsonl","sha256":"0d412a83db01ff2f7d39f05f8f2b5a837695646fdec9c8722d80141e85b4f0a4","size_bytes":12981}
+{"artifact":"models","path":"experiments_v2/configs/models.yaml","sha256":"1fa293fc33eb68202436e12a4308abd8d1e5856fb74d947fbe41599c89052457","size_bytes":2613}
+{"artifact":"parser","path":"segan_revision_major_v2/scripts/e2b_parser_v2.py","sha256":"cb8826154dfb676570e3699db27a721f73739666715df5e8fec8544a27c6f8ee","size_bytes":3933}
+{"artifact":"pilot_summary","path":"segan_revision_major_v2/runs/f0_pilot_v1/f0_pilot_20260820T_authorized_v1/E2B_V2_EXECUTION_SUMMARY.json","sha256":"2e65b84995de322d18d69a2de0a20d3b01d7db1697232d57f87f3884135ce308","size_bytes":470}
+{"artifact":"preflight_verifier","path":"segan_revision_major_v2/scripts/verify_f0_formal_preflight.py","sha256":"7bf1513a45633efcfe133a9bf73a9048ef5a927bfaa123f17e3b21db9188a05c","size_bytes":6376}
+{"artifact":"prompt_template","path":"segan_revision_major_v2/protocol/E2B_PROMPT_TEMPLATE_V2.txt","sha256":"43ad26a958ceb2181ef9740c21cd1bfd6fe44be79e0d85591830b3ee67a0f815","size_bytes":1499}
+{"artifact":"protocol_markdown","path":"segan_revision_major_v2/protocol/F0_FORMAL_PROTOCOL_V1.md","sha256":"d04a7703feb6c3b12fcd43a59124194aed43f738f3bf5724796ed4ce8a283775","size_bytes":1944}
+{"artifact":"protocol_yaml","path":"segan_revision_major_v2/protocol/F0_FORMAL_PROTOCOL_V1.yaml","sha256":"b2d150cdaaca9cb88b16bb30a16122fbb67d0ddd34ede6739be99e6e0df0f5e5","size_bytes":2290}
+{"artifact":"runner","path":"segan_revision_major_v2/scripts/run_f0_formal_v1.py","sha256":"e908c92a94ddb043249e9ced22c8fb731f0bcef0ee62ae82e941fa35b4b6d61c","size_bytes":3563}
+{"artifact":"schema","path":"segan_revision_major_v2/protocol/E2B_SCHEMA_V2.json","sha256":"665c0ccd1be0ec588f193b1d8811ffa79fe3edcd01bec63346a10fbb77329fee","size_bytes":773}
+{"artifact":"smoke_summary","path":"segan_revision_major_v2/runs/f0_pilot_v1/f0_smoke_20260820T_authorized_v4/E2B_V2_EXECUTION_SUMMARY.json","sha256":"58b54d6890f5c5c2e01c575f1d8aa0b09149a3556ec8fdaf7def40be595f2bc4","size_bytes":463}
+{"artifact":"source_plan","path":"segan_revision_major_v2/reviews/e2b_protocol_v2/E2B_V2_F0_OPTIONAL_BRIDGE_PLAN.jsonl","sha256":"797f6bfcf6d313844c6c8efc309fcd2a791f48c170ed6f201f8d4b106ca54d2f","size_bytes":23991}
+{"artifact":"tests","path":"segan_revision_major_v2/tests/test_f0_formal_preflight.py","sha256":"fb200e67585578a9226a1e4fcec3dcd82a93992ec629f72664c8f33252be07c4","size_bytes":2056}

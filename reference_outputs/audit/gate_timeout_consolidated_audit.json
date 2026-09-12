@@ -1,0 +1,30 @@
+{
+  "M_branch": 32,
+  "diagnostic_300s_late_solves": 11,
+  "formal_denominator": 1800,
+  "formal_status": "PARTIAL_WITH_TIMEOUTS",
+  "hard_timeout_120s": 53,
+  "network_attempts": 0,
+  "persistent_solver_hardness": 52,
+  "provider_calls_performed": 0,
+  "source_schema_version": "e2_timeout_root_cause_audit_v1",
+  "source_sha256": "c64aa81bcb415eff0edf940a820aeae416a198538b2d54ad4a3a837cf5406a6a",
+  "stage1_distance": 1,
+  "stage3_cost_tiebreak": 51,
+  "thirty_second_sensitivity": {
+    "counts": {
+      "hard_timeout_30s": 25
+    },
+    "created_utc": "2026-08-29T03:05:21.862489+00:00",
+    "fingerprints": 25,
+    "interpretation_boundary": "Concurrent development sensitivity; does not replace the formal 120-second run or 300-second diagnostic.",
+    "network_attempts": 0,
+    "provider_calls_performed": 0,
+    "representative_cases": 25,
+    "schema_version": "e2_timeout_30s_sensitivity_v1",
+    "selection": "one lexicographically first case per frozen mathematical problem fingerprint",
+    "watchdog_seconds": 30,
+    "workers": 4
+  },
+  "timeout_rate": 0.029444444444444443
+}

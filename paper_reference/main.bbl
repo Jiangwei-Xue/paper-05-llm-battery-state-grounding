@@ -1,0 +1,387 @@
+\begin{thebibliography}{50}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Parisio et~al.(2014)Parisio, Rikos, and Glielmo]{parisio2014mpc}
+Alessandra Parisio, Evangelos Rikos, and Luigi Glielmo.
+\newblock A model predictive control approach to microgrid operation
+  optimization.
+\newblock \emph{IEEE Transactions on Control Systems Technology}, 22\penalty0
+  (5):\penalty0 1813--1827, 2014.
+\newblock \doi{10.1109/TCST.2013.2295737}.
+
+\bibitem[Cede\~no et~al.(2022)Cede\~no, L\'opez~Ahuar, Rojas, Carvajal, Silva,
+  and Ag\"uero]{cedeno2022pvmpc}
+A.~L. Cede\~no, R.~L\'opez~Ahuar, J.~Rojas, G.~Carvajal, C.~Silva, and J.~C.
+  Ag\"uero.
+\newblock Model predictive control for photovoltaic plants with non-ideal
+  energy storage using mixed integer linear programming.
+\newblock \emph{Energies}, 15\penalty0 (17):\penalty0 6427, 2022.
+\newblock \doi{10.3390/en15176427}.
+
+\bibitem[Banfield et~al.(2020)Banfield, Robinson, and
+  Agalgaonkar]{banfield2020empc}
+Brendan Banfield, Duane~A. Robinson, and Ashish~P. Agalgaonkar.
+\newblock Comparison of economic model predictive control and rule-based
+  control for residential energy storage systems.
+\newblock \emph{IET Smart Grid}, 2020.
+\newblock \doi{10.1049/iet-stg.2020.0090}.
+
+\bibitem[Mongaillard et~al.(2024)Mongaillard, Lasaulce, Hicheur, Zhang, Bariah,
+  Varma, Zou, Zhao, and Debbah]{mongaillard2024power}
+Thomas Mongaillard, Samson Lasaulce, Othman Hicheur, Chao Zhang, Lina Bariah,
+  Vineeth~S. Varma, Hang Zou, Qiyang Zhao, and Merouane Debbah.
+\newblock Large language models for power scheduling: A user-centric approach,
+  2024.
+
+\bibitem[Michelon et~al.(2025)Michelon, Zhou, and Morstyn]{michelon2025llmhems}
+Fabien Michelon, Yuzhou Zhou, and Thomas Morstyn.
+\newblock Large language model interface for home energy management systems.
+\newblock In \emph{Proceedings of the 16th ACM International Conference on
+  Future and Sustainable Energy Systems}, pages 590--602, 2025.
+\newblock \doi{10.1145/3679240.3734586}.
+
+\bibitem[Cheng et~al.(2025)Cheng, Zhao, Zhou, Zhao, Cao, Yang,
+  et~al.]{cheng2025dispatch}
+Yuheng Cheng, Huan Zhao, Xiyuan Zhou, Junhua Zhao, Yuji Cao, Chao Yang, et~al.
+\newblock A large language model for advanced power dispatch.
+\newblock \emph{Scientific Reports}, 15:\penalty0 8925, 2025.
+\newblock \doi{10.1038/s41598-025-91940-x}.
+
+\bibitem[El~Makroum et~al.(2026)El~Makroum, Zwickl-Bernhard, and
+  Kranzl]{elmakroum2026agentic}
+R.~El~Makroum, S.~Zwickl-Bernhard, and L.~Kranzl.
+\newblock Agentic ai home energy management system: A large language model
+  framework for residential load scheduling.
+\newblock \emph{Results in Engineering}, 29:\penalty0 109857, 2026.
+\newblock \doi{10.1016/j.rineng.2026.109857}.
+
+\bibitem[Raghavan and Giridhar(2026)]{raghavan2026costoptimal}
+V.~S. Raghavan and A.~V. Giridhar.
+\newblock Cost-optimal residential energy scheduling via a zero-shot llm agent
+  and model predictive control.
+\newblock \emph{Journal of Building Performance Simulation}, 19\penalty0
+  (3):\penalty0 492--510, 2026.
+\newblock \doi{10.1080/19401493.2025.2605465}.
+
+\bibitem[Haghighi et~al.(2026)Haghighi, Bui, and Su]{haghighi2026surrogate}
+Rouzbeh Haghighi, Van-Hai Bui, and Wencong Su.
+\newblock Fine-tuned large language models as surrogate schedulers for smart
+  building energy management.
+\newblock \emph{Energy and Buildings}, 364:\penalty0 117588, 2026.
+\newblock \doi{10.1016/j.enbuild.2026.117588}.
+
+\bibitem[Zhang et~al.(2026{\natexlab{a}})Zhang, Zhang, Lu, Zhao,
+  et~al.]{zhang2026energysystems}
+Chaobo Zhang, Jian Zhang, Jie Lu, Yang Zhao, et~al.
+\newblock Large language models meet energy systems: Opportunities, challenges,
+  and future perspectives.
+\newblock \emph{Applied Energy}, 403:\penalty0 127076, 2026{\natexlab{a}}.
+\newblock \doi{10.1016/j.apenergy.2025.127076}.
+
+\bibitem[Zhao et~al.(2026{\natexlab{a}})Zhao, Cheng, Xiang, Zhou, Zhao, Cai,
+  and Dong]{zhao2026dispatchagent}
+Huan Zhao, Yuheng Cheng, Dejun Xiang, Xiyuan Zhou, Junhua Zhao, Xinlei Cai, and
+  Zhaoyang Dong.
+\newblock Large language model-based power dispatch agent: Framework,
+  application and challenges.
+\newblock \emph{International Journal of Electrical Power \& Energy Systems},
+  175:\penalty0 111653, 2026{\natexlab{a}}.
+\newblock \doi{10.1016/j.ijepes.2026.111653}.
+
+\bibitem[Zhao et~al.(2026{\natexlab{b}})Zhao, Chen, Jiang, Huang,
+  et~al.]{zhao2026carbonagent}
+Junpeng Zhao, Rouyi Chen, Hui Jiang, Yanlu Huang, et~al.
+\newblock An llm-agent-based framework for calculating nodal carbon intensity
+  in regional power systems.
+\newblock \emph{Scientific Reports}, 2026{\natexlab{b}}.
+\newblock \doi{10.1038/s41598-026-60053-4}.
+
+\bibitem[Tso et~al.(2026)Tso, Schmittou, Huynh, and
+  Hutchins]{tso2026constraintbench}
+J.~Tso, P.~Schmittou, Q.~Huynh, and J.~Hutchins.
+\newblock Constraintbench: Benchmarking llm constraint reasoning on direct
+  optimization, 2026.
+
+\bibitem[Jiang et~al.(2026)Jiang, Xu, Zhu, Yang, Luu, and
+  Luo]{jiang2026poweratlas}
+K.~Jiang, S.~Xu, Z.~Zhu, C.~Yang, A.~T. Luu, and H.~Luo.
+\newblock Poweratlas: Towards electricity-computing co-scheduling for power
+  systems, 2026.
+
+\bibitem[Sharma and Sharma(2026)]{sharma2026schedbench}
+Shrenil~Shaun Sharma and Avi Sharma.
+\newblock Schedbench: A benchmark for evaluating llm constraint faithfulness in
+  natural-language combinatorial scheduling, 2026.
+
+\bibitem[Huang et~al.(2022)Huang, Abbeel, Pathak, and
+  Mordatch]{huang2022zeroshot}
+Wenlong Huang, Pieter Abbeel, Deepak Pathak, and Igor Mordatch.
+\newblock Language models as zero-shot planners: Extracting actionable
+  knowledge for embodied agents.
+\newblock In \emph{Proceedings of the 39th International Conference on Machine
+  Learning}, volume 162 of \emph{Proceedings of Machine Learning Research},
+  pages 9118--9147, 2022.
+\newblock URL \url{https://proceedings.mlr.press/v162/huang22a.html}.
+
+\bibitem[Ahn et~al.(2022)Ahn, Brohan, Brown, et~al.]{ahn2022saycan}
+Michael Ahn, Anthony Brohan, Noah Brown, et~al.
+\newblock Do as i can, not as i say: Grounding language in robotic affordances,
+  2022.
+
+\bibitem[Huang et~al.(2023)Huang, Xia, Xiao, Chan, Liang, Florence, Zeng,
+  Tompson, Mordatch, Chebotar, Sermanet, Jackson, Brown, Luu, Levine, Hausman,
+  and Ichter]{huang2023innermonologue}
+Wenlong Huang, Fei Xia, Ted Xiao, Harris Chan, Jacky Liang, Pete Florence, Andy
+  Zeng, Jonathan Tompson, Igor Mordatch, Yevgen Chebotar, Pierre Sermanet,
+  Tomas Jackson, Noah Brown, Linda Luu, Sergey Levine, Karol Hausman, and Brian
+  Ichter.
+\newblock Inner monologue: Embodied reasoning through planning with language
+  models.
+\newblock In \emph{Proceedings of the 6th Conference on Robot Learning}, volume
+  205 of \emph{Proceedings of Machine Learning Research}, pages 1769--1782,
+  2023.
+\newblock URL \url{https://proceedings.mlr.press/v205/huang23c.html}.
+
+\bibitem[Yoneda et~al.(2024)Yoneda, Fang, Li, Zhang, Jiang, Lin, Picker, Yunis,
+  Mei, and Walter]{yoneda2024statler}
+Takuma Yoneda, Jiading Fang, Peng Li, Huanyu Zhang, Tianchong Jiang, Shengjie
+  Lin, Ben Picker, David Yunis, Hongyuan Mei, and Matthew~R. Walter.
+\newblock Statler: State-maintaining language models for embodied reasoning.
+\newblock In \emph{2024 IEEE International Conference on Robotics and
+  Automation (ICRA)}, 2024.
+\newblock \doi{10.1109/ICRA57147.2024.10610634}.
+
+\bibitem[Wang et~al.(2025)Wang, Li, Li, Miao, Chen, Yan, Zhang, Shen, Lu, Xiao,
+  and Zhuang]{wang2025groundact}
+Z.~Wang, D.~Li, H.~Li, Y.~Miao, S.~Chen, Y.~Yan, W.~Zhang, Y.~Shen, W.~Lu,
+  J.~Xiao, and Y.~Zhuang.
+\newblock Groundact: Can llm agents ground actions in environmental states?,
+  2025.
+\newblock Revised 2026.
+
+\bibitem[Sheng et~al.(2026)Sheng, Wang, and Zhou]{sheng2026envtrust}
+S.~Sheng, Z.~Wang, and L.~Zhou.
+\newblock When agents overtrust environmental evidence: An extensible agentic
+  framework for benchmarking evidence-grounding defects in llm agents, 2026.
+
+\bibitem[Chao et~al.(2026)Chao, Bai, Sheng, Li, and Sun]{chao2026stale}
+H.~Chao, Y.~Bai, R.~Sheng, T.~Li, and Y.~Sun.
+\newblock Stale: Can llm agents know when their memories are no longer valid?,
+  2026.
+
+\bibitem[Cui and Alexander(2026)]{cui2026sameprompt}
+J.~Cui and R.~Alexander.
+\newblock Same prompt, different outcomes: Evaluating the reproducibility of
+  data analysis by llms, 2026.
+
+\bibitem[Lior et~al.(2025)Lior, Habba, Levy, Caciularu, and
+  Stanovsky]{lior2025reliableeval}
+G.~Lior, E.~Habba, S.~Levy, A.~Caciularu, and G.~Stanovsky.
+\newblock Reliableeval: A recipe for stochastic llm evaluation via method of
+  moments.
+\newblock In \emph{Findings of the Association for Computational Linguistics:
+  EMNLP 2025}, pages 11146--11153, 2025.
+\newblock \doi{10.18653/v1/2025.findings-emnlp.594}.
+
+\bibitem[Yao et~al.(2024)Yao, Shinn, Razavi, and Narasimhan]{yao2024taubench}
+Shunyu Yao, Noah Shinn, Pedram Razavi, and Karthik Narasimhan.
+\newblock $\tau$-bench: A benchmark for tool-agent-user interaction in
+  real-world domains, 2024.
+
+\bibitem[Seto et~al.(1998)Seto, Krogh, Sha, and Chutinan]{seto1998simplex}
+D.~Seto, B.~Krogh, L.~Sha, and A.~Chutinan.
+\newblock The simplex architecture for safe on-line control system upgrades.
+\newblock In \emph{Proceedings of the 1998 American Control Conference},
+  volume~6, pages 3504--3508, 1998.
+\newblock \doi{10.1109/ACC.1998.703255}.
+
+\bibitem[Alshiekh et~al.(2018)Alshiekh, Bloem, Ehlers, K\"onighofer, Niekum,
+  and Topcu]{alshiekh2018shielding}
+Mohammed Alshiekh, Roderick Bloem, Ruediger Ehlers, Bettina K\"onighofer, Scott
+  Niekum, and Ufuk Topcu.
+\newblock Safe reinforcement learning via shielding.
+\newblock In \emph{Proceedings of the AAAI Conference on Artificial
+  Intelligence}, volume~32, pages 2669--2676, 2018.
+\newblock \doi{10.1609/aaai.v32i1.11797}.
+
+\bibitem[Wabersich and Zeilinger(2021)]{wabersich2021safetyfilter}
+Kim~P. Wabersich and Melanie~N. Zeilinger.
+\newblock A predictive safety filter for learning-based control of constrained
+  nonlinear dynamical systems.
+\newblock \emph{Automatica}, 129:\penalty0 109597, 2021.
+\newblock \doi{10.1016/j.automatica.2021.109597}.
+
+\bibitem[Su et~al.(2026)Su, Huang, Wu, and Dong]{su2026microgrid}
+Shihong Su, Jingjie Huang, Manting Wu, and Zhaoyang Dong.
+\newblock From unstructured information to structured optimization: A large
+  language model based framework for microgrid contingency energy management.
+\newblock \emph{Sustainable Energy, Grids and Networks}, 47:\penalty0 102343,
+  2026.
+\newblock \doi{10.1016/j.segan.2026.102343}.
+
+\bibitem[Valmeekam et~al.(2023)Valmeekam, Marquez, Olmo, Sreedharan, and
+  Kambhampati]{valmeekam2023planbench}
+Karthik Valmeekam, Matthew Marquez, Alberto Olmo, Sarath Sreedharan, and
+  Subbarao Kambhampati.
+\newblock Planbench: An extensible benchmark for evaluating large language
+  models on planning and reasoning about change, 2023.
+
+\bibitem[Zhou et~al.(2024)Zhou, Zhao, Cheng, Cao, Liang, Liu, Liu, Xu, and
+  Zhao]{zhou2024elecbench}
+X.~Zhou, H.~Zhao, Y.~Cheng, Y.~Cao, G.~Liang, G.~Liu, W.~Liu, Y.~Xu, and
+  J.~Zhao.
+\newblock Elecbench: A power dispatch evaluation benchmark for large language
+  models, 2024.
+
+\bibitem[Curcio(2026)]{curcio2026energyagentbench}
+E.~Curcio.
+\newblock Energyagentbench: Benchmarking llm agents on live energy
+  infrastructure data, 2026.
+
+\bibitem[Mylonas et~al.(2026)Mylonas, Foti, Pomarico, Duarte, Zhang, and
+  Varvarigos]{mylonas2026poweragentss}
+C.~Mylonas, M.~Foti, A.~Pomarico, M.~Duarte, Q.~Zhang, and E.~Varvarigos.
+\newblock Poweragentbench-ss: A benchmark for agentic ai in power system
+  steady-state studies, 2026.
+
+\bibitem[Zhang et~al.(2026{\natexlab{b}})Zhang, Pomarico, Mylonas, Foti,
+  Berizzi, and Xie]{zhang2026poweragentdyn}
+Q.~Zhang, A.~Pomarico, C.~Mylonas, M.~Foti, A.~Berizzi, and L.~Xie.
+\newblock Poweragentbench-dyn: A benchmark for agentic ai in power system
+  dynamic studies, 2026{\natexlab{b}}.
+
+\bibitem[Singh et~al.(2023)Singh, Blukis, Mousavian, Goyal, Xu, Tremblay, Fox,
+  Thomason, and Garg]{singh2023progprompt}
+Ishika Singh, Valts Blukis, Arsalan Mousavian, Ankit Goyal, Danfei Xu, Jonathan
+  Tremblay, Dieter Fox, Jesse Thomason, and Animesh Garg.
+\newblock Progprompt: Generating situated robot task plans using large language
+  models.
+\newblock In \emph{2023 IEEE International Conference on Robotics and
+  Automation (ICRA)}, pages 11523--11530, 2023.
+\newblock \doi{10.1109/ICRA48891.2023.10161317}.
+
+\bibitem[Liang et~al.(2023{\natexlab{a}})Liang, Huang, Xia, Xu, Hausman,
+  Ichter, Florence, and Zeng]{liang2023codepolicies}
+Jacky Liang, Wenlong Huang, Fei Xia, Peng Xu, Karol Hausman, Brian Ichter, Pete
+  Florence, and Andy Zeng.
+\newblock Code as policies: Language model programs for embodied control,
+  2023{\natexlab{a}}.
+
+\bibitem[Yao et~al.(2023)Yao, Zhao, Yu, Du, Shafran, Narasimhan, and
+  Cao]{yao2023react}
+Shunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du, Izhak Shafran, Karthik Narasimhan,
+  and Yuan Cao.
+\newblock React: Synergizing reasoning and acting in language models.
+\newblock In \emph{International Conference on Learning Representations}, 2023.
+\newblock URL \url{https://openreview.net/forum?id=WE_vluYUL-X}.
+
+\bibitem[Shridhar et~al.(2021)Shridhar, Yuan, C\^ot\'e, Bisk, Trischler, and
+  Hausknecht]{shridhar2021alfworld}
+Mohit Shridhar, Xingdi Yuan, Marc-Alexandre C\^ot\'e, Yonatan Bisk, Adam
+  Trischler, and Matthew Hausknecht.
+\newblock Alfworld: Aligning text and embodied environments for interactive
+  learning.
+\newblock In \emph{International Conference on Learning Representations}, 2021.
+\newblock URL \url{https://openreview.net/forum?id=0IOX0YcCdTn}.
+
+\bibitem[Ahmed et~al.(2021)Ahmed, Tr\"auble, Goyal, Neitz, Bengio, Sch\"olkopf,
+  W\"uthrich, and Bauer]{ahmed2021causalworld}
+Ossama Ahmed, Frederik Tr\"auble, Anirudh Goyal, Alexander Neitz, Yoshua
+  Bengio, Bernhard Sch\"olkopf, Manuel W\"uthrich, and Stefan Bauer.
+\newblock Causalworld: A robotic manipulation benchmark for causal structure
+  and transfer learning.
+\newblock In \emph{International Conference on Learning Representations}, 2021.
+\newblock URL \url{https://openreview.net/forum?id=SK7Ph_iSD2}.
+
+\bibitem[Liu et~al.(2024)Liu, Yu, Zhang, Xu, Lei, Lai, Gu, Ding, Men, Yang,
+  et~al.]{liu2024agentbench}
+Xiao Liu, Hao Yu, Hanchen Zhang, Yifan Xu, Xuanyu Lei, Hanyu Lai, Yu~Gu,
+  Hangliang Ding, Kaiwen Men, Kejuan Yang, et~al.
+\newblock Agentbench: Evaluating llms as agents.
+\newblock In \emph{International Conference on Learning Representations}, 2024.
+\newblock URL
+  \url{https://proceedings.iclr.cc/paper_files/paper/2024/hash/e9df36b21ff4ee211a8b71ee8b7e9f57-Abstract-Conference.html}.
+
+\bibitem[Ma et~al.(2024)Ma, Zhang, Zhu, Yang, Yang, Jin, Lan, Kong, and
+  He]{ma2024agentboard}
+Chang Ma, Junlei Zhang, Zhihao Zhu, Cheng Yang, Yujiu Yang, Yaohui Jin,
+  Zhenzhong Lan, Lingpeng Kong, and Junxian He.
+\newblock Agentboard: An analytical evaluation board of multi-turn llm agents.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~37, 2024.
+\newblock \doi{10.52202/079017-2365}.
+
+\bibitem[Zhang et~al.(2024)Zhang, Cui, Lu, Zhou, Yang, Wang, and
+  Huang]{zhang2024agentsafety}
+Zhexin Zhang, Shiyao Cui, Yida Lu, Jingzhuo Zhou, Junxiao Yang, Hongning Wang,
+  and Minlie Huang.
+\newblock Agent-safetybench: Evaluating the safety of llm agents, 2024.
+
+\bibitem[Liang et~al.(2023{\natexlab{b}})Liang, Bommasani, Lee,
+  et~al.]{liang2023helm}
+Percy Liang, Rishi Bommasani, Tony Lee, et~al.
+\newblock Holistic evaluation of language models.
+\newblock \emph{Transactions on Machine Learning Research}, 2023{\natexlab{b}}.
+\newblock URL \url{https://openreview.net/forum?id=iO4LZibEqW}.
+
+\bibitem[Kambhampati et~al.(2024)Kambhampati, Valmeekam, Guan, Verma, Stechly,
+  Bhambri, Saldyt, and Murthy]{kambhampati2024llmmodulo}
+Subbarao Kambhampati, Karthik Valmeekam, Lin Guan, Mudit Verma, K.~Stechly,
+  S.~Bhambri, L.~P. Saldyt, and A.~B. Murthy.
+\newblock Position: Llms can't plan, but can help planning in llm-modulo
+  frameworks.
+\newblock In \emph{Proceedings of the 41st International Conference on Machine
+  Learning}, volume 235 of \emph{Proceedings of Machine Learning Research},
+  pages 22895--22907, 2024.
+\newblock URL \url{https://proceedings.mlr.press/v235/kambhampati24a.html}.
+
+\bibitem[Sarker et~al.(2017)Sarker, Murbach, Schwartz, and
+  Ortega-Vazquez]{sarker2017battery}
+Mushfiqur~R. Sarker, Matthew~D. Murbach, Daniel~T. Schwartz, and Miguel~A.
+  Ortega-Vazquez.
+\newblock Optimal operation of a battery energy storage system: Trade-off
+  between grid economics and storage health.
+\newblock \emph{Electric Power Systems Research}, 152:\penalty0 342--349, 2017.
+\newblock \doi{10.1016/j.epsr.2017.07.007}.
+
+\bibitem[Sengupta et~al.(2018)Sengupta, Xie, Lopez, Habte, Maclaurin, and
+  Shelby]{sengupta2018nsrdb}
+Manajit Sengupta, Yu~Xie, Anthony Lopez, Aron Habte, Galen Maclaurin, and James
+  Shelby.
+\newblock The national solar radiation data base (nsrdb).
+\newblock \emph{Renewable and Sustainable Energy Reviews}, 89:\penalty0 51--60,
+  2018.
+\newblock \doi{10.1016/j.rser.2018.03.003}.
+
+\bibitem[Anderson et~al.(2023)Anderson, Hansen, Holmgren, Jensen, Mikofski, and
+  Driesse]{anderson2023pvlib}
+Kevin~S. Anderson, Clifford~W. Hansen, William~F. Holmgren, Adam~R. Jensen,
+  Mark~A. Mikofski, and Anton Driesse.
+\newblock pvlib python: 2023 project update.
+\newblock \emph{Journal of Open Source Software}, 8\penalty0 (92):\penalty0
+  5994, 2023.
+\newblock \doi{10.21105/joss.05994}.
+
+\bibitem[Wilson et~al.(2021)Wilson, Parker, Fontanini, et~al.]{wilson2021eulp}
+Eric Wilson, Andrew Parker, Anthony Fontanini, et~al.
+\newblock End-use load profiles for the u.s. building stock, 2021.
+
+\bibitem[Parker et~al.(2023)Parker, Horsey, Dahlhausen, Praprost, CaraDonna,
+  LeBar, and Klun]{parker2023comstock}
+Andrew Parker, Henry Horsey, Matthew Dahlhausen, Miles Praprost, Christopher
+  CaraDonna, Andrew LeBar, and Lukas Klun.
+\newblock Comstock reference documentation (v.1).
+\newblock Technical Report NREL/TP-5500-83819, National Renewable Energy
+  Laboratory, 2023.
+
+\bibitem[{California Independent System Operator}(2017)]{caiso2017oasis}
+{California Independent System Operator}.
+\newblock \emph{Interface Specification for OASIS, Version 5.1.2}, 2017.
+\newblock URL
+  \url{https://www.caiso.com/documents/oasis-interfacespecification_v5_1_2clean_fall2017release.pdf}.
+
+\end{thebibliography}

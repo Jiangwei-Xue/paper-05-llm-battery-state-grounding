@@ -1,0 +1,7 @@
+variable_name,domain,role,expected_control_status,actual_control_status,allowed_values,observed_values,risk,action
+"scenario","dataset","controlled","frozen","frozen","60 frozen E2 scenario IDs","60","R0","freeze"
+"model_condition","model","independent","varied","varied","deepseek_formal,qwen_flash","2","R0","record"
+"carrier_soc","prompt","independent","varied","varied","canonical,stale","C1,C2,S1,S2","R0","freeze"
+"hosted_call_variability","api","nuisance","recorded","recorded","two calls per carrier","C1/C2,S1/S2","R1","record"
+"branch_order","runtime","controlled","frozen","frozen","balanced Latin order","four balanced orders","R0","freeze"
+"provider_backend","api","hidden_confounder","recorded","unknown_before_live_smoke","exact returned model and fingerprint","not yet observed","R2","record"

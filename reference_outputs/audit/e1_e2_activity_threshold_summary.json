@@ -1,0 +1,44 @@
+{
+  "E1|deepseek_formal|I0": {
+    "nontrivial_10kwh": 0,
+    "nontrivial_1kwh": 0,
+    "nontrivial_5kwh": 0,
+    "parsed": 56,
+    "rows": 60
+  },
+  "E1|deepseek_formal|I3": {
+    "nontrivial_10kwh": 56,
+    "nontrivial_1kwh": 56,
+    "nontrivial_5kwh": 56,
+    "parsed": 59,
+    "rows": 60
+  },
+  "E1|qwen_flash|I0": {
+    "nontrivial_10kwh": 0,
+    "nontrivial_1kwh": 0,
+    "nontrivial_5kwh": 0,
+    "parsed": 0,
+    "rows": 60
+  },
+  "E1|qwen_flash|I3": {
+    "nontrivial_10kwh": 21,
+    "nontrivial_1kwh": 21,
+    "nontrivial_5kwh": 21,
+    "parsed": 21,
+    "rows": 60
+  },
+  "E2|deepseek_formal|I3": {
+    "nontrivial_10kwh": 657,
+    "nontrivial_1kwh": 657,
+    "nontrivial_5kwh": 657,
+    "parsed": 831,
+    "rows": 900
+  },
+  "E2|qwen_flash|I3": {
+    "nontrivial_10kwh": 400,
+    "nontrivial_1kwh": 400,
+    "nontrivial_5kwh": 400,
+    "parsed": 400,
+    "rows": 900
+  }
+}

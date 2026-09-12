@@ -1,0 +1,33 @@
+{
+  "counts": {
+    "historical_F0": {
+      "authoritative_raw_feasible": 0,
+      "carrier_consistent_raw_feasible": 0,
+      "denominator": 120
+    },
+    "historical_F1": {
+      "authoritative_raw_feasible": 0,
+      "carrier_consistent_raw_feasible": 0,
+      "denominator": 480
+    },
+    "qwen37_F0": {
+      "authoritative_raw_feasible": 0,
+      "carrier_consistent_raw_feasible": 1,
+      "denominator": 60
+    },
+    "qwen37_F1": {
+      "authoritative_raw_feasible": 3,
+      "carrier_consistent_raw_feasible": 6,
+      "denominator": 240
+    }
+  },
+  "definitions": {
+    "authoritative_raw_feasible": "The same raw parsed action replayed from canonical system state. This is the safety/deployment-facing primary feasibility endpoint.",
+    "carrier_consistent_raw_feasible": "Raw parsed action replayed from the state carried in the model-facing branch. This is a diagnostic of whether the action is feasible in the state presented to the model."
+  },
+  "naming_rule": "Release artifacts must not use an unqualified raw-feasibility field. Every field and prose statement must identify the replay state.",
+  "network_attempts": 0,
+  "provider_calls_performed": 0,
+  "schema_version": "feasibility_semantics_v1_7",
+  "terminal_tolerance_kwh": 1.0
+}

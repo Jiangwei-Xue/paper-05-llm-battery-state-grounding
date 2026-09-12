@@ -1,0 +1,254 @@
+{
+  "checks": [
+    {
+      "boundary": null,
+      "check": "bottom-level denominators",
+      "evidence": {
+        "E1": 240,
+        "E2": 360,
+        "F0": 30,
+        "F1": 120,
+        "Qwen37": 75
+      },
+      "status": "PASS"
+    },
+    {
+      "boundary": null,
+      "check": "claim registry row traceability",
+      "evidence": {
+        "claims": 14,
+        "required_fields": [
+          "claim_id",
+          "denominator",
+          "row_selector",
+          "source_rows",
+          "status"
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "boundary": null,
+      "check": "qualified raw-action feasibility",
+      "evidence": {
+        "forbidden_tokens": [],
+        "qwen37_F0": {
+          "authoritative_raw_feasible": 0,
+          "carrier_consistent_raw_feasible": 1,
+          "denominator": 60
+        },
+        "qwen37_F1": {
+          "authoritative_raw_feasible": 3,
+          "carrier_consistent_raw_feasible": 6,
+          "denominator": 240
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "boundary": null,
+      "check": "terminal endpoint separation",
+      "evidence": {
+        "gate_columns": [
+          "gate_battery_only_distance_kwh",
+          "gate_battery_only_distance_lower_bound_kwh",
+          "gate_battery_only_distance_optimality_gap_kwh",
+          "gate_battery_only_global_distance_optimality_proven",
+          "gate_expanded_system_distance_kwh",
+          "gate_expanded_system_distance_lower_bound_kwh",
+          "gate_expanded_system_distance_optimality_gap_kwh",
+          "gate_expanded_system_global_distance_optimality_proven"
+        ],
+        "gate_contract": "exact terminal equality",
+        "raw_engineering_tolerance_kwh": 1.0
+      },
+      "status": "PASS"
+    },
+    {
+      "boundary": null,
+      "check": "cost and regret denominator",
+      "evidence": {
+        "missing": {
+          "gate_battery_only_cost_usd": 0,
+          "gate_battery_only_regret_usd": 0
+        },
+        "rows": 300
+      },
+      "status": "PASS"
+    },
+    {
+      "boundary": null,
+      "check": "direct MPC regret identity",
+      "evidence": {
+        "maximum_absolute_regret_usd": 1.1368683772161605e-13,
+        "rows": 60
+      },
+      "status": "PASS"
+    },
+    {
+      "boundary": null,
+      "check": "matched gate baselines",
+      "evidence": {
+        "baselines": [
+          "direct_mpc",
+          "heuristic",
+          "random_static_range",
+          "stale_optimal",
+          "zero"
+        ],
+        "rows_per_scenario": [
+          5
+        ],
+        "scenarios": 60
+      },
+      "status": "PASS"
+    },
+    {
+      "boundary": "Cross-tier summaries remain prohibited.",
+      "check": "no F1 F0 Qwen pooling",
+      "evidence": {
+        "F1_model_rows": {
+          "deepseek_formal": 240,
+          "qwen_flash": 240
+        },
+        "pooled_columns": []
+      },
+      "status": "PASS"
+    },
+    {
+      "boundary": "Dose results are descriptive strata, not an isolated causal dose effect.",
+      "check": "dose-response confounding disclosed",
+      "evidence": {
+        "confounding_present": true,
+        "dose_by_event": {
+          "battery_capacity_derating": {
+            "50.0": 12,
+            "75.0": 4,
+            "100.0": 8
+          },
+          "export_limit_update": {
+            "50.0": 6,
+            "75.0": 8,
+            "100.0": 10
+          },
+          "forecast_revision": {
+            "50.0": 10,
+            "75.0": 12,
+            "100.0": 2
+          },
+          "power_limit_derating": {
+            "50.0": 4,
+            "75.0": 8,
+            "100.0": 12
+          },
+          "reserve_commitment_update": {
+            "50.0": 8,
+            "75.0": 8,
+            "100.0": 8
+          }
+        },
+        "dose_by_horizon": [
+          {
+            "divergence_kwh": 50.0,
+            "max": 92,
+            "mean": 88.5,
+            "min": 81
+          },
+          {
+            "divergence_kwh": 75.0,
+            "max": 92,
+            "mean": 88.95,
+            "min": 81
+          },
+          {
+            "divergence_kwh": 100.0,
+            "max": 92,
+            "mean": 89.55,
+            "min": 83
+          }
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "boundary": "Means are not interpreted as broad response when medians or trimmed means collapse.",
+      "check": "outlier robustness disclosed",
+      "evidence": {
+        "deepseek_formal": {
+          "mean": 1173.3337791666668,
+          "mean_drop_largest_5": 91.36412272727273,
+          "median": 0.0,
+          "sparse_support": {
+            "negative": 0,
+            "positive": 8,
+            "zero": 52
+          },
+          "trimmed_mean_10pct": 0.5213906249999999
+        },
+        "qwen_flash": {
+          "mean": 345.45,
+          "mean_drop_largest_5": -56.45454545454546,
+          "median": 0.0,
+          "sparse_support": {
+            "negative": 1,
+            "positive": 3,
+            "zero": 56
+          },
+          "trimmed_mean_10pct": 0.0
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "boundary": "Archived E2 projection evidence is excluded from complete-rate claims.",
+      "check": "timeouts retained in denominator",
+      "evidence": {
+        "M_branch": 32,
+        "diagnostic_300s_late_solves": 11,
+        "formal_denominator": 1800,
+        "formal_status": "PARTIAL_WITH_TIMEOUTS",
+        "hard_timeout_120s": 53,
+        "network_attempts": 0,
+        "persistent_solver_hardness": 52,
+        "provider_calls_performed": 0,
+        "source_schema_version": "e2_timeout_root_cause_audit_v1",
+        "source_sha256": "c64aa81bcb415eff0edf940a820aeae416a198538b2d54ad4a3a837cf5406a6a",
+        "stage1_distance": 1,
+        "stage3_cost_tiebreak": 51,
+        "thirty_second_sensitivity": {
+          "counts": {
+            "hard_timeout_30s": 25
+          },
+          "created_utc": "2026-08-29T03:05:21.862489+00:00",
+          "fingerprints": 25,
+          "interpretation_boundary": "Concurrent development sensitivity; does not replace the formal 120-second run or 300-second diagnostic.",
+          "network_attempts": 0,
+          "provider_calls_performed": 0,
+          "representative_cases": 25,
+          "schema_version": "e2_timeout_30s_sensitivity_v1",
+          "selection": "one lexicographically first case per frozen mathematical problem fingerprint",
+          "watchdog_seconds": 30,
+          "workers": 4
+        },
+        "timeout_rate": 0.029444444444444443
+      },
+      "status": "PASS"
+    },
+    {
+      "boundary": null,
+      "check": "tables rebuilt from reproduced data",
+      "evidence": {
+        "bytes": 1207,
+        "path": "reproduced_outputs/tables/REGENERATED_SUMMARY_TABLES.tex"
+      },
+      "status": "PASS"
+    }
+  ],
+  "experimental_materials_freeze_ready": true,
+  "failed_checks": [],
+  "historical_boundary": "Rejected candidates do not all retain complete PV/load/price vectors; selection-rule counterfactuals are limited to retained evidence.",
+  "network_attempts": 0,
+  "provider_calls_performed": 0,
+  "schema_version": "offline_evidence_release_v1_7_acceptance",
+  "status": "PASS_WITH_BOUNDARIES"
+}

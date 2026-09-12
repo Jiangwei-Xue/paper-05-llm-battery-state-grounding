@@ -1,0 +1,64 @@
+schema_version: experiments_v2_models_v2_two_condition
+status: pending_deepseek_identity_lock_two_condition
+formal_model_condition_count: 2
+removed_pre_call_conditions: [qwen_plus]
+conditions:
+  deepseek_formal:
+    condition_id: deepseek_v4_flash_direct_final
+    provider: deepseek
+    configured_model_id: deepseek-v4-flash
+    expected_returned_model: deepseek-v4-flash
+    route: direct
+    endpoint: https://api.deepseek.com/chat/completions
+    snapshot_id: null
+    alias_status: rolling_hosted_interface_frozen_as_condition
+    identity_strategy: exact_returned_model_plus_run_scoped_system_fingerprint
+    run_scoped_identity_policy:
+      returned_model_must_equal: deepseek-v4-flash
+      record_request_and_response_utc: true
+      record_system_fingerprint_when_available: true
+      stop_on_non_null_fingerprint_drift: true
+      future_live_bit_reproducibility_claim: forbidden
+      pool_with_historical_preview: forbidden
+    official_identity_note: official API documentation exposes no dated V4 Flash snapshot ID
+    official_source: https://api-docs.deepseek.com/quick_start/pricing
+    official_source_retrieved_utc: "2026-08-01T03:07:20Z"
+    fallback: disabled_required
+    tools: disabled_required
+    web_search: disabled_required
+    reasoning: not_requested_required
+    temperature: 0.0
+    max_output_tokens: 16000
+    attempt_timeout_seconds: 240
+    stage_timeout_seconds: 600
+    episode_timeout_seconds: 1260
+    retryable_http_statuses: [429, 502, 503, 504]
+    stream: false
+    cache: disabled_required
+    credentials_env: DEEPSEEK_API_KEY
+  qwen_flash:
+    condition_id: qwen36_flash_beijing_direct_final
+    provider: qwen
+    configured_model_id: qwen3.6-flash-2026-04-16
+    expected_returned_model: qwen3.6-flash-2026-04-16
+    route: direct
+    endpoint: https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions
+    snapshot_id: qwen3.6-flash-2026-04-16
+    alias_status: immutable_provider_snapshot
+    inherited_model_family: qwen3.6-flash
+    identity_strategy: exact_snapshot_and_returned_model_match
+    official_source: https://help.aliyun.com/en/model-studio/text-generation-model/
+    official_source_retrieved_utc: "2026-08-01T03:07:20Z"
+    fallback: disabled_required
+    tools: disabled_required
+    web_search: disabled_required
+    reasoning: not_requested_required
+    temperature: 0.0
+    max_output_tokens: 16000
+    attempt_timeout_seconds: 240
+    stage_timeout_seconds: 600
+    episode_timeout_seconds: 1260
+    retryable_http_statuses: [429, 502, 503, 504]
+    stream: false
+    cache: disabled_required
+    credentials_env: QWEN_API_KEY

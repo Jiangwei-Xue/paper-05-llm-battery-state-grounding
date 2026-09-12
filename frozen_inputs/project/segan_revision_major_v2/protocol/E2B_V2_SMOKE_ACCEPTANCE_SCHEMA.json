@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "E2b-v2 isolated live-smoke acceptance report",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "status",
+    "tier",
+    "completed_blocks",
+    "planned_blocks",
+    "provider_calls_performed",
+    "planned_provider_calls",
+    "network_attempts",
+    "protocol_exclusions",
+    "partial_files",
+    "fingerprints_by_model",
+    "stage1_calls"
+  ],
+  "properties": {
+    "status": {"enum": ["SMOKE_PASS", "SMOKE_FAILED", "HOLD"]},
+    "tier": {"const": "smoke"},
+    "completed_blocks": {"const": 4},
+    "planned_blocks": {"const": 4},
+    "provider_calls_performed": {"const": 16},
+    "planned_provider_calls": {"const": 16},
+    "network_attempts": {"type": "integer", "minimum": 16, "maximum": 48},
+    "protocol_exclusions": {"const": 0},
+    "partial_files": {"const": 0},
+    "fingerprints_by_model": {"type": "object"},
+    "stage1_calls": {"const": 0}
+  }
+}

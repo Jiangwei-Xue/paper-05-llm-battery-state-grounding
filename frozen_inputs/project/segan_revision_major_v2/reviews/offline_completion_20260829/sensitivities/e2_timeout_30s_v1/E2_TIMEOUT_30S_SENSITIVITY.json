@@ -1,0 +1,15 @@
+{
+  "counts": {
+    "hard_timeout_30s": 25
+  },
+  "created_utc": "2026-08-29T03:05:21.862489+00:00",
+  "fingerprints": 25,
+  "interpretation_boundary": "Concurrent development sensitivity; does not replace the formal 120-second run or 300-second diagnostic.",
+  "network_attempts": 0,
+  "provider_calls_performed": 0,
+  "representative_cases": 25,
+  "schema_version": "e2_timeout_30s_sensitivity_v1",
+  "selection": "one lexicographically first case per frozen mathematical problem fingerprint",
+  "watchdog_seconds": 30,
+  "workers": 4
+}

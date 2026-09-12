@@ -1,0 +1,8 @@
+{
+  "schema_version": "state_grounding_saved_record_index_v1",
+  "E1": {"records": 240, "path": "frozen_inputs/project/runs/experiments_v2/e1/e1_20260801T044500Z/records"},
+  "E2": {"records": 360, "path": "frozen_inputs/project/runs/experiments_v2/e2/e2_20260801T054708Z/records"},
+  "F1": {"records": 120, "path": "frozen_inputs/project/segan_revision_major_v2/runs/e2b_protocol_v2/e2b_v2_f1_20260813/records"},
+  "F0": {"records": 30, "path": "frozen_inputs/project/segan_revision_major_v2/runs/f0_formal_v1/f0_formal_20260820T_authorized_v1/records"},
+  "QWEN37": {"records": 75, "path": "frozen_inputs/project/segan_revision_major_v2/runs/qwen37plus_f1f0_v1/qwen37plus_formal_20260826T/records"}
+}

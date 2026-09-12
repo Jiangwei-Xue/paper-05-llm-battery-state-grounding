@@ -1,0 +1,89 @@
+protocol_version: "2026-07-14.v1.3-agent-episode"
+frozen_year: 2024
+timezone: "America/Los_Angeles"
+storage_timezone: "UTC"
+analysis_resolution_minutes: 15
+locations:
+  - location_id: los_angeles
+    latitude: 34.0522
+    longitude: -118.2437
+    altitude_m: 71
+    tilt_deg: 20
+    azimuth_deg: 180
+  - location_id: san_diego
+    latitude: 32.7157
+    longitude: -117.1611
+    altitude_m: 19
+    tilt_deg: 20
+    azimuth_deg: 180
+  - location_id: fresno
+    latitude: 36.7378
+    longitude: -119.7871
+    altitude_m: 94
+    tilt_deg: 25
+    azimuth_deg: 180
+  - location_id: sacramento
+    latitude: 38.5816
+    longitude: -121.4944
+    altitude_m: 9
+    tilt_deg: 25
+    azimuth_deg: 180
+data:
+  nsrdb:
+    endpoint: "https://developer.nlr.gov/api/nsrdb/v2/solar/nsrdb-GOES-conus-v4-0-0-download.csv"
+    dataset: "nsrdb-GOES-conus-v4-0-0"
+    api_key_env: "NREL_API_KEY"
+    attributes: [ghi, dni, dhi, air_temperature, wind_speed, solar_zenith_angle, clearsky_ghi]
+    interval_minutes: 15
+    leap_day: false
+    utc: true
+    source_note: "NREL NSRDB GOES CONUS v4.0.0 API; follow NREL API and NSRDB terms."
+  oedi:
+    url: "https://oedi-data-lake.s3.amazonaws.com/nrel-pds-building-stock/end-use-load-profiles-for-us-building-stock/2021/comstock_amy2018_release_1/timeseries_aggregates/by_state/state=CA/ca-largeoffice.csv"
+    building_type: "LargeOffice"
+    source_note: "NREL OEDI End-Use Load Profiles / ComStock AMY2018 release 1; cite release citation.txt."
+    max_bytes: 12000000
+  caiso:
+    endpoint: "https://oasis.caiso.com/oasisapi/SingleZip"
+    node: "TH_NP15_GEN-APND"
+    market_run_id: "DAM"
+    source_note: "CAISO OASIS public day-ahead LMP query; subject to CAISO terms of use."
+    chunk_mode: "weekly"
+    max_retries: 5
+    initial_backoff_seconds: 1.0
+    max_backoff_seconds: 16.0
+battery:
+  energy_capacity_kwh: 500.0
+  max_charge_kw: 250.0
+  max_discharge_kw: 250.0
+  charge_efficiency: 0.95
+  discharge_efficiency: 0.95
+  initial_soc_kwh: 250.0
+  reserve_soc_kwh: 75.0
+  terminal_soc_kwh: 250.0
+  export_limit_kw: 150.0
+  degradation_cost_per_kwh: 0.008
+  violation_penalty_per_kwh: 100.0
+scenario:
+  horizon_hours: 24
+  candidates_per_cell: 2
+  event_families:
+    - forecast_revision
+    - battery_capacity_derating
+    - power_limit_derating
+    - export_limit_update
+    - reserve_commitment_update
+  difficulties: [easy, medium, hard]
+  seasons:
+    winter: [1, 2]
+    spring: [3, 4]
+    summer: [7, 8]
+    autumn: [10, 11]
+selection:
+  selection_seed: 20260713
+  event_generation_seed: 20260714
+  bootstrap_seed: 20260716
+  main_pool_size: 40
+  pilot_pool_size: 10
+  strata_fields: [event_family, location_id, season, difficulty]
+  pilot_strata_fields: [event_family, difficulty]

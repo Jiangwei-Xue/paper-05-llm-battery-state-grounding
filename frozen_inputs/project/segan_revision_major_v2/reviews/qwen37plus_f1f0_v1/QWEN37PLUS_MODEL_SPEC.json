@@ -1,0 +1,22 @@
+{
+  "attempt_timeout_seconds": 240,
+  "cache": "disabled",
+  "condition_id": "qwen37_plus_direct_v1",
+  "configured_model_id": "qwen3.7-plus",
+  "credentials_env": "QWEN_API_KEY",
+  "endpoint": "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions",
+  "expected_returned_model": "qwen3.7-plus",
+  "fallback": "disabled",
+  "max_output_tokens": 16000,
+  "provider": "qwen",
+  "retryable_http_statuses": [
+    429,
+    502,
+    503,
+    504
+  ],
+  "route": "direct",
+  "temperature": 0.0,
+  "tools": "disabled",
+  "web_search": "disabled"
+}

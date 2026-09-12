@@ -1,0 +1,92 @@
+[
+  {
+    "bytes": 3167,
+    "path": "OFFLINE_RECOMPUTE_REPORT.md",
+    "sha256": "00a566e2d1881d5f6422265916e285af25d94010e8db99187d758bdb4e62908b"
+  },
+  {
+    "bytes": 209068,
+    "path": "OFFLINE_RECOMPUTE_SUMMARY.json",
+    "sha256": "a2a6abf6e46683ac3ab99fcea1ebe2b2f00bfb49ab813466eed904c945e36897"
+  },
+  {
+    "bytes": 1127,
+    "path": "README.md",
+    "sha256": "b680a7edeea56662ffbef96cfcf6f871ba4e8446a40378c14ac0e0ca82c762b5"
+  },
+  {
+    "bytes": 13455,
+    "path": "f0_block_metrics.csv",
+    "sha256": "01d9446df7d367cb7d171c8f4c2352a3bcee765ed3f08a780f171e34be37c538"
+  },
+  {
+    "bytes": 108196,
+    "path": "f0_branch_metrics.csv",
+    "sha256": "41aa9519057d641b3202d0ad33e14ddaf59f985ea08e78ce4f1831309d76f2ae"
+  },
+  {
+    "bytes": 49272,
+    "path": "f1_block_metrics.csv",
+    "sha256": "7e223f3318f32aa976bc45d611e36ae79cec4318b55b2ab251b28043c813e287"
+  },
+  {
+    "bytes": 428101,
+    "path": "f1_branch_metrics.csv",
+    "sha256": "b5decca2899bb287de5e80d68fbb169d78ac872661d07d09da559a7843c69eef"
+  },
+  {
+    "bytes": 4671,
+    "path": "f1_correlation_summary.csv",
+    "sha256": "618f82e5f99265bebc3693e08342b02ca086088275d3e4dc093d1e12e4b7b570"
+  },
+  {
+    "bytes": 6005,
+    "path": "f1_f0_block_pairs.csv",
+    "sha256": "6ffd27ac97e46d49169513b1a0f155d81b93eedd6e6daf1beb60154c8b12f840"
+  },
+  {
+    "bytes": 15829,
+    "path": "f1_f0_branch_pairs.csv",
+    "sha256": "ecb680aba1492b25411af63938ab3a40d6ce9726584d843fa3cb12ac5755bf6f"
+  },
+  {
+    "bytes": 330129,
+    "path": "f1_gate_branch_results.csv",
+    "sha256": "9159d277ea342d635d36e4818acdfe00bab0d4e9d0ca16558950844a52238b3b"
+  },
+  {
+    "bytes": 69550,
+    "path": "f1_stratified_summary.csv",
+    "sha256": "aa86520d5c5569e1aa3972bc2593882f62fa52cd46cd4e22502f08857d824819"
+  },
+  {
+    "bytes": 720,
+    "path": "f1_timing_by_branch_position.csv",
+    "sha256": "320d90ce671d31378470a0919546cb100c982ffebfa07c5919aab7d22fbdf684"
+  },
+  {
+    "bytes": 305827,
+    "path": "gate_action_sidecars.jsonl.gz",
+    "sha256": "71b9223c1e02cd63dab2381e67d464839287eb04d062f1dffe95602753b4f450"
+  },
+  {
+    "bytes": 156668,
+    "path": "gate_baseline_results.csv",
+    "sha256": "0494fcd581a12d11b439dd85cf0e5a531fc340b57000fd1dad7c45351b51ca2c"
+  },
+  {
+    "bytes": 171270,
+    "path": "independent_replay_comparison.csv",
+    "sha256": "bce725525e42e8ad0274baed84bf97ce4607b3a5177be4a67a41df455887ba19"
+  },
+  {
+    "bytes": 1335,
+    "path": "independent_replay_hand_tests.json",
+    "sha256": "dc7125cd4f05a738fc59f3f861c778274d49d29560608076a9651ccbf807030a"
+  },
+  {
+    "bytes": 83666,
+    "path": "recompute_offline.py",
+    "sha256": "ff923012687b201850ddce6dadd66afe24282154ae464ca2476d7e010aaa6c58"
+  }
+]

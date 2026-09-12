@@ -1,0 +1,98 @@
+[
+  {
+    "expected_engineering_feasible": true,
+    "fixture": "normal_feasible",
+    "observed_engineering_feasible": true,
+    "pass": true,
+    "terminal_soc_kwh": 325.0,
+    "violation_interval_count": 0
+  },
+  {
+    "expected_engineering_feasible": false,
+    "fixture": "soc_upper",
+    "observed_engineering_feasible": false,
+    "pass": true,
+    "terminal_soc_kwh": 329.75,
+    "violation_interval_count": 2
+  },
+  {
+    "expected_engineering_feasible": false,
+    "fixture": "soc_lower",
+    "observed_engineering_feasible": false,
+    "pass": true,
+    "terminal_soc_kwh": 319.7368421052631,
+    "violation_interval_count": 2
+  },
+  {
+    "expected_engineering_feasible": false,
+    "fixture": "charge_power",
+    "observed_engineering_feasible": false,
+    "pass": true,
+    "terminal_soc_kwh": 325.0,
+    "violation_interval_count": 1
+  },
+  {
+    "expected_engineering_feasible": false,
+    "fixture": "discharge_power",
+    "observed_engineering_feasible": false,
+    "pass": true,
+    "terminal_soc_kwh": 325.0,
+    "violation_interval_count": 1
+  },
+  {
+    "expected_engineering_feasible": false,
+    "fixture": "export",
+    "observed_engineering_feasible": false,
+    "pass": true,
+    "terminal_soc_kwh": 325.0,
+    "violation_interval_count": 2
+  },
+  {
+    "expected_engineering_feasible": false,
+    "fixture": "terminal",
+    "observed_engineering_feasible": false,
+    "pass": true,
+    "terminal_soc_kwh": 300.0,
+    "violation_interval_count": 0
+  },
+  {
+    "expected_engineering_feasible": false,
+    "fixture": "capacity_derating_edge",
+    "observed_engineering_feasible": false,
+    "pass": true,
+    "terminal_soc_kwh": 325.0,
+    "violation_interval_count": 2
+  },
+  {
+    "expected_engineering_feasible": false,
+    "fixture": "reserve_edge",
+    "observed_engineering_feasible": false,
+    "pass": true,
+    "terminal_soc_kwh": 325.0,
+    "violation_interval_count": 2
+  },
+  {
+    "expected_engineering_feasible": true,
+    "fixture": "exact_boundary",
+    "observed_engineering_feasible": true,
+    "pass": true,
+    "terminal_soc_kwh": 325.0,
+    "violation_interval_count": 0
+  },
+  {
+    "expected_engineering_feasible": true,
+    "fixture": "boundary_plus_tolerance",
+    "observed_engineering_feasible": true,
+    "pass": true,
+    "terminal_soc_kwh": 325.0,
+    "violation_interval_count": 0
+  },
+  {
+    "expected_engineering_feasible": false,
+    "fixture": "boundary_beyond_tolerance",
+    "observed_engineering_feasible": false,
+    "pass": true,
+    "terminal_soc_kwh": 325.0,
+    "violation_interval_count": 2
+  }
+]

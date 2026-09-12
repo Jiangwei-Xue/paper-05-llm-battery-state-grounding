@@ -1,0 +1,35 @@
+{
+  "authors": [
+    "Jiangwei Xue",
+    "Zhida Qin",
+    "Yuda Bi"
+  ],
+  "files": [
+    {
+      "path": "paper_reference/main.tex",
+      "role": "authoritative_arxiv_latex_source",
+      "sha256": "c88791450724e4319a0393ca8afed8cc0fa197a17f6a4782a11f6f5a99e92988"
+    },
+    {
+      "path": "paper_reference/references.bib",
+      "role": "bibliography_source",
+      "sha256": "4385a3bd0645b0852ed059d8fb66195bfc76e878dee9c45d909527d8fc8e9788"
+    },
+    {
+      "path": "paper_reference/main.bbl",
+      "role": "frozen_compiled_bibliography",
+      "sha256": "a61e5040067e0346f9350e860abca94337bd66299d9cbadc9ede69200a7a9ee0"
+    },
+    {
+      "path": "paper_reference/state_grounding_preprint_v5_ccby_github_20260912.pdf",
+      "role": "corresponding_17_page_pdf",
+      "sha256": "111e09383dfe17accf74c81166ca5ee421b8431cd7193d8b1dc302f5b53e5340"
+    }
+  ],
+  "layout": "standard_arxiv_article",
+  "schema_version": "state_grounding_latest_paper_v2",
+  "doi": "10.5281/zenodo.22707487",
+  "paper_license": "CC BY 4.0",
+  "reproducibility_repository": "https://github.com/Jiangwei-Xue/paper-05-llm-battery-state-grounding",
+  "title": "State Sensitivity Is Not Grounding: Dual Replay for LLM Battery Scheduling"
+}

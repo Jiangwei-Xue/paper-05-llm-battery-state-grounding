@@ -1,0 +1,42 @@
+{
+  "branch": "C1",
+  "cost_face_tolerance_usd": 1e-06,
+  "gate_action_space": "battery_only",
+  "models": [
+    "deepseek_formal",
+    "qwen37_plus_direct",
+    "qwen_flash"
+  ],
+  "network_attempts": 0,
+  "objective_orders": [
+    "distance_throughput_cost_saved",
+    "minimum_intervention_distance_only",
+    "cost_then_distance",
+    "direct_cost_optimal"
+  ],
+  "provider_calls_performed": 0,
+  "schema_version": "offline_optimization_sensitivities_v1",
+  "selected_scenario_ids": [
+    "v2e2_16c288d882ac6a326385",
+    "v2e2_20534de655a33fde87ca",
+    "v2e2_12b72852882928644d40",
+    "v2e2_68ad1227a66cd68252f6",
+    "v2e2_4bc783ae8ece976241af",
+    "v2e2_1fd8536d13787e44dc17",
+    "v2e2_394e89f7d166924e9409",
+    "v2e2_b7e962716394d888d563",
+    "v2e2_eeaa2f40bad66efc8c57",
+    "v2e2_6044c2cf8efb739eb457",
+    "v2e2_579d7046347071a2967e",
+    "v2e2_57ed2833756fcc2a81f4",
+    "v2e2_1a991ca6b21c0ed79241",
+    "v2e2_01647af4ab413aad9430",
+    "v2e2_689fd81bd1f3eec1e27d",
+    "v2e2_7f938d120000eec26457",
+    "v2e2_ff7d4d179a2e6d483137",
+    "v2e2_729fd4e9cb1879f64d23",
+    "v2e2_a7c71f5aa3db3e32fdd1",
+    "v2e2_a015340abe1151fa1614"
+  ],
+  "selection_rule": "round-robin by sorted event family, then difficulty and scenario id; fixed count 20"
+}

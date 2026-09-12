@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "experiments": [
+    {
+      "experiment_id": "E1",
+      "purpose": "Interface-contract and raw-action audit",
+      "logical_units": 240,
+      "represented_provider_calls": 480,
+      "models": ["deepseek_formal", "qwen_flash"],
+      "conditions": ["I0", "I3"],
+      "runner": "frozen_inputs/project/scripts/run_experiments_v2_e1.py",
+      "config": "frozen_inputs/project/experiments_v2/configs/experiment_e1.yaml",
+      "run_plan": "frozen_inputs/project/experiments_v2/manifests/E1_RUN_PLAN.jsonl",
+      "paper_role": "interface behavior and raw-action feasibility"
+    },
+    {
+      "experiment_id": "E2",
+      "purpose": "Paired state-carrier intervention with repeat null",
+      "logical_units": 360,
+      "planned_provider_calls": 2160,
+      "actual_provider_calls": 2158,
+      "models": ["deepseek_formal", "qwen_flash"],
+      "conditions": ["C", "M", "S", "K", "C2"],
+      "runner": "frozen_inputs/project/scripts/run_experiments_v2_e2.py",
+      "config": "frozen_inputs/project/experiments_v2/configs/experiment_e2.yaml",
+      "run_plan": "frozen_inputs/project/experiments_v2/manifests/E2_RUN_PLAN.jsonl",
+      "paper_role": "carrier sensitivity relative to hosted-call variation"
+    },
+    {
+      "experiment_id": "F1",
+      "purpose": "Complete-contract dual-replay audit",
+      "logical_units": 120,
+      "represented_provider_calls": 480,
+      "models": ["deepseek_formal", "qwen_flash"],
+      "conditions": ["C1", "C2", "S1", "S2"],
+      "runner": "frozen_inputs/project/segan_revision_major_v2/scripts/run_e2b_v2.py",
+      "protocol": "frozen_inputs/project/segan_revision_major_v2/protocol/E2B_PROTOCOL_V2.yaml",
+      "run_plan": "frozen_inputs/project/segan_revision_major_v2/reviews/e2b_protocol_v2/E2B_V2_F1_RUN_PLAN.jsonl",
+      "paper_role": "represented-state versus authoritative-state grounding"
+    },
+    {
+      "experiment_id": "F0",
+      "purpose": "Temporally separated old-contract comparison",
+      "logical_units": 30,
+      "represented_provider_calls": 120,
+      "models": ["deepseek_formal", "qwen_flash"],
+      "conditions": ["C1", "C2", "S1", "S2"],
+      "runner": "frozen_inputs/project/segan_revision_major_v2/scripts/run_f0_formal_v1.py",
+      "protocol": "frozen_inputs/project/segan_revision_major_v2/protocol/F0_FORMAL_PROTOCOL_V1.yaml",
+      "run_plan": "frozen_inputs/project/segan_revision_major_v2/reviews/f0_formal_v1/F0_FORMAL_RUN_PLAN.jsonl",
+      "paper_role": "separate historical-contract tier"
+    },
+    {
+      "experiment_id": "QWEN37",
+      "purpose": "Direct Qwen3.7-Plus F1/F0 sensitivity tier",
+      "logical_units": 75,
+      "represented_provider_calls": 300,
+      "models": ["qwen3.7-plus"],
+      "conditions": ["C1", "C2", "S1", "S2"],
+      "runner": "frozen_inputs/project/segan_revision_major_v2/scripts/run_qwen37plus_f1f0_v1.py",
+      "protocol": "frozen_inputs/project/segan_revision_major_v2/protocol/qwen37plus_f1f0_v1/QWEN37PLUS_F1F0_PROTOCOL_V1.yaml",
+      "run_plan": "frozen_inputs/project/segan_revision_major_v2/reviews/qwen37plus_f1f0_v1/QWEN37PLUS_FORMAL_RUN_PLAN.jsonl",
+      "paper_role": "separate model-family sensitivity tier"
+    }
+  ],
+  "offline_reproduction_entry": "RUN_ALL_OFFLINE.py",
+  "saved_evidence_is_canonical": true,
+  "new_live_outputs_are_canonical": false
+}
+

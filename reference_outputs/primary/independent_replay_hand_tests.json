@@ -1,0 +1,71 @@
+[
+  {
+    "checks": {
+      "strict_feasible": true,
+      "terminal_soc_kwh": true
+    },
+    "observed": {
+      "strict_feasible": true,
+      "terminal_soc_kwh": 325.0
+    },
+    "pass": true,
+    "test": "efficiency_and_terminal_exact"
+  },
+  {
+    "checks": {
+      "engineering_feasible": true,
+      "terminal_absolute_error_kwh": true
+    },
+    "observed": {
+      "engineering_feasible": false,
+      "terminal_absolute_error_kwh": 75.0
+    },
+    "pass": true,
+    "test": "terminal_mismatch_zero"
+  },
+  {
+    "checks": {
+      "dynamic_constraints_ok": true
+    },
+    "observed": {
+      "dynamic_constraints_ok": false
+    },
+    "pass": true,
+    "test": "charge_power_violation"
+  },
+  {
+    "checks": {
+      "dynamic_constraints_ok": true
+    },
+    "observed": {
+      "dynamic_constraints_ok": false
+    },
+    "pass": true,
+    "test": "soc_upper_violation"
+  },
+  {
+    "checks": {
+      "dynamic_constraints_ok": true
+    },
+    "observed": {
+      "dynamic_constraints_ok": false
+    },
+    "pass": true,
+    "test": "soc_lower_violation"
+  },
+  {
+    "checks": {
+      "dynamic_constraints_ok": true
+    },
+    "observed": {
+      "dynamic_constraints_ok": false
+    },
+    "pass": true,
+    "test": "export_violation"
+  },
+  {
+    "observed": 0.0,
+    "pass": true,
+    "test": "power_exact_boundary"
+  }
+]

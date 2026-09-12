@@ -1,0 +1,306 @@
+{
+  "activity": {
+    "E1|deepseek_formal|I0": {
+      "nontrivial_10kwh": 0,
+      "nontrivial_1kwh": 0,
+      "nontrivial_5kwh": 0,
+      "parsed": 56,
+      "rows": 60
+    },
+    "E1|deepseek_formal|I3": {
+      "nontrivial_10kwh": 56,
+      "nontrivial_1kwh": 56,
+      "nontrivial_5kwh": 56,
+      "parsed": 59,
+      "rows": 60
+    },
+    "E1|qwen_flash|I0": {
+      "nontrivial_10kwh": 0,
+      "nontrivial_1kwh": 0,
+      "nontrivial_5kwh": 0,
+      "parsed": 0,
+      "rows": 60
+    },
+    "E1|qwen_flash|I3": {
+      "nontrivial_10kwh": 21,
+      "nontrivial_1kwh": 21,
+      "nontrivial_5kwh": 21,
+      "parsed": 21,
+      "rows": 60
+    },
+    "E2|deepseek_formal|I3": {
+      "nontrivial_10kwh": 657,
+      "nontrivial_1kwh": 657,
+      "nontrivial_5kwh": 657,
+      "parsed": 831,
+      "rows": 900
+    },
+    "E2|qwen_flash|I3": {
+      "nontrivial_10kwh": 400,
+      "nontrivial_1kwh": 400,
+      "nontrivial_5kwh": 400,
+      "parsed": 400,
+      "rows": 900
+    }
+  },
+  "claim_count": 14,
+  "created_utc": "2026-08-29T03:51:16.295011+00:00",
+  "environment": {
+    "platform": "macOS arm64",
+    "python": "3.12.13 (main, Mar  3 2026, 12:39:30) [Clang 21.0.0 (clang-2100.0.123.102)]"
+  },
+  "gate_mechanism_rows": 1560,
+  "gate_mechanism_summary": {
+    "F0|qwen37_plus_direct|battery_only": {
+      "curtailment_used": 0,
+      "mean_battery_correction_l1_kwh": 537.5658723965787,
+      "mechanisms": {
+        "battery_action_and_mode_correction": 30,
+        "battery_magnitude_or_timing_correction": 26,
+        "expanded_curtailment_reduces_battery_correction": 2,
+        "expanded_curtailment_used_without_distance_reduction": 2
+      },
+      "median_battery_correction_l1_kwh": 269.76983684210495,
+      "n": 60,
+      "post_gate_feasible": 60,
+      "sign_change_rows": 34,
+      "zero_to_active_rows": 0
+    },
+    "F0|qwen37_plus_direct|expanded_system": {
+      "curtailment_used": 4,
+      "mean_battery_correction_l1_kwh": 537.4651338976174,
+      "mechanisms": {
+        "battery_action_and_mode_correction": 30,
+        "battery_magnitude_or_timing_correction": 26,
+        "expanded_curtailment_reduces_battery_correction": 2,
+        "expanded_curtailment_used_without_distance_reduction": 2
+      },
+      "median_battery_correction_l1_kwh": 269.76983684210495,
+      "n": 60,
+      "post_gate_feasible": 60,
+      "sign_change_rows": 34,
+      "zero_to_active_rows": 0
+    },
+    "F1|deepseek_formal|battery_only": {
+      "curtailment_used": 0,
+      "mean_battery_correction_l1_kwh": 443.1637978098526,
+      "mechanisms": {
+        "battery_action_and_mode_correction": 227,
+        "battery_magnitude_or_timing_correction": 5,
+        "expanded_curtailment_used_without_distance_reduction": 8
+      },
+      "median_battery_correction_l1_kwh": 131.57904736842104,
+      "n": 240,
+      "post_gate_feasible": 240,
+      "sign_change_rows": 15,
+      "zero_to_active_rows": 220
+    },
+    "F1|deepseek_formal|expanded_system": {
+      "curtailment_used": 8,
+      "mean_battery_correction_l1_kwh": 443.207897909264,
+      "mechanisms": {
+        "battery_action_and_mode_correction": 227,
+        "battery_magnitude_or_timing_correction": 5,
+        "expanded_curtailment_used_without_distance_reduction": 8
+      },
+      "median_battery_correction_l1_kwh": 131.57904736842104,
+      "n": 240,
+      "post_gate_feasible": 240,
+      "sign_change_rows": 13,
+      "zero_to_active_rows": 220
+    },
+    "F1|qwen37_plus_direct|battery_only": {
+      "curtailment_used": 0,
+      "mean_battery_correction_l1_kwh": 710.0468558653612,
+      "mechanisms": {
+        "battery_action_and_mode_correction": 148,
+        "battery_magnitude_or_timing_correction": 84,
+        "expanded_curtailment_reduces_battery_correction": 1,
+        "expanded_curtailment_used_without_distance_reduction": 7
+      },
+      "median_battery_correction_l1_kwh": 233.55273157894734,
+      "n": 240,
+      "post_gate_feasible": 240,
+      "sign_change_rows": 152,
+      "zero_to_active_rows": 1
+    },
+    "F1|qwen37_plus_direct|expanded_system": {
+      "curtailment_used": 8,
+      "mean_battery_correction_l1_kwh": 710.0997988661403,
+      "mechanisms": {
+        "battery_action_and_mode_correction": 148,
+        "battery_magnitude_or_timing_correction": 84,
+        "expanded_curtailment_reduces_battery_correction": 1,
+        "expanded_curtailment_used_without_distance_reduction": 7
+      },
+      "median_battery_correction_l1_kwh": 233.55273157894734,
+      "n": 240,
+      "post_gate_feasible": 240,
+      "sign_change_rows": 152,
+      "zero_to_active_rows": 1
+    },
+    "F1|qwen_flash|battery_only": {
+      "curtailment_used": 0,
+      "mean_battery_correction_l1_kwh": 4739.516245780987,
+      "mechanisms": {
+        "battery_action_and_mode_correction": 231,
+        "battery_magnitude_or_timing_correction": 1,
+        "expanded_curtailment_used_without_distance_reduction": 8
+      },
+      "median_battery_correction_l1_kwh": 5221.838045983471,
+      "n": 240,
+      "post_gate_feasible": 240,
+      "sign_change_rows": 239,
+      "zero_to_active_rows": 0
+    },
+    "F1|qwen_flash|expanded_system": {
+      "curtailment_used": 8,
+      "mean_battery_correction_l1_kwh": 4739.5081573547395,
+      "mechanisms": {
+        "battery_action_and_mode_correction": 231,
+        "battery_magnitude_or_timing_correction": 1,
+        "expanded_curtailment_used_without_distance_reduction": 8
+      },
+      "median_battery_correction_l1_kwh": 5221.838045983471,
+      "n": 240,
+      "post_gate_feasible": 240,
+      "sign_change_rows": 239,
+      "zero_to_active_rows": 0
+    }
+  },
+  "independent": {
+    "artifacts": {
+      "fixtures": "INDEPENDENT_PHYSICS_FIXTURES.json",
+      "row_level": "INDEPENDENT_PHYSICS_CROSSCHECK_ROW_LEVEL.jsonl",
+      "violation_severity": "UNIFIED_VIOLATION_SEVERITY.jsonl"
+    },
+    "checker_independence": {
+      "imports_gate_implementation": false,
+      "imports_prior_offline_recompute": false,
+      "imports_project_scorer": false,
+      "imports_project_simulator": false
+    },
+    "created_utc": "2026-08-29T03:51:14.200036+00:00",
+    "discrepancies": 0,
+    "fixture_passed": 12,
+    "fixture_total": 12,
+    "gate_rows": 2760,
+    "hosted_raw_replay_rows": 1800,
+    "network_attempts": 0,
+    "parser_not_applicable_rows": 0,
+    "positive_control_rows": 60,
+    "provider_calls_performed": 0,
+    "rows": 4620,
+    "schema_version": "independent_physics_crosscheck_v1",
+    "status": "PASS"
+  },
+  "network_attempts": 0,
+  "positive_control": {
+    "I0_rows": 120,
+    "I3_rows": 120,
+    "candidate_source_files": [
+      "experiments_v2/manifests/E1_FROZEN_TASKS.jsonl",
+      "experiments_v2/manifests/E1_ADMISSION_RESULTS.jsonl"
+    ],
+    "changed_together": [
+      "structured_output",
+      "sparse_segments",
+      "non_zero_example_in_prompt"
+    ],
+    "classification": "bundled_positive_control",
+    "provider_calls_performed": 0,
+    "rows": 240,
+    "single_factor_attribution_permitted": false
+  },
+  "provider_calls_performed": 0,
+  "schema_version": "offline_completion_audit_v1",
+  "selection": {
+    "E1": {
+      "admitted": 184,
+      "candidate_detail_boundary": "Admission manifests preserve selection variables and rejection codes. Full PV/load/price vectors are frozen for selected tasks; rejected-candidate vectors are not all retained.",
+      "candidates": 320,
+      "exclusion_reasons": {
+        "canonical_feasible": 3,
+        "event_stale_l1_ge_25": 102,
+        "forecast_plan_changes_if_applicable": 43,
+        "solver:RuntimeError": 31
+      },
+      "rejected": 136,
+      "selected": 20
+    },
+    "E2": {
+      "admitted": 205,
+      "candidate_detail_boundary": "Admission manifests preserve selection variables and rejection codes. Full PV/load/price vectors are frozen for selected tasks; rejected-candidate vectors are not all retained.",
+      "candidates": 280,
+      "exclusion_reasons": {
+        "binding_slack_fraction_le_005": 20,
+        "forecast_plan_changes_if_applicable": 33,
+        "solver:RuntimeError": 17,
+        "solver:ValueError": 6
+      },
+      "rejected": 75,
+      "selected": 60
+    },
+    "legacy": {
+      "admitted": 372,
+      "candidate_detail_boundary": "Admission manifests preserve selection variables and rejection codes. Full PV/load/price vectors are frozen for selected tasks; rejected-candidate vectors are not all retained.",
+      "candidates": 480,
+      "exclusion_reasons": {},
+      "rejected": 108,
+      "selected": 372
+    }
+  },
+  "slack": {
+    "component_definitions": {
+      "aggregate_normalized_slack": "minimum of the four components",
+      "initial_soc_lower_slack": "initial SOC minus reserve, divided by usable SOC width",
+      "initial_soc_upper_slack": "capacity minus initial SOC, divided by usable SOC width",
+      "passive_export_slack": "minimum no-battery grid headroom normalized by export limit and gross load/PV magnitude",
+      "terminal_reachability_slack": "remaining maximum one-direction energy minus terminal SOC need, divided by 500 kWh"
+    },
+    "definition_status": "post_hoc_provider_free_diagnostic_not_registered_admission_rule",
+    "n": 60,
+    "registered_by_diagnostic": {
+      "easy": {
+        "easy": 10,
+        "hard": 11,
+        "medium": 6
+      },
+      "medium": {
+        "easy": 11,
+        "hard": 7,
+        "medium": 15
+      }
+    }
+  },
+  "timeout": {
+    "M_branch": 32,
+    "diagnostic_300s_late_solves": 11,
+    "formal_denominator": 1800,
+    "formal_status": "PARTIAL_WITH_TIMEOUTS",
+    "hard_timeout_120s": 53,
+    "network_attempts": 0,
+    "persistent_solver_hardness": 52,
+    "provider_calls_performed": 0,
+    "source_schema_version": "e2_timeout_root_cause_audit_v1",
+    "source_sha256": "c64aa81bcb415eff0edf940a820aeae416a198538b2d54ad4a3a837cf5406a6a",
+    "stage1_distance": 1,
+    "stage3_cost_tiebreak": 51,
+    "thirty_second_sensitivity": {
+      "counts": {
+        "hard_timeout_30s": 25
+      },
+      "created_utc": "2026-08-29T03:05:21.862489+00:00",
+      "fingerprints": 25,
+      "interpretation_boundary": "Concurrent development sensitivity; does not replace the formal 120-second run or 300-second diagnostic.",
+      "network_attempts": 0,
+      "provider_calls_performed": 0,
+      "representative_cases": 25,
+      "schema_version": "e2_timeout_30s_sensitivity_v1",
+      "selection": "one lexicographically first case per frozen mathematical problem fingerprint",
+      "watchdog_seconds": 30,
+      "workers": 4
+    },
+    "timeout_rate": 0.029444444444444443
+  }
+}

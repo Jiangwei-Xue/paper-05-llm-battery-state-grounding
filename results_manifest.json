@@ -1,0 +1,63 @@
+{
+  "schema_version": "state_grounding_results_manifest_v1",
+  "paper_title": "State Sensitivity Is Not Grounding: Dual Replay for LLM Battery Scheduling",
+  "core_tables": [
+    {
+      "paper_label": "tab:tiers",
+      "result": "experiment tiers, models, contracts, and denominators",
+      "sources": ["experiments_manifest.json", "saved_records/INDEX.json"]
+    },
+    {
+      "paper_label": "tab:e2-core",
+      "result": "historical E2 carrier distance, duplicate-request null, and null-adjusted contrast",
+      "sources": ["reference_outputs/primary/OFFLINE_RECOMPUTE_SUMMARY.json", "reference_outputs/primary/f1_block_metrics.csv"]
+    },
+    {
+      "paper_label": "tab:f1-phenotypes",
+      "result": "historical F1 response activity and violation phenotypes",
+      "sources": ["reference_outputs/primary/f1_branch_metrics.csv", "reference_outputs/audit/OFFLINE_COMPLETION_AUDIT.json", "reference_outputs/physics/UNIFIED_VIOLATION_SEVERITY.jsonl"]
+    },
+    {
+      "paper_label": "tab:dose",
+      "result": "50, 75, and 100 kWh intervention sensitivity",
+      "sources": ["reference_outputs/primary/f1_block_metrics.csv", "reference_outputs/sensitivities/OFFLINE_OPTIMIZATION_SENSITIVITIES.json"]
+    },
+    {
+      "paper_label": "tab:dual-replay",
+      "result": "carrier-consistent versus authoritative raw feasibility",
+      "sources": ["reference_outputs/semantics/FEASIBILITY_SEMANTICS.json", "reference_outputs/tables/table_feasibility_by_replay_state.tex"]
+    },
+    {
+      "paper_label": "tab:gate-zero",
+      "result": "matched deterministic gate and zero-reference contrasts",
+      "sources": ["reference_outputs/primary/f1_gate_branch_results.csv", "reference_outputs/primary/gate_baseline_results.csv", "reference_outputs/primary/OFFLINE_RECOMPUTE_SUMMARY.json"]
+    },
+    {
+      "paper_label": "tab:event",
+      "result": "event-family stratification",
+      "sources": ["reference_outputs/primary/f1_block_metrics.csv", "reference_outputs/audit/OFFLINE_COMPLETION_AUDIT.json"]
+    },
+    {
+      "paper_label": "tab:witnesses",
+      "result": "authority-transfer failure witnesses",
+      "sources": ["reference_outputs/semantics/FEASIBILITY_SEMANTICS.json", "reference_outputs/qwen37/QWEN37_F1_BRANCH_METRICS.csv"]
+    },
+    {
+      "paper_label": "tab:baselines",
+      "result": "zero, heuristic, random, and MPC matched baselines",
+      "sources": ["reference_outputs/primary/gate_baseline_results.csv", "reference_outputs/primary/OFFLINE_RECOMPUTE_SUMMARY.json"]
+    }
+  ],
+  "claim_registry": "CLAIM_TO_EVIDENCE_MAP.json",
+  "independent_physics": {
+    "rows": 4620,
+    "discrepancies": 0,
+    "source": "reference_outputs/physics/INDEPENDENT_PHYSICS_CROSSCHECK.json"
+  },
+  "parser_replay": {
+    "expected_successful_responses": 3526,
+    "expected_not_applicable_failures_or_skips": 14,
+    "script": "scripts/reparse_saved_responses_v1_3.py"
+  },
+  "known_boundary": "Complete source vectors were not retained for every rejected candidate, so selection-rule counterfactuals are not reconstructed beyond the retained provenance boundary."
+}

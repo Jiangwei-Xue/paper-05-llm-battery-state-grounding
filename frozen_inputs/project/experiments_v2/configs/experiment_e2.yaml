@@ -1,0 +1,30 @@
+experiment_id: v2_e2_physical_carrier
+tier: confirmatory_physical_carrier
+protocol_version: energybench-v2.1-two-condition-20260801
+scenario_count: 60
+models: [deepseek_formal, qwen_flash]
+model_balance_required: true
+repetitions: 3
+stage1_shared: true
+stage2_branches: [C, M, S, K, C2]
+interface: I3
+terminal_target_kwh: 325.0
+planned_calls_per_model: 1080
+prefix_intervention:
+  owner: plant_side_deterministic
+  divergence_kwh: [50.0, 75.0, 100.0]
+  shared_across_branches: true
+  future_oracle_forbidden: true
+admission:
+  canonical_suffix_feasible: true
+  zero_suffix_infeasible: true
+  stale_plan_infeasible_or_cost_worse: true
+  deterministic_action_l1_min_kwh: 25.0
+  first_two_hours_action_min_kw: 20.0
+  stale_terminal_miss_min_kwh: 10.0
+  binding_slack_fraction_max: 0.05
+  forecast_plan_must_change: true
+null_control: C2_byte_identical_payload
+co_primary_endpoints: [scenario_median_delta_action_sensitivity, carrier_raw_feasibility_or_terminal_error]
+secondary_endpoints: [C_vs_S, C_vs_M, C_vs_K, C_vs_C2, first_action_difference, action_l1_distance, state_accuracy, projection_distance_kwh, savings_capture, cost_difference_usd, parse_failure]
+budget_hard_stop: false

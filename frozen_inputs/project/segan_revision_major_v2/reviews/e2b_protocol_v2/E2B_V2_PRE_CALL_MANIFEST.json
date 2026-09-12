@@ -1,0 +1,129 @@
+{
+  "F0_execution_adopted": false,
+  "api_key_values_recorded": false,
+  "artifacts": {
+    "F0_optional_plan": {
+      "path": "segan_revision_major_v2/reviews/e2b_protocol_v2/E2B_V2_F0_OPTIONAL_BRIDGE_PLAN.jsonl",
+      "sha256": "797f6bfcf6d313844c6c8efc309fcd2a791f48c170ed6f201f8d4b106ca54d2f"
+    },
+    "F1_run_plan": {
+      "path": "segan_revision_major_v2/reviews/e2b_protocol_v2/E2B_V2_F1_RUN_PLAN.jsonl",
+      "sha256": "d1fd27fa3179df46a79b15e828cc5b1afcbddfb9f6a5cfa43dc4e1fef7e69bf1"
+    },
+    "analysis": {
+      "path": "segan_revision_major_v2/scripts/analyze_e2b_v2.py",
+      "sha256": "fae96cb4b151f5740cca0c667883a38f8a217f4a8e587de2526f1159606f1248"
+    },
+    "common": {
+      "path": "segan_revision_major_v2/scripts/e2b_v2_common.py",
+      "sha256": "0f555669f849012a2610b32f93816e9ca31bffc9ee3e00ccad0bee31a11daccd"
+    },
+    "control_rows": {
+      "path": "segan_revision_major_v2/reviews/e2b_protocol_v2/E2B_V2_PROVIDER_FREE_CONTROL_ROW_LEVEL.jsonl",
+      "sha256": "0e240fc58605ee1202d94edfa099b4c77e8c59b31f600bb64c88fe699c1283bf"
+    },
+    "controls": {
+      "path": "segan_revision_major_v2/reviews/e2b_protocol_v2/E2B_V2_PROVIDER_FREE_CONTROL_REPORT.json",
+      "sha256": "e5faa31bf3fcd14853f108a518cd37624ef3e23062406cc64501f1bd66ddb81c"
+    },
+    "method_delta": {
+      "path": "segan_revision_major_v2/reviews/e2b_protocol_v2/E2B_V2_METHOD_DELTA_REPORT.json",
+      "sha256": "4a7ed549cc513b771a5378461e5e6f5c571a31dd3edcaef5bf048be3eee691e7"
+    },
+    "method_delta_markdown": {
+      "path": "segan_revision_major_v2/reviews/e2b_protocol_v2/METHOD_DELTA_REPORT.md",
+      "sha256": "b9ab471754ada8c68e45536c7b0aa6986133414e707e82029ec83cf2d7d24658"
+    },
+    "models": {
+      "path": "experiments_v2/configs/models.yaml",
+      "sha256": "1fa293fc33eb68202436e12a4308abd8d1e5856fb74d947fbe41599c89052457"
+    },
+    "parser": {
+      "path": "segan_revision_major_v2/scripts/e2b_parser_v2.py",
+      "sha256": "cb8826154dfb676570e3699db27a721f73739666715df5e8fec8544a27c6f8ee"
+    },
+    "preflight_verifier": {
+      "path": "segan_revision_major_v2/scripts/verify_e2b_v2_preflight.py",
+      "sha256": "74fb19e841bef5da0b17433285e8af944959f636b9250f19ee0f4a41c3fe28cf"
+    },
+    "prompt_fixtures": {
+      "path": "segan_revision_major_v2/reviews/e2b_protocol_v2/E2B_V2_RENDERED_PROMPT_FIXTURES.json",
+      "sha256": "25b5d4fbb6dd235e198000b935a2b5840b58671d8eb0f03b00504b14fa948628"
+    },
+    "prompt_template": {
+      "path": "segan_revision_major_v2/protocol/E2B_PROMPT_TEMPLATE_V2.txt",
+      "sha256": "43ad26a958ceb2181ef9740c21cd1bfd6fe44be79e0d85591830b3ee67a0f815"
+    },
+    "protocol_md": {
+      "path": "segan_revision_major_v2/protocol/E2B_PROTOCOL_V2.md",
+      "sha256": "215ca6dbe013b5456da5637e7f2168de591b6f11bb286c10051e888676a93d9b"
+    },
+    "protocol_yaml": {
+      "path": "segan_revision_major_v2/protocol/E2B_PROTOCOL_V2.yaml",
+      "sha256": "b8ca65601f31ba56644db56396b564a326d20dd2bdb8cf00d41edf614335f9f9"
+    },
+    "runner": {
+      "path": "segan_revision_major_v2/scripts/run_e2b_v2.py",
+      "sha256": "6ea35a2323a51915c55b0517f026344140207ef5acca9844ac16a988ff8b1612"
+    },
+    "schema": {
+      "path": "segan_revision_major_v2/protocol/E2B_SCHEMA_V2.json",
+      "sha256": "665c0ccd1be0ec588f193b1d8811ffa79fe3edcd01bec63346a10fbb77329fee"
+    },
+    "smoke_acceptance_schema": {
+      "path": "segan_revision_major_v2/protocol/E2B_V2_SMOKE_ACCEPTANCE_SCHEMA.json",
+      "sha256": "37293afca9bfcc4b78686af716f6ed5e155e4d9054c127e86900af5d625ff74a"
+    },
+    "smoke_run_plan": {
+      "path": "segan_revision_major_v2/reviews/e2b_protocol_v2/E2B_V2_SMOKE_RUN_PLAN.jsonl",
+      "sha256": "98c61e7973e22e11155654b71786717a043053035a2f911cd539961e5ecacada"
+    },
+    "task_manifest": {
+      "path": "segan_revision_major_v2/reviews/e2b_protocol_v2/E2B_V2_TASK_HASH_MANIFEST.jsonl",
+      "sha256": "128a6ea9124bfa0b06eb19b1d9a9aa60e02fad20909f50d53f0f0d70c90cdafa"
+    },
+    "tests": {
+      "path": "segan_revision_major_v2/tests/test_e2b_protocol_v2.py",
+      "sha256": "8fcef20f4a9dfe2e7fcc39bcdfd87215bccfc2910a3a4dcc9cb8196ed7d844d0"
+    },
+    "v1_source_manifest": {
+      "path": "segan_revision_major_v2/reviews/e2b_protocol_v2/E2B_V1_SOURCE_HASH_MANIFEST.jsonl",
+      "sha256": "798ddcb4127c9f70fc295208a3ed5333d62c69e73f3ba069a66a44bafeed2fba"
+    },
+    "v1_supersession": {
+      "path": "segan_revision_major_v2/reviews/e2b_protocol_v2/E2B_V1_SUPERSESSION_AUDIT.json",
+      "sha256": "b42810b60ecf2aebf03b99a4177b51bb7cf5e3d291f3a345dc52b49d5d429d38"
+    },
+    "variable_control_markdown": {
+      "path": "segan_revision_major_v2/reviews/e2b_protocol_v2/PREMATRIX_VARIABLE_CONTROL_REPORT.md",
+      "sha256": "514754976320d880e7841baf18ff74b2843f05abf1c4be57d892879daf8f56e0"
+    },
+    "variable_freeze_spec": {
+      "path": "segan_revision_major_v2/reviews/e2b_protocol_v2/VARIABLE_FREEZE_SPEC.yaml",
+      "sha256": "893eff1fb3dd85985c14cc9411266a306eed741761cfc7ae6c9e12965e0d052a"
+    },
+    "variable_inventory": {
+      "path": "segan_revision_major_v2/reviews/e2b_protocol_v2/VARIABLE_INVENTORY.csv",
+      "sha256": "fcc4af9539464686c021a992f380005579600c185f23b37f4ab76f26216e2cec"
+    }
+  },
+  "explicit_user_authorization_for_live_smoke": false,
+  "fallback": "disabled",
+  "formal_run_requires_smoke_pass": true,
+  "frozen_concurrency": 8,
+  "network_attempts": 0,
+  "optional_F0_blocks": 30,
+  "optional_F0_provider_calls": 120,
+  "planned_F1_blocks": 120,
+  "planned_F1_provider_calls": 480,
+  "planned_smoke_blocks": 4,
+  "planned_smoke_provider_calls": 16,
+  "protocol_id": "energybench-e2b-stage2-only-carrier-sensitivity-v2",
+  "provider_calls_performed": 0,
+  "schema_version": "e2b_v2_pre_call_manifest_v1",
+  "selective_retry": false,
+  "source_files_verified_at_freeze": true,
+  "source_release_identity": "public-scientific-file-manifest",
+  "status": "OFFLINE_GATES_PASS_EXECUTION_HOLD",
+  "transport_retry_maximum": 2
+}

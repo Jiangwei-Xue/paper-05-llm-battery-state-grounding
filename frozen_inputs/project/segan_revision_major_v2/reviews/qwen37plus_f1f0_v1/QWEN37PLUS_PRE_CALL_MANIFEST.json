@@ -1,0 +1,127 @@
+{
+  "artifacts": {
+    "common": {
+      "path": "segan_revision_major_v2/scripts/e2b_v2_common.py",
+      "sha256": "0f555669f849012a2610b32f93816e9ca31bffc9ee3e00ccad0bee31a11daccd",
+      "size_bytes": 11683
+    },
+    "f0_plan": {
+      "path": "segan_revision_major_v2/reviews/qwen37plus_f1f0_v1/QWEN37PLUS_F0_RUN_PLAN.jsonl",
+      "sha256": "702fdb331e5d32a8466eb66e3c9cc870db328900a6f9291e264a5f871af38f59",
+      "size_bytes": 14833
+    },
+    "f1_plan": {
+      "path": "segan_revision_major_v2/reviews/qwen37plus_f1f0_v1/QWEN37PLUS_F1_RUN_PLAN.jsonl",
+      "sha256": "33012d063f5a0f34e1be62de1f01cf3d31fc8e9802c44da193d92b041543c043",
+      "size_bytes": 59332
+    },
+    "formal_plan": {
+      "path": "segan_revision_major_v2/reviews/qwen37plus_f1f0_v1/QWEN37PLUS_FORMAL_RUN_PLAN.jsonl",
+      "sha256": "bc6cc5f21a842a9397375e9fa88886c5b4aa954316b1e6df7bb5cc4a16caaeb0",
+      "size_bytes": 74165
+    },
+    "model_spec": {
+      "path": "segan_revision_major_v2/reviews/qwen37plus_f1f0_v1/QWEN37PLUS_MODEL_SPEC.json",
+      "sha256": "af25a8f18bf1563941dbb7373cd70333dce40f2aad0344befad80694ba0e096b",
+      "size_bytes": 553
+    },
+    "parser": {
+      "path": "segan_revision_major_v2/scripts/e2b_parser_v2.py",
+      "sha256": "cb8826154dfb676570e3699db27a721f73739666715df5e8fec8544a27c6f8ee",
+      "size_bytes": 3933
+    },
+    "prompt_template": {
+      "path": "segan_revision_major_v2/protocol/E2B_PROMPT_TEMPLATE_V2.txt",
+      "sha256": "43ad26a958ceb2181ef9740c21cd1bfd6fe44be79e0d85591830b3ee67a0f815",
+      "size_bytes": 1499
+    },
+    "protocol_markdown": {
+      "path": "segan_revision_major_v2/protocol/qwen37plus_f1f0_v1/QWEN37PLUS_F1F0_PROTOCOL_V1.md",
+      "sha256": "18a4d4700b4bab3b92c6a6b1332323554ef7d9dcd147620716173146f33eccf5",
+      "size_bytes": 1581
+    },
+    "protocol_yaml": {
+      "path": "segan_revision_major_v2/protocol/qwen37plus_f1f0_v1/QWEN37PLUS_F1F0_PROTOCOL_V1.yaml",
+      "sha256": "8df876f404606df51ae7096a59c198f5157d425cb63184b68fb78db3e0d8e985",
+      "size_bytes": 2916
+    },
+    "runner": {
+      "path": "segan_revision_major_v2/scripts/run_qwen37plus_f1f0_v1.py",
+      "sha256": "50ccca0c5ad759afb160052c07fada761709e9a4f75331c2b723b38bbbbdf47c",
+      "size_bytes": 8720
+    },
+    "schema": {
+      "path": "segan_revision_major_v2/protocol/E2B_SCHEMA_V2.json",
+      "sha256": "665c0ccd1be0ec588f193b1d8811ffa79fe3edcd01bec63346a10fbb77329fee",
+      "size_bytes": 773
+    },
+    "smoke_plan": {
+      "path": "segan_revision_major_v2/reviews/qwen37plus_f1f0_v1/QWEN37PLUS_SMOKE_RUN_PLAN.jsonl",
+      "sha256": "db27005026dab63dd508dd0ac00a2b1c3d367d5b53c1e80cde04508c90a55127",
+      "size_bytes": 1988
+    },
+    "source_f0_plan": {
+      "path": "segan_revision_major_v2/reviews/e2b_protocol_v2/E2B_V2_F0_OPTIONAL_BRIDGE_PLAN.jsonl",
+      "sha256": "797f6bfcf6d313844c6c8efc309fcd2a791f48c170ed6f201f8d4b106ca54d2f",
+      "size_bytes": 23991
+    },
+    "source_task_manifest": {
+      "path": "segan_revision_major_v2/reviews/e2b_protocol_v2/E2B_V2_TASK_HASH_MANIFEST.jsonl",
+      "sha256": "128a6ea9124bfa0b06eb19b1d9a9aa60e02fad20909f50d53f0f0d70c90cdafa",
+      "size_bytes": 19080
+    },
+    "task_manifest": {
+      "path": "segan_revision_major_v2/reviews/qwen37plus_f1f0_v1/QWEN37PLUS_TASK_HASH_MANIFEST.jsonl",
+      "sha256": "128a6ea9124bfa0b06eb19b1d9a9aa60e02fad20909f50d53f0f0d70c90cdafa",
+      "size_bytes": 19080
+    },
+    "test": {
+      "path": "segan_revision_major_v2/tests/test_qwen37plus_f1f0_protocol.py",
+      "sha256": "48ca14223032e3c8fd7244a7bcf3f7c2f734e4ec362f7c7ba804c6116da44582",
+      "size_bytes": 2509
+    }
+  },
+  "fallback": "disabled",
+  "formal_requires_smoke_pass": true,
+  "formal_run_requires_explicit_user_authorization": true,
+  "frozen_concurrency": 8,
+  "historical_evidence_immutable": true,
+  "model_condition": {
+    "attempt_timeout_seconds": 240,
+    "cache": "disabled",
+    "condition_id": "qwen37_plus_direct_v1",
+    "configured_model_id": "qwen3.7-plus",
+    "credentials_env": "QWEN_API_KEY",
+    "endpoint": "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions",
+    "expected_returned_model": "qwen3.7-plus",
+    "fallback": "disabled",
+    "max_output_tokens": 16000,
+    "provider": "qwen",
+    "retryable_http_statuses": [
+      429,
+      502,
+      503,
+      504
+    ],
+    "route": "direct",
+    "temperature": 0.0,
+    "tools": "disabled",
+    "web_search": "disabled"
+  },
+  "network_attempts": 0,
+  "planned_f0_blocks": 15,
+  "planned_f1_blocks": 60,
+  "planned_formal_blocks": 75,
+  "planned_formal_provider_calls": 300,
+  "planned_smoke_blocks": 2,
+  "planned_smoke_provider_calls": 8,
+  "protocol_id": "energybench-qwen37plus-e2b-sensitivity-v1",
+  "provider_calls_performed": 0,
+  "schema_version": "qwen37plus_f1f0_pre_call_manifest_v1",
+  "selective_retry": false,
+  "source_files_verified_at_freeze": true,
+  "source_release_identity": "public-scientific-file-manifest",
+  "source_run_label": "e2_20260801T054708Z",
+  "status": "OFFLINE_GATES_PASS_EXECUTION_HOLD",
+  "transport_retry_maximum": 2
+}

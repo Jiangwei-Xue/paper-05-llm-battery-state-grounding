@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "E2b-v2 Stage-2 action output",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["actions"],
+  "properties": {
+    "actions": {
+      "type": "array",
+      "description": "Sorted, non-overlapping local-suffix action segments. The runtime enforces maxItems=H.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["start_offset", "end_offset_exclusive", "power_kw"],
+        "properties": {
+          "start_offset": {"type": "integer", "minimum": 0},
+          "end_offset_exclusive": {"type": "integer", "minimum": 1},
+          "power_kw": {"type": "number", "minimum": -250.0, "maximum": 250.0}
+        }
+      }
+    }
+  }
+}

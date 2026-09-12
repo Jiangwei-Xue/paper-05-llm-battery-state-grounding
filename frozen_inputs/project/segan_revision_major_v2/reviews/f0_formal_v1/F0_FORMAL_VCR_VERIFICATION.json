@@ -1,0 +1,13 @@
+{
+  "duplicate_payload_identity_blocks": 120,
+  "errors": [],
+  "evidence_rows": 120,
+  "manifest_entries": 64,
+  "network_attempts_by_verifier": 0,
+  "package": "artifact_release",
+  "provider_calls_performed_by_verifier": 0,
+  "replay_exact_rows": 480,
+  "schema_version": "f0_formal_vcr_verification_v1",
+  "status": "PASS",
+  "timestamp_complete_branch_rows": 480
+}

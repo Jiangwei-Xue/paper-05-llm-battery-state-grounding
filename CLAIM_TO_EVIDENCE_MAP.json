@@ -1,0 +1,96 @@
+{
+  "schema_version": "state_grounding_paper_claim_map_v1",
+  "paper_title": "State Sensitivity Is Not Grounding: Dual Replay for LLM Battery Scheduling",
+  "claims": [
+    {
+      "claim_id": "P_E2_NULL_ADJUSTED_STATE_RESPONSE",
+      "denominator": "60 selected scenarios with paired model-stratified blocks",
+      "claim": "The canonical-stale action distance exceeds the byte-identical canonical-repeat null after adjustment.",
+      "primary_evidence": "reference_outputs/primary/OFFLINE_RECOMPUTE_SUMMARY.json",
+      "row_level_evidence": "reference_outputs/primary/f1_block_metrics.csv",
+      "supporting_registry_id": "C_E2_RAW_CARRIER",
+      "status": "SUPPORTED_RAW_ONLY"
+    },
+    {
+      "claim_id": "P_F1_AUTHORITATIVE_FEASIBILITY",
+      "denominator": "480 F1 branches",
+      "claim": "Neither historical hosted-model condition produced an authoritative-feasible raw schedule under the complete contract.",
+      "primary_evidence": "reference_outputs/semantics/FEASIBILITY_SEMANTICS.json",
+      "row_level_evidence": "reference_outputs/primary/f1_branch_metrics.csv",
+      "supporting_registry_id": "C_F1_CARRIER",
+      "status": "SUPPORTED"
+    },
+    {
+      "claim_id": "P_F1_VIOLATION_MECHANISMS",
+      "denominator": "480 F1 branches",
+      "claim": "The two historical model conditions fail through different activity and physical-violation mechanisms.",
+      "primary_evidence": "reference_outputs/audit/OFFLINE_COMPLETION_AUDIT.json",
+      "row_level_evidence": "reference_outputs/physics/UNIFIED_VIOLATION_SEVERITY.jsonl",
+      "supporting_registry_id": "C_F1_VIOLATION",
+      "status": "SUPPORTED"
+    },
+    {
+      "claim_id": "P_F0_TEMPORAL_COMPARISON",
+      "denominator": "30 F0 blocks / 120 branches",
+      "claim": "The old-contract F0 run provides a temporally separated payload comparison and is not pooled with F1.",
+      "primary_evidence": "reference_outputs/primary/OFFLINE_RECOMPUTE_SUMMARY.json",
+      "row_level_evidence": "reference_outputs/primary/f1_f0_branch_pairs.csv",
+      "supporting_registry_id": "C_F0_TEMPORAL",
+      "status": "SUPPORTED"
+    },
+    {
+      "claim_id": "P_QWEN37_DUAL_REPLAY",
+      "denominator": "240 F1 branches and 60 F0 branches",
+      "claim": "Qwen3.7-Plus carrier-consistent and authoritative feasibility counts differ and must be reported separately.",
+      "primary_evidence": "reference_outputs/semantics/FEASIBILITY_SEMANTICS.json",
+      "row_level_evidence": "reference_outputs/qwen37/QWEN37_F1_BRANCH_METRICS.csv",
+      "supporting_registry_id": "C_QWEN37_AUTHORITATIVE_RAW_F",
+      "status": "SUPPORTED_SENSITIVITY"
+    },
+    {
+      "claim_id": "P_AUTHORITY_TRANSFER_FAILURE",
+      "denominator": "300 Qwen3.7-Plus branches",
+      "claim": "Four schedules pass replay from represented state and fail replay from authoritative state.",
+      "primary_evidence": "reference_outputs/semantics/FEASIBILITY_SEMANTICS.json",
+      "row_level_evidence": "reference_outputs/qwen37/QWEN37_F1_BRANCH_METRICS.csv",
+      "supporting_registry_id": "C_QWEN37_AUTHORITATIVE_RAW_F",
+      "status": "SUPPORTED_SENSITIVITY"
+    },
+    {
+      "claim_id": "P_MATCHED_GATE_REPAIR",
+      "denominator": "480 F1 hosted-model branches and 300 scenario-baseline rows",
+      "claim": "A common deterministic gate separates proposal quality from gate-created feasibility.",
+      "primary_evidence": "reference_outputs/primary/OFFLINE_RECOMPUTE_SUMMARY.json",
+      "row_level_evidence": "reference_outputs/primary/f1_gate_branch_results.csv",
+      "baseline_evidence": "reference_outputs/primary/gate_baseline_results.csv",
+      "supporting_registry_id": "C_F1_GATE_BASELINES",
+      "status": "SUPPORTED_OFFLINE"
+    },
+    {
+      "claim_id": "P_INDEPENDENT_PHYSICS",
+      "denominator": "4,620 physical verdict comparisons plus 12 hand fixtures",
+      "claim": "The independent checker reproduces all retained physical verdicts with zero disagreement.",
+      "primary_evidence": "reference_outputs/physics/INDEPENDENT_PHYSICS_CROSSCHECK.json",
+      "row_level_evidence": "reference_outputs/physics/INDEPENDENT_PHYSICS_CROSSCHECK_ROW_LEVEL.jsonl",
+      "supporting_registry_id": "C_INDEPENDENT_PHYSICS",
+      "status": "SUPPORTED"
+    },
+    {
+      "claim_id": "P_E2_PROJECTION_BOUNDARY",
+      "denominator": "1,800 historical E2 projection rows",
+      "claim": "Historical E2 projection evidence is partial because 53 rows reached the frozen timeout.",
+      "primary_evidence": "reference_outputs/audit/gate_timeout_consolidated_audit.json",
+      "supporting_registry_id": "C_E2_PROJECTION",
+      "status": "PARTIAL_WITH_TIMEOUTS"
+    },
+    {
+      "claim_id": "P_RELEASE_ACCEPTANCE",
+      "denominator": "all retained E1, E2, F1, F0, and Qwen3.7-Plus records",
+      "claim": "The offline evidence is frozen with explicit feasibility semantics, tier separation, denominator checks, and provenance boundaries.",
+      "primary_evidence": "reference_outputs/acceptance/V1_7_RELEASE_ACCEPTANCE.json",
+      "supporting_registry_id": null,
+      "status": "PASS_WITH_BOUNDARIES"
+    }
+  ]
+}
+

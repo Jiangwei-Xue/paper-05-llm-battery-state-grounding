@@ -1,0 +1,43 @@
+schema_version: e2b_v2_variable_freeze_v1
+status: offline_freeze_candidate_execution_hold
+method_version: E2b-M1-stage2-only-v2
+allowed_matrix_axes:
+  model_condition: [deepseek_formal, qwen_flash]
+  carrier_soc: [canonical, stale]
+recorded_nuisance_variables:
+  hosted_call_repeat: [call_1, call_2]
+  returned_model: required
+  system_fingerprint_when_available: required
+  request_response_utc: required
+frozen:
+  scenario_count: 60
+  scenario_ids_source: E2B_V2_TASK_HASH_MANIFEST.jsonl
+  prompt_template: protocol/E2B_PROMPT_TEMPLATE_V2.txt
+  output_schema: protocol/E2B_SCHEMA_V2.json
+  parser: scripts/e2b_parser_v2.py
+  raw_scorer: scripts/e2b_v2_common.py
+  analysis: scripts/analyze_e2b_v2.py
+  runner: scripts/run_e2b_v2.py
+  branch_order_seed: 20260814
+  bootstrap_seed: 20260716
+  bootstrap_resamples: 10000
+  temperature: 0.0
+  response_format: json_object
+  thinking: disabled
+  fallback: disabled
+  tools: disabled
+  web_search: disabled
+  transport_retry_maximum: 2
+  concurrency: 8
+  complete_block_gate_per_model: 0.80
+disallowed:
+  - live_stage1
+  - parser_repair
+  - parser_aliases
+  - parser_failure_as_zero_action
+  - raw_action_clipping
+  - branch_specific_prompt_changes_outside_carrier_soc
+  - provider_fallback
+  - selective_retry
+  - pooling_with_e2b_v1
+  - formal_run_before_smoke_pass

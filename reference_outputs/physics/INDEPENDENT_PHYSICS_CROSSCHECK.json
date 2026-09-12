@@ -1,0 +1,26 @@
+{
+  "artifacts": {
+    "fixtures": "INDEPENDENT_PHYSICS_FIXTURES.json",
+    "row_level": "INDEPENDENT_PHYSICS_CROSSCHECK_ROW_LEVEL.jsonl",
+    "violation_severity": "UNIFIED_VIOLATION_SEVERITY.jsonl"
+  },
+  "checker_independence": {
+    "imports_gate_implementation": false,
+    "imports_prior_offline_recompute": false,
+    "imports_project_scorer": false,
+    "imports_project_simulator": false
+  },
+  "created_utc": "2026-08-29T03:51:14.200036+00:00",
+  "discrepancies": 0,
+  "fixture_passed": 12,
+  "fixture_total": 12,
+  "gate_rows": 2760,
+  "hosted_raw_replay_rows": 1800,
+  "network_attempts": 0,
+  "parser_not_applicable_rows": 0,
+  "positive_control_rows": 60,
+  "provider_calls_performed": 0,
+  "rows": 4620,
+  "schema_version": "independent_physics_crosscheck_v1",
+  "status": "PASS"
+}

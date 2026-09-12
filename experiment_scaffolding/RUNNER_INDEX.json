@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "project_root": "frozen_inputs/project",
+  "shared_source_roots": [
+    "frozen_inputs/project/src/energy_agent_reliability",
+    "frozen_inputs/project/experiments_v2/src/experiments_v2"
+  ],
+  "experiments": [
+    {
+      "experiment": "E1",
+      "protocol": "frozen_inputs/project/experiments_v2/configs/experiment_e1.yaml",
+      "pre_call_manifest": "frozen_inputs/project/experiments_v2/manifests/E1_PRE_RUN_MANIFEST.json",
+      "runner": "frozen_inputs/project/scripts/run_experiments_v2_e1.py"
+    },
+    {
+      "experiment": "E2",
+      "protocol": "frozen_inputs/project/experiments_v2/configs/experiment_e2.yaml",
+      "pre_call_manifest": "frozen_inputs/project/experiments_v2/manifests/E2_PRE_RUN_MANIFEST.json",
+      "runner": "frozen_inputs/project/scripts/run_experiments_v2_e2.py"
+    },
+    {
+      "experiment": "F1",
+      "protocol": "frozen_inputs/project/segan_revision_major_v2/protocol/E2B_PROTOCOL_V2.yaml",
+      "pre_call_manifest": "frozen_inputs/project/segan_revision_major_v2/reviews/e2b_protocol_v2/E2B_V2_PRE_CALL_MANIFEST.json",
+      "runner": "frozen_inputs/project/segan_revision_major_v2/scripts/run_e2b_v2.py"
+    },
+    {
+      "experiment": "F0",
+      "protocol": "frozen_inputs/project/segan_revision_major_v2/protocol/F0_FORMAL_PROTOCOL_V1.yaml",
+      "pre_call_manifest": "frozen_inputs/project/segan_revision_major_v2/reviews/f0_formal_v1/F0_FORMAL_PRE_CALL_MANIFEST.json",
+      "runner": "frozen_inputs/project/segan_revision_major_v2/scripts/run_f0_formal_v1.py"
+    },
+    {
+      "experiment": "QWEN37",
+      "protocol": "frozen_inputs/project/segan_revision_major_v2/protocol/qwen37plus_f1f0_v1/QWEN37PLUS_F1F0_PROTOCOL_V1.yaml",
+      "pre_call_manifest": "frozen_inputs/project/segan_revision_major_v2/reviews/qwen37plus_f1f0_v1/QWEN37PLUS_PRE_CALL_MANIFEST.json",
+      "runner": "frozen_inputs/project/segan_revision_major_v2/scripts/run_qwen37plus_f1f0_v1.py"
+    }
+  ],
+  "runners": {
+    "E1": {
+            "prepare": "frozen_inputs/project/scripts/prepare_experiments_v2_e1.py",
+            "freeze": "frozen_inputs/project/scripts/freeze_experiments_v2_e1.py",
+            "run": "frozen_inputs/project/scripts/run_experiments_v2_e1.py",
+            "project": "frozen_inputs/project/scripts/project_experiments_v2_e1.py",
+            "analyze": "frozen_inputs/project/scripts/analyze_experiments_v2_e1.py",
+            "verify": "frozen_inputs/project/scripts/verify_experiments_v2_e1.py"
+    },
+    "E2": {
+            "prepare": "frozen_inputs/project/scripts/prepare_experiments_v2_e2.py",
+            "freeze": "frozen_inputs/project/scripts/freeze_experiments_v2_e2.py",
+            "run": "frozen_inputs/project/scripts/run_experiments_v2_e2.py",
+            "project": "frozen_inputs/project/scripts/project_experiments_v2_e2.py",
+            "analyze": "frozen_inputs/project/scripts/analyze_experiments_v2_e2.py",
+            "finalize": "frozen_inputs/project/scripts/finalize_experiments_v2_e2.py",
+            "verify": "frozen_inputs/project/scripts/verify_experiments_v2_e2.py"
+    },
+    "F1": {
+            "prepare": "frozen_inputs/project/segan_revision_major_v2/scripts/prepare_e2b_v2.py",
+            "run": "frozen_inputs/project/segan_revision_major_v2/scripts/run_e2b_v2.py",
+            "parser": "frozen_inputs/project/segan_revision_major_v2/scripts/e2b_parser_v2.py",
+            "analysis": "frozen_inputs/project/segan_revision_major_v2/scripts/analyze_e2b_v2.py",
+            "verify": "frozen_inputs/project/segan_revision_major_v2/scripts/verify_e2b_v2_preflight.py"
+    },
+    "F0": {
+            "prepare": "frozen_inputs/project/segan_revision_major_v2/scripts/prepare_f0_formal_v1.py",
+            "run": "frozen_inputs/project/segan_revision_major_v2/scripts/run_f0_formal_v1.py",
+            "analysis": "frozen_inputs/project/segan_revision_major_v2/scripts/analyze_f0_formal_v1.py",
+            "finalize": "frozen_inputs/project/segan_revision_major_v2/scripts/finalize_f0_formal_v1.py",
+            "preflight": "frozen_inputs/project/segan_revision_major_v2/scripts/verify_f0_formal_preflight.py",
+            "vcr": "frozen_inputs/project/segan_revision_major_v2/scripts/verify_f0_formal_vcr.py"
+    },
+    "QWEN37": {
+            "prepare": "frozen_inputs/project/segan_revision_major_v2/scripts/prepare_qwen37plus_f1f0_v1.py",
+            "run": "frozen_inputs/project/segan_revision_major_v2/scripts/run_qwen37plus_f1f0_v1.py",
+            "analysis": "frozen_inputs/project/segan_revision_major_v2/scripts/analyze_qwen37plus_f1f0_v1.py",
+            "manifest": "frozen_inputs/project/segan_revision_major_v2/scripts/build_qwen37plus_f1f0_manifest.py",
+            "verify": "frozen_inputs/project/segan_revision_major_v2/scripts/verify_qwen37plus_f1f0_v1.py"
+    }
+  },
+  "live_execution_is_part_of_offline_reproduction": false,
+  "provider_credentials_included": false
+}

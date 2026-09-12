@@ -1,0 +1,1018 @@
+\pdfcompresslevel=0
+\pdfobjcompresslevel=0
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{siunitx}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{microtype}
+\usepackage{caption}
+\usepackage{hyperref}
+
+\sisetup{detect-all,group-separator={,},group-minimum-digits=4}
+\hypersetup{
+  colorlinks=true,
+  citecolor=blue!55!black,
+  linkcolor=blue!55!black,
+  urlcolor=blue!55!black,
+  pdftitle={State Sensitivity Is Not Grounding: Dual Replay for LLM Battery Scheduling},
+  pdfauthor={Jiangwei Xue, Zhida Qin, Yuda Bi},
+  pdfsubject={State grounding and raw-action feasibility in language-model battery scheduling},
+  pdfkeywords={agent evaluation, battery scheduling, environmental grounding, large language models, physical feasibility, state intervention},
+  pdfinfo={
+    DOI={10.5281/zenodo.22707487},
+    Copyright={Copyright 2026 The Authors},
+    License={Creative Commons Attribution 4.0 International},
+    LicenseURL={https://creativecommons.org/licenses/by/4.0/}
+  }
+}
+\setlength{\emergencystretch}{2em}
+\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+\setlength{\abovecaptionskip}{5pt}
+\setlength{\belowcaptionskip}{2pt}
+\captionsetup{font=small,labelfont=bf}
+\setlist{nosep,leftmargin=*}
+\raggedbottom
+
+% Frozen result macros. Sources are the v1.7 offline evidence release and the
+% paper-design package supplied with this draft.
+\newcommand{\EIIBlocks}{360}
+\newcommand{\EIIScenarios}{60}
+\newcommand{\EIIPlannedCalls}{2160}
+\newcommand{\EIIActualCalls}{2158}
+\newcommand{\EIISuccessfulCalls}{2146}
+\newcommand{\EIICS}{466.88}
+\newcommand{\EIICSLow}{280.24}
+\newcommand{\EIICSHigh}{671.80}
+\newcommand{\EIINull}{207.13}
+\newcommand{\EIINullLow}{88.75}
+\newcommand{\EIINullHigh}{344.00}
+\newcommand{\EIIAdjusted}{259.75}
+\newcommand{\EIIAdjustedLow}{55.75}
+\newcommand{\EIIAdjustedHigh}{464.80}
+\newcommand{\EIIDeepAdjusted}{405.58}
+\newcommand{\EIIDeepAdjustedLow}{120.99}
+\newcommand{\EIIDeepAdjustedHigh}{704.76}
+\newcommand{\EIIQwenAdjusted}{113.91}
+\newcommand{\EIIQwenAdjustedLow}{-178.91}
+\newcommand{\EIIQwenAdjustedHigh}{426.41}
+\newcommand{\EIIPositive}{20}
+\newcommand{\EIIZero}{34}
+\newcommand{\EIINegative}{6}
+\newcommand{\EIIParsedPairsCS}{234}
+\newcommand{\EIIParsedPairsCC}{238}
+\newcommand{\FOneBranches}{480}
+\newcommand{\FZeroBranches}{120}
+\newcommand{\DeepMeanED}{1173.33}
+\newcommand{\DeepMedianED}{0}
+\newcommand{\QwenMeanED}{345.45}
+\newcommand{\QwenMedianED}{0}
+\newcommand{\QwenThreeSevenMeanED}{1461.55}
+\newcommand{\QwenThreeSevenMedianED}{154.40}
+\newcommand{\PhysicsComparisons}{4620}
+\newcommand{\PhysicsFixtures}{12}
+\newcommand{\EIIProjectionTimeouts}{53}
+\newcommand{\EIIProjectionRows}{1800}
+
+\title{\vspace{-1.0em}State Sensitivity Is Not Grounding:\\
+Dual Replay for LLM Battery Scheduling}
+\author{%
+Jiangwei Xue\\
+\small Independent Researcher\\
+\small \texttt{jw.xue@lucentia.company}
+\and
+Zhida Qin\\
+\small Independent Researcher\\
+\small \texttt{shin\_robotics@akane.waseda.jp}
+\and
+Yuda Bi\thanks{Corresponding author.}\\
+\small TReNDS Center (GSU, GaTech, Emory)\\
+\small \texttt{yudabi95@gmail.com}%
+}
+\date{%
+\vspace{-0.6em}\small
+DOI: \href{https://doi.org/10.5281/zenodo.22707487}{\textcolor{black}{10.5281/zenodo.22707487}}\\[0.45em]
+\begin{minipage}{0.94\textwidth}
+\centering\footnotesize
+\textcopyright{} 2026 The Authors. This preprint is licensed under the
+\href{https://creativecommons.org/licenses/by/4.0/}{\textcolor{black}{Creative Commons Attribution 4.0 International License (CC BY 4.0)}}.
+\end{minipage}%
+}
+
+\begin{document}
+\maketitle
+\vspace{-1.2em}
+\begin{abstract}
+Battery schedules depend on the current state of charge (SOC). A model can react to an SOC change
+yet produce an irrelevant or unsafe trajectory. We present an interventional audit for direct,
+one-shot language-model scheduling. Forecasts, prices, constraints, events, and horizon remain
+fixed while the represented SOC changes by 50, 75, or 100~kWh. Byte-identical repeated requests
+estimate hosted-call variation. Each raw schedule is replayed from both the represented state and
+the authoritative plant state. Across 60 challenge scenarios, two hosted Flash conditions
+showed a mean canonical--stale distance of \EIICS{}~kWh versus \EIINull{}~kWh between duplicate
+canonical calls. The null-adjusted difference was \EIIAdjusted{}~kWh
+[\EIIAdjustedLow{}, \EIIAdjustedHigh{}] and was positive in \EIIPositive{}/60 scenarios. Under the
+complete contract, DeepSeek mostly returned zero schedules and Qwen3.6 returned active schedules
+with widespread SOC and export violations; neither produced an authoritative-feasible schedule in
+480 branches. In a separate Qwen3.7-Plus tier, F1 yielded 6/240 carrier-consistent and 3/240
+authoritative-feasible schedules, while the F0 payload subset yielded 1/60 and 0/60. Four schedules
+passed replay under the represented state and failed under the authoritative state. A common
+deterministic gate repaired every historical F1 branch. Matched zero and deterministic references
+separated gate-created feasibility from proposal value. An independent checker reproduced all
+\PhysicsComparisons{} physical verdicts with zero disagreement. The resulting
+intervention-to-authority protocol measures state grounding in continuous physical decisions.
+\end{abstract}
+
+\paragraph{Keywords.} agent evaluation; battery scheduling; environmental grounding; large language models; physical feasibility; state intervention.
+
+\section{Introduction}
+\label{sec:introduction}
+
+A grid-connected battery acts from a state that changes with every executed interval. State of
+charge (SOC), usable capacity, converter limits, reserve commitments, export limits, forecasts,
+and prices determine which schedules remain admissible. Model predictive control (MPC) makes this
+dependence explicit by rebuilding the optimization problem from the current state and available
+information \cite{parisio2014mpc,cedeno2022pvmpc,banfield2020empc}. Language models are now being
+studied as energy interfaces, schedule generators, supervisory agents, and optimization surrogates
+\cite{mongaillard2024power,michelon2025llmhems,cheng2025dispatch,elmakroum2026agentic,
+raghavan2026costoptimal,haghighi2026surrogate}. Recent reviews and power-dispatch frameworks place
+these systems on a spectrum from direct numerical generation to tool-mediated orchestration
+\cite{zhang2026energysystems,zhao2026dispatchagent,zhao2026carbonagent}. This paper asks a narrower
+question: when a numerical schedule changes after the represented physical state changes, what has
+actually been measured?
+
+A static feasibility test answers whether one output satisfies one instance. It does not reveal
+whether the model used the state that made the instance different. Output variation alone also
+leaves the question open. Hosted calls can vary under the same payload, and a large action change
+can point away from the physically admissible region. In continuous physical scheduling, state
+grounding therefore has several observable contracts: the action should respond beyond ordinary
+repeated-call variation; the response should have a state-consistent direction; the schedule
+should satisfy the physical contract under the state supplied to the model; and the same schedule
+should remain valid when replayed from the authoritative plant state.
+
+Several research lines motivate this measurement problem. Direct-optimization benchmarks test
+whether language models can produce constraint-faithful schedules or optimization solutions under
+deterministic verification \cite{tso2026constraintbench,jiang2026poweratlas,sharma2026schedbench}.
+Agent and embodied-AI work studies action grounding, state maintenance, stale evidence, and
+feedback-driven replanning \cite{huang2022zeroshot,ahn2022saycan,huang2023innermonologue,
+yoneda2024statler,wang2025groundact,sheng2026envtrust,chao2026stale}. Repeated-trial benchmarks and
+stochastic evaluation methods show that reliability cannot be inferred from one run
+\cite{cui2026sameprompt,lior2025reliableeval,yao2024taubench}. Runtime-assurance research provides
+separate mechanisms for enforcing physical constraints around learned or experimental controllers
+\cite{seto1998simplex,alshiekh2018shielding,wabersich2021safetyfilter}. The measurement gap lies at
+their intersection: a continuous physical schedule needs a controlled state intervention, a
+matched repeat null, and replay under both the represented and authoritative dynamics.
+
+We study that problem in a photovoltaic (PV)--battery environment with 15-minute actions and a
+24-hour horizon. The experimental program contains four non-pooled evidence tiers. E2 identifies
+state response by changing only the physical SOC carrier and comparing canonical--stale distance
+with a byte-identical canonical duplicate. F1 supplies the complete battery contract and two
+repeated calls per carrier. F0 repeats a fixed subset of the same payloads after approximately
+6.4 days. Qwen3.7-Plus is retained as a later sensitivity tier with separate denominators. Every
+proposal is scored before clipping, projection, or repair.
+
+The paper makes four contributions.
+\begin{enumerate}[leftmargin=*,itemsep=2pt,topsep=4pt]
+  \item We formalize an intervention-to-authority audit that separates state response,
+  directional consistency, carrier-consistent feasibility, authoritative feasibility, and
+  post-gate proposal value.
+  \item We combine a controlled 50/75/100-kWh SOC intervention with a byte-identical repeated-call
+  null, identifying state-carrier effects without assuming deterministic hosted inference.
+  \item We introduce dual replay for physical schedules. The same action is evaluated from the
+  model-facing carrier state and from the authoritative state, exposing authority-transfer
+  failures that a single replay cannot detect.
+  \item We connect raw-action evidence to a matched execution-gate analysis using zero, heuristic,
+  stale-optimal, random, and same-information MPC references. This locates the source of post-gate
+  feasibility and economic performance.
+\end{enumerate}
+
+To our knowledge, prior work on direct scheduling, state grounding, and constraint-faithful agent
+evaluation has not combined three elements in one physical scheduling protocol: a controlled
+intervention on a decision-relevant continuous state, an identical-payload repeat null, and
+deterministic replay under represented and authoritative states
+\cite{jiang2026poweratlas,sharma2026schedbench,wang2025groundact,sheng2026envtrust,chao2026stale}.
+The protocol covers open-loop schedule proposals under frozen hosted conditions. Tool-assisted and
+closed-loop energy-management systems define related but different execution architectures.
+
+\section{Related work}
+\label{sec:related}
+
+\subsection{Direct language-model optimization and energy scheduling}
+
+Language models have been used in power scheduling as intent translators, direct dispatch agents,
+residential schedulers, and surrogates for deterministic optimizers. Mongaillard et al. convert
+user requests into optimization and allocation decisions, while Cheng et al. study an LLM for
+advanced power dispatch \cite{mongaillard2024power,cheng2025dispatch}. Residential and building
+studies connect language models with home-energy scheduling, MPC, or MILP-derived supervision
+\cite{michelon2025llmhems,elmakroum2026agentic,raghavan2026costoptimal,haghighi2026surrogate}.
+Other architectures reserve numerical optimization and verification for deterministic modules and
+use the language model for orchestration or structured parameterization
+\cite{su2026microgrid,zhao2026carbonagent}. A recent energy-systems review surveys this broader
+landscape \cite{zhang2026energysystems}, and a power-dispatch-agent framework emphasizes planning,
+memory, tool invocation, and action as separate capabilities \cite{zhao2026dispatchagent}.
+
+Benchmark work increasingly isolates numerical and constraint faithfulness. ConstraintBench asks
+models to return structured solutions to fully specified optimization problems without solver
+access and checks every constraint against deterministic references \cite{tso2026constraintbench}.
+PowerAtlas evaluates physical feasibility and economic outcomes of power schedules over
+oracle-labeled instances \cite{jiang2026poweratlas}. SCHEDBench uses matched scheduling instances
+to test whether semantically equivalent surface forms induce above-noise changes in hard-constraint
+violations \cite{sharma2026schedbench}. PlanBench provides a broader planning benchmark grounded in
+automated-planning domains \cite{valmeekam2023planbench}. Electricity-domain benchmarks extend the
+scope to factuality, stability, live infrastructure, steady-state studies, and dynamic studies
+\cite{zhou2024elecbench,curcio2026energyagentbench,mylonas2026poweragentss,
+zhang2026poweragentdyn}. These studies establish feasibility and constraint faithfulness as central
+evaluation targets. Our protocol focuses on the state dependence of one direct numerical schedule
+and whether that dependence survives authoritative replay.
+
+\subsection{Environmental state and action grounding}
+
+Embodied-agent research provides a long line of work on mapping language to admissible actions and
+updating plans as the environment changes. Zero-shot language-model planners often require explicit
+grounding to executable actions \cite{huang2022zeroshot}; SayCan combines language scores with
+robot affordances \cite{ahn2022saycan}; ProgPrompt and Code as Policies constrain or compile
+language-model outputs into executable robot programs \cite{singh2023progprompt,
+liang2023codepolicies}. ReAct and Inner Monologue interleave reasoning with observations or
+feedback, allowing plans to update after interaction \cite{yao2023react,huang2023innermonologue}.
+ALFWorld similarly aligns abstract text environments with embodied tasks
+\cite{shridhar2021alfworld}.
+
+State representation itself has also become an explicit object of study. Statler maintains a
+structured world state across long-horizon embodied reasoning \cite{yoneda2024statler}. GroundAct
+evaluates whether actions respect environmental prerequisites, while EnvTrustBench and STALE test
+incorrect, stale, or superseded information \cite{wang2025groundact,sheng2026envtrust,
+chao2026stale}. CausalWorld shows how controlled interventions on environment variables can support
+causal and transfer evaluation in robotics \cite{ahmed2021causalworld}. Our setting adds continuous
+battery dynamics and a counterfactual replay operation: one fixed trajectory can be evaluated from
+two initial SOC values with identical forecasts, limits, and event information. The intervention
+is graded in physical units, which supports direction and dose analyses.
+
+\subsection{Repeated trials, verification, and execution gates}
+
+Agent evaluation has moved beyond single-run success. AgentBench evaluates decision-making across
+interactive environments, while AgentBoard exposes intermediate progress rather than only final
+success \cite{liu2024agentbench,ma2024agentboard}. $\tau$-bench measures reliability over repeated
+trials through pass$^k$ \cite{yao2024taubench}; Agent-SafetyBench evaluates safety failures across
+interactive agent environments \cite{zhang2024agentsafety}. Repeated-execution studies and
+stochastic evaluation methods likewise recommend distributions or repeat-aware estimators
+\cite{cui2026sameprompt,lior2025reliableeval,liang2023helm}. We use a byte-identical canonical
+request as an experimental null inside each E2 block, so state-carrier differences are compared
+with variation observed under the same scheduling payload.
+
+External verification and runtime assurance form a separate lineage. LLM-Modulo combines language
+models with model-based verifiers \cite{kambhampati2024llmmodulo}. Simplex architectures separate
+an experimental controller from a trusted safety controller \cite{seto1998simplex}; shielding and
+predictive safety filters enforce state and input constraints around learned policies
+\cite{alshiekh2018shielding,wabersich2021safetyfilter}. In energy control, MPC and economic MPC offer
+deterministic references for constrained battery operation \cite{parisio2014mpc,banfield2020empc},
+while battery scheduling can explicitly trade market value against degradation
+\cite{sarker2017battery}. The execution gate in this study belongs to this runtime-assurance
+tradition. We use it to ask how much of the final feasible trajectory is supplied by the proposal
+and how much is created by the gate.
+
+\section{Physical problem and grounding contracts}
+\label{sec:formalization}
+
+\subsection{PV--battery dynamics}
+
+Each scenario $i$ contains an exogenous suffix
+\begin{equation}
+ z_i=\{\ell_{it},p^{\mathrm{pv}}_{it},\lambda_{it},\theta_{it}\}_{t=0}^{H_i-1},
+ \label{eq:exogenous}
+\end{equation}
+where $\ell_{it}$ is load, $p^{\mathrm{pv}}_{it}$ is the PV forecast, $\lambda_{it}$ is energy
+price, and $\theta_{it}$ collects time-varying battery and grid limits. The state includes SOC
+$e_{it}$, usable capacity $E_{it}$, reserve $E^{\mathrm{res}}_{it}$, charge and discharge limits,
+and the export limit.
+
+The model returns a signed battery schedule
+$u_i=(u_{i0},\ldots,u_{i,H_i-1})$, with positive values for charging. Let
+$[a]_+=\max(a,0)$. For $\Delta t=0.25$~h, the deterministic SOC update is
+\begin{equation}
+ e_{i,t+1}=e_{it}+\eta_{\mathrm{ch}}[u_{it}]_+\Delta t
+ -\frac{[-u_{it}]_+}{\eta_{\mathrm{dis}}}\Delta t.
+ \label{eq:soc}
+\end{equation}
+Grid exchange, positive for import, is
+\begin{equation}
+ g_{it}=\ell_{it}-p^{\mathrm{pv}}_{it}+u_{it}.
+ \label{eq:grid}
+\end{equation}
+A raw schedule is engineering-feasible when every interval satisfies the signed power bounds,
+reserve and usable-capacity bounds on $e_{i,t+1}$, and the export condition
+$g_{it}\ge -P^{\mathrm{exp}}_{it}$, while the terminal state satisfies
+\begin{equation}
+ |e_{i,H_i}-325|\le 1\ \mathrm{kWh}.
+ \label{eq:terminal}
+\end{equation}
+The $\pm1$~kWh terminal tolerance defines the raw-action endpoint. The deterministic execution gate
+uses an exact terminal equality. We retain these contracts as separate fields.
+
+Let
+\begin{equation}
+ \Phi_i^{\epsilon}(u;x,z)\in\{0,1\}
+ \label{eq:feasibility-map}
+\end{equation}
+denote deterministic replay from initial state $x$ with terminal tolerance $\epsilon$, and let
+$\mathbf v_i^{\epsilon}(u;x,z)$ contain the associated power, SOC, export, and terminal violation
+magnitudes. Binary feasibility and violation severity are both reported.
+
+For post-gate economic comparisons, the physical cost is
+\begin{equation}
+ J_i(u)=\sum_{t=0}^{H_i-1}\left[
+ \lambda_{it}g_{it}\frac{\Delta t}{1000}
+ +c_{\mathrm{deg}}|u_{it}|\Delta t\right].
+ \label{eq:cost}
+\end{equation}
+The prompt supplied prices and the complete physical contract. It did not instruct the model to
+minimize Eq.~\eqref{eq:cost}. Cost and the same-information MPC are evaluation references applied
+after the proposal is formed.
+
+\subsection{Represented and authoritative state}
+
+Let $x_i^A$ be the authoritative event-time state reconstructed from the executed prefix. The
+canonical carrier contains $x_i^C=x_i^A$. The controlled stale carrier contains
+\begin{equation}
+ x_i^S=\mathcal I_{\delta_i}(x_i^A),
+ \qquad |\delta_i|\in\{50,75,100\}\ \mathrm{kWh},
+ \label{eq:intervention}
+\end{equation}
+with all non-carrier content held fixed. We use $x_i^R$ for the state represented to the model in
+a given branch. Canonical branches have $x_i^R=x_i^A$; stale branches have $x_i^R=x_i^S$.
+
+For model condition $m$, carrier $b\in\{C,S\}$, and repeated call $r$, the proposal is treated as
+a hosted random output
+\begin{equation}
+ U_{imbr}\sim\Pi_m(\cdot\mid z_i,c(x_i^b)),
+ \label{eq:model-output}
+\end{equation}
+where $c(\cdot)$ is the frozen state-carrier encoding.
+
+\subsection{Five observable contracts}
+
+We organize the audit through five observable contracts.
+
+\paragraph{1. Response beyond repeat variation.}
+For two schedules, define the action-energy distance
+\begin{equation}
+ d_i(u,v)=\Delta t\sum_{t=0}^{H_i-1}|u_t-v_t|.
+ \label{eq:distance}
+\end{equation}
+E2 contains a byte-identical canonical duplicate $C2$. After reducing three repetitions to a
+median within each scenario--model cell, the null-adjusted carrier response is
+\begin{equation}
+ \tau_{im}=D^{CS}_{im}-D^{CC2}_{im}.
+ \label{eq:null-adjusted}
+\end{equation}
+A positive $\tau_{im}$ means that the carrier contrast exceeds the observed duplicate-call
+contrast in that cell. For cross-scenario interpretation we also report
+\begin{equation}
+ \bar d_i(u,v)=\frac{d_i(u,v)}{H_i\Delta t},
+ \qquad
+ d_i^{\delta}(u,v)=\frac{d_i(u,v)}{|\delta_i|},
+ \label{eq:normalized-distance}
+\end{equation}
+which express mean absolute power difference and action distance per kilowatt-hour of SOC
+intervention.
+
+F1 contains two calls per carrier. Its finite-sample two-carrier energy statistic is
+\begin{align}
+ B_{im}&=\frac{1}{4}\sum_{j=1}^{2}\sum_{k=1}^{2}d_i(C_j,S_k),\\
+ W^C_{im}&=d_i(C_1,C_2),\qquad W^S_{im}=d_i(S_1,S_2),\\
+ \mathrm{ED}_{im}&=2B_{im}-W^C_{im}-W^S_{im}.
+ \label{eq:ed}
+\end{align}
+With two calls per group, $\mathrm{ED}_{im}$ can be negative. We report its distribution,
+scenario support, and robust summaries alongside its mean.
+
+\paragraph{2. Directional consistency.}
+Let $\bar U_i^C$ and $\bar U_i^S$ be the two-call carrier means in F1, and let
+$\delta_i=e_i^C-e_i^S$. A coarse directional score is
+\begin{equation}
+ R_i^{\mathrm{dir}}=-\operatorname{sgn}(\delta_i)\,
+ \Delta t\sum_t(\bar U_{it}^C-\bar U_{it}^S).
+ \label{eq:direction}
+\end{equation}
+Positive values indicate that a lower represented SOC leads to more net charging or less net
+discharging. This score measures the sign of aggregate energy response; it does not encode the
+full time-varying feasible set.
+
+\paragraph{3. Carrier-consistent feasibility.}
+The proposal is replayed from the model-facing state:
+\begin{equation}
+ F^{\mathrm{carrier}}_{imbr}=\Phi_i^1(U_{imbr};x_i^R,z_i).
+ \label{eq:carrier-feasible}
+\end{equation}
+This endpoint asks whether the schedule is valid in the state represented to the model.
+
+\paragraph{4. Authoritative feasibility.}
+The same proposal is replayed from the plant state:
+\begin{equation}
+ F^{\mathrm{auth}}_{imbr}=\Phi_i^1(U_{imbr};x_i^A,z_i).
+ \label{eq:auth-feasible}
+\end{equation}
+An authority-transfer failure is
+\begin{equation}
+ L^{\mathrm{auth}}_{imbr}=\mathbf{1}\{F^{\mathrm{carrier}}_{imbr}=1,
+ F^{\mathrm{auth}}_{imbr}=0\}.
+ \label{eq:authority-loss}
+\end{equation}
+We use $F^{\mathrm{auth}}$ as the safety-facing raw endpoint.
+
+\paragraph{5. Proposal value after a common gate.}
+Let $G_i(u)$ solve a deterministic feasibility-restoration problem from authoritative state. The
+gate may alter battery power and, in the expanded formulation, use curtailment and mode variables.
+Its post-gate regret is
+\begin{equation}
+ \operatorname{Regret}_i(G_i(u))=J_i(G_i(u))-J_i(u_i^{\star}),
+ \label{eq:regret}
+\end{equation}
+where $u_i^{\star}$ is the same-information MPC reference. Matched proposal value against baseline
+$b$ is measured by
+\begin{equation}
+ \Delta\operatorname{Regret}_{m,b}
+ =\operatorname{Regret}_i(G_i(U_m))-\operatorname{Regret}_i(G_i(U_b)).
+ \label{eq:proposal-value}
+\end{equation}
+A feasible $G_i(U_m)$ establishes feasibility of the proposal--gate system. Eq.~\eqref{eq:proposal-value}
+locates any incremental economic value supplied by the proposal.
+
+\section{Experimental design}
+\label{sec:method}
+
+\subsection{Public-data substrate and plant}
+
+We assemble the deterministic environment from public 2024 time series at 15-minute resolution. PV input
+uses NSRDB GOES CONUS v4 data for Los Angeles, San Diego, Fresno, and Sacramento
+\cite{sengupta2018nsrdb}; \texttt{pvlib} converts irradiance and weather to AC power
+\cite{anderson2023pvlib}. Load follows the OEDI ComStock LargeOffice profile
+\cite{wilson2021eulp,parker2023comstock}. Price is CAISO day-ahead locational marginal price at
+TH\_NP15\_GEN-APND \cite{caiso2017oasis}. The synchronized series define a controlled benchmark
+substrate; they are not measurements from a co-located plant.
+
+The simulated site combines a 400-kW PV array, a commercial load scaled to an 800-kW peak, and a
+500-kWh battery. The battery accepts up to 250~kW in either direction. Both one-way efficiencies
+are 0.95; the default reserve and export limits are 75~kWh and 150~kW. The battery-throughput
+coefficient in Eq.~\eqref{eq:cost} is
+0.008~USD/kWh; degradation-aware battery optimization motivates including throughput cost \cite{sarker2017battery}. A day contains 96 intervals. Each scenario contains one visible event from five
+families: forecast revision, battery-capacity derating, power-limit derating, export-limit update,
+and reserve-commitment update.
+
+\subsection{Challenge-set construction}
+
+The candidate generator produced 280 E2 scenarios. Provider-free admission required a feasible
+canonical deterministic suffix, an infeasible zero suffix, at least 25~kWh difference between
+canonical and stale deterministic plans, and a material consequence such as stale-plan
+infeasibility, terminal error above 10~kWh, or a first-two-hour action change of at least 20~kW.
+Two hundred five candidates passed admission, and 60 were selected with 12 scenarios per event
+family. The set is designed to expose state-dependent failures. Its denominators describe this
+challenge set. The authoritative SOC is lower than the stale carrier in 37 scenarios and higher in
+23. Signed gaps are $-100$, $-75$, $-50$, $+50$, and $+100$~kWh.
+
+\subsection{Evidence tiers}
+
+Table~\ref{tab:tiers} summarizes the frozen tiers. They share the physical substrate and replay
+code but answer different questions. Their results are reported separately.
+
+\begin{table}[!htbp]
+\centering
+\caption{Experimental tiers and inferential roles. Calls are logical hosted requests.}
+\label{tab:tiers}
+\small
+\begin{tabularx}{\textwidth}{@{}lrrrX@{}}
+\toprule
+Tier & Scenarios & Model conditions & Calls & Primary role \\
+\midrule
+E2 & 60 & 2 & 2,160 planned & Carrier response against a byte-identical null; three repetitions \\
+F1 & 60 & 2 & 480 & Complete physical contract; two canonical and two stale calls \\
+F0 & 15 & 2 & 120 & Byte-identical temporal rerun of an F1 subset after 6.44 days \\
+Qwen3.7 F1 & 60 & 1 & 240 & Separate-model sensitivity tier under the F1 contract \\
+Qwen3.7 F0 payloads & 15 & 1 & 60 & Separate sensitivity on the frozen F0 payload subset \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\paragraph{E2 carrier identification.}
+Each of the 60 scenarios is crossed with DeepSeek-V4-Flash and
+Qwen3.6-Flash-2026-04-16 and run three times, producing \EIIBlocks{} blocks. Each block begins with
+one shared prefix and then forks into five Stage-2 branches: canonical state (C), controlled stale
+physical state (S), metadata control (K), model-maintained carrier (M), and a byte-identical
+canonical duplicate (C2). The planned run contained \EIIPlannedCalls{} calls;
+\EIIActualCalls{} were attempted and
+\EIISuccessfulCalls{} returned successfully, with no protocol exclusions. C--S is the physical
+intervention contrast and C--C2 is the repeated-call null used in the main estimator.
+
+\paragraph{F1 complete-contract tier.}
+F1 uses the same 60 scenario identities. Each scenario--model block contains C1, C2, S1, and S2,
+for \FOneBranches{} calls. The prompt gives the signed power convention, SOC dynamics, efficiencies,
+interval-specific charge/discharge, reserve, capacity and export limits, the full load/PV/price
+suffix, and the 325-kWh terminal target with a 1-kWh engineering tolerance. Output is a sparse
+JSON segment list that expands deterministically to the dense action vector. Temperature is zero,
+provider reasoning is disabled where available, and no tools, solver, search, code execution, or
+fallback route is permitted.
+
+\paragraph{F0 temporal rerun.}
+F0 resubmits 120 byte-identical payloads from 15 scenarios per historical model condition. The
+first F0 request starts 154.65 hours after the last F1 request. This tier measures paired temporal
+reproducibility across the two saved service windows.
+
+\paragraph{Qwen3.7-Plus sensitivity.}
+A later tier applies the same frozen F1 and F0 payload sets to Qwen3.7-Plus. It contains 240 F1
+branches and 60 F0-subset branches. These rows are never pooled with the two historical Flash
+conditions.
+
+\subsection{Reduction and uncertainty}
+
+Within each scenario--model cell, E2 takes the median of three repetition-level observations.
+Model estimates average the resulting 60 cell medians. For the pooled estimate, the two model-cell
+medians are averaged within scenario before averaging over the 60 scenarios. Parser failure
+receives zero distance under the registered full-denominator rule; joint parseability is reported
+beside the estimate.
+Uncertainty uses 10,000 scenario-cluster resamples with seed 20260716. The resulting intervals
+measure stability to the composition of the frozen challenge set.
+
+F1 treats the scenario--model block as the independent unit. We report means, medians, positive/
+zero/negative support, 10\% and 20\% trimmed means, and deletion of the largest one, two, and five
+scenario effects. A random carrier-label pairing test provides an additional finite-sample null
+for Eq.~\eqref{eq:ed}. Dose and direction are stratified by signed SOC gap and model.
+
+\subsection{Replay, gate, and evidence validation}
+
+Every raw response, parsed action, state carrier, replay, and gate trajectory is hash linked. Raw
+replay is performed before any repair. The F1 battery-only gate seeks the minimum same-action-space
+correction under exact terminal equality; the expanded gate can also use curtailment and mode
+variables. Global distance optimality is certified for 409/480 historical F1 branches. The
+remaining 71 branches retain a feasible mode-library upper bound on correction distance. The same
+gate is applied to language-model, zero, heuristic, random static-range, stale-optimal, and
+direct-MPC proposals.
+
+A second physics checker independently implements SOC transition, power limits, reserve, usable
+capacity, export, curtailment, terminal semantics, and cost. It imports no simulator, scorer, or
+gate functions from the primary implementation. The release compares \PhysicsComparisons{} saved
+raw, gated, and deterministic-witness trajectories and includes \PhysicsFixtures{} hand-specified
+boundary fixtures.
+
+\section{Results}
+\label{sec:results}
+
+\subsection{The SOC carrier changes some schedules beyond the repeat null}
+
+Table~\ref{tab:e2-core} reports the E2 identification result. The mean canonical--stale distance
+was \EIICS{}~kWh [\EIICSLow{}, \EIICSHigh{}]. Byte-identical canonical calls differed by
+\EIINull{}~kWh [\EIINullLow{}, \EIINullHigh{}]. Their null-adjusted contrast was
+\EIIAdjusted{}~kWh [\EIIAdjustedLow{}, \EIIAdjustedHigh{}]. Joint parsing succeeded for C/S in
+\EIIParsedPairsCS{}/\EIIBlocks{} blocks and for C/C2 in
+\EIIParsedPairsCC{}/\EIIBlocks{}.
+
+% Evidence: manuscript/generated/e12_results_macros.tex in the paper-design package.
+\begin{table}[!htbp]
+\centering
+\caption{E2 action-distance results. Values are kWh; brackets are scenario-cluster resampling
+stability intervals.}
+\label{tab:e2-core}
+\small
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Estimate & Mean & Stability interval \\
+\midrule
+Canonical--stale, pooled & \EIICS & [\EIICSLow, \EIICSHigh] \\
+Canonical--duplicate, pooled & \EIINull & [\EIINullLow, \EIINullHigh] \\
+Null-adjusted, pooled & \EIIAdjusted & [\EIIAdjustedLow, \EIIAdjustedHigh] \\
+Null-adjusted, DeepSeek-V4-Flash & \EIIDeepAdjusted & [\EIIDeepAdjustedLow, \EIIDeepAdjustedHigh] \\
+Null-adjusted, Qwen3.6-Flash & \EIIQwenAdjusted & [\EIIQwenAdjustedLow, \EIIQwenAdjustedHigh] \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The model strata differ. DeepSeek's adjusted interval stays above zero; Qwen3.6's interval spans
+zero. At scenario level, the pooled adjusted value is positive in \EIIPositive{}/60 cases, zero in
+\EIIZero{}/60, and negative in \EIINegative{}/60. Capacity and power derating carry the largest
+event-family means, while forecast and export updates are centered near zero. The aggregate effect reflects a subset of state-active cases rather
+than a uniform response across the challenge set.
+
+\subsection{Complete-contract responses are sparse and model-specific}
+
+F1 changes the interface from E2's multi-branch experiment to a complete, direct schedule contract
+with two calls per carrier. Table~\ref{tab:f1-phenotypes} shows three distinct output phenotypes.
+DeepSeek returned 218/240 exact-zero schedules; Qwen3.6 returned active schedules in all 240
+branches; Qwen3.7-Plus was active in 239/240 branches. Their response distributions differ as much
+as their action levels.
+
+% Evidence: expected_outputs/primary/f1_block_metrics.csv,
+% expected_outputs/primary/f1_branch_metrics.csv, and Qwen37 counterparts.
+\begin{table}[!htbp]
+\centering
+\caption{F1 response and authoritative-replay outcomes by model condition. Qwen3.7-Plus is a
+separate sensitivity tier. ED support is positive/zero/negative over 60 scenario blocks.}
+\label{tab:f1-phenotypes}
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lrrrrrrrr@{}}
+\toprule
+Model condition & Nontrivial & Mean ED & Median ED & ED support & Dynamic OK & Terminal viol. & $F^{\mathrm{carrier}}$ & $F^{\mathrm{auth}}$ \\
+ & (/240) & (kWh) & (kWh) & ($+$/0/$-$) & (/240) & (/240) & (/240) & (/240) \\
+\midrule
+DeepSeek-V4-Flash & 22 & \DeepMeanED & \DeepMedianED & 8/52/0 & 223 & 240 & 0 & 0 \\
+Qwen3.6-Flash & 240 & \QwenMeanED & \QwenMedianED & 3/56/1 & 1 & 240 & 0 & 0 \\
+\midrule
+Qwen3.7-Plus & 239 & \QwenThreeSevenMeanED & \QwenThreeSevenMedianED & 37/16/7 & 81 & 237 & 6 & 3 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+DeepSeek's mean ED was \DeepMeanED{}~kWh, yet its median was zero and only 8/60 scenarios were
+positive. Removing the five largest scenarios reduced the mean to 91.36~kWh; the 20\% trimmed mean
+was zero. Qwen3.6 had a mean ED of \QwenMeanED{}~kWh, a zero median, and only three positive
+scenarios. Removing its largest scenario moved the mean below zero. Random carrier-label pairing
+placed the DeepSeek mean above its null distribution (upper-tail $p=0.00018$); the Qwen3.6 mean did
+not ($p=0.13536$). Qwen3.7-Plus produced broader support, with a 154.40-kWh median and 37 positive
+scenarios, while still retaining seven negative scenario statistics. After division by horizon
+duration, mean ED is 51.56~kW for DeepSeek, 16.65~kW for Qwen3.6, and 64.86~kW for Qwen3.7-Plus;
+the corresponding medians are 0, 0, and 6.80~kW.
+
+The two historical Flash conditions fail in different ways. DeepSeek usually submits no action;
+its dynamic constraints pass in 223/240 branches, but every branch misses the terminal target.
+Qwen3.6 always acts, and 239/240 branches violate at least one dynamic constraint. SOC lower-bound
+violations occur in 235 branches and export violations in 138. Both models finish with
+0/240 authoritative-feasible schedules.
+
+\subsection{Larger SOC interventions do not produce a monotone response}
+
+Table~\ref{tab:dose} stratifies historical F1 by the absolute SOC gap. Every model--dose median is
+zero. DeepSeek's mean ED rises from 50 to 75~kWh and then falls at 100~kWh. Qwen3.6 changes sign at
+50~kWh and has its largest mean at 100~kWh. Directional support also remains sparse. The data do
+not show a monotone dose--response relation over the three registered gaps. Event-family
+composition differs across gap strata, so this table describes the registered challenge set rather
+than an isolated causal dose effect.
+
+% Evidence: expected_outputs/primary/f1_stratified_summary.csv.
+\begin{table}[!htbp]
+\centering
+\caption{Historical F1 response by SOC intervention magnitude. Direction support counts positive,
+zero, and negative coarse directional scores over 20 scenarios per cell.}
+\label{tab:dose}
+\small
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+Model & Gap (kWh) & Mean ED (kWh) & Median ED & ED support & Direction support \\
+\midrule
+\multirow{3}{*}{DeepSeek-V4-Flash}
+ & 50  & 1137.50 & 0 & 2/18/0 & 1/18/1 \\
+ & 75  & 1975.00 & 0 & 3/17/0 & 2/17/1 \\
+ & 100 & 407.50  & 0 & 3/17/0 & 4/16/0 \\
+\midrule
+\multirow{3}{*}{Qwen3.6-Flash}
+ & 50  & -155.25 & 0 & 0/19/1 & 2/15/3 \\
+ & 75  & 126.50  & 0 & 1/19/0 & 1/13/6 \\
+ & 100 & 1065.10 & 0 & 2/18/0 & 2/16/2 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Across all gaps, DeepSeek's coarse directional score was positive in 7/60 scenarios, zero in 51,
+and negative in two. Qwen3.6 was positive in five, zero in 44, and negative in 11. Positive action
+distance alone provides little evidence that the response follows the sign of the SOC intervention.
+
+\subsection{Carrier-consistent feasibility can fail under authoritative replay}
+
+Table~\ref{tab:dual-replay} applies the two replay states to every complete-contract branch. The
+historical Flash tiers remain infeasible under both definitions. Qwen3.7-Plus changes the picture:
+6/240 F1 schedules are feasible from the state represented to the model, while 3/240 remain
+feasible from the authoritative state. On the 60 F0-subset payloads, one schedule is
+carrier-consistent and none is authoritative-feasible.
+
+% Evidence: expected_outputs/semantics/FEASIBILITY_SEMANTICS.md and
+% expected_outputs/qwen37/QWEN37_OFFLINE_STANDARDIZATION.json.
+\begin{table}[!htbp]
+\centering
+\caption{Raw feasibility under the represented carrier state and authoritative state. Tiers are
+kept separate.}
+\label{tab:dual-replay}
+\small
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Tier & Branches & Carrier-consistent & Authoritative \\
+\midrule
+Historical F1, two Flash conditions & 480 & 0 & 0 \\
+Historical F0 temporal rerun & 120 & 0 & 0 \\
+Qwen3.7-Plus F1 & 240 & 6 & 3 \\
+Qwen3.7-Plus F0 payload subset & 60 & 1 & 0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The four authority-transfer failures are all stale-carrier schedules. Three appear in Qwen3.7 F1
+and one in its F0-subset tier. Their carrier-state terminal errors range from 0.03 to 0.71~kWh,
+inside the engineering tolerance. Authoritative replay changes those errors to approximately
+49.97, 50.19, 75.71, and 99.81~kWh. No other constraint creates these four mismatches. The fixed
+action is internally valid for the represented initial SOC and invalid for the plant initial SOC.
+
+\subsection{The temporal rerun preserves the feasibility conclusion}
+
+All 120 historical F0 request payload hashes match their F1 counterparts. DeepSeek repeats 59/60
+branch actions exactly and 14/15 four-branch blocks exactly. Qwen3.6 repeats 49/60 branch actions
+and 9/15 blocks. Raw authoritative feasibility remains 0/120. This paired rerun shows that output
+reproducibility is model-dependent even at temperature zero, while the physical endpoint is
+unchanged across the two service windows.
+
+\subsection{A common gate separates feasibility from proposal value}
+
+The exact-terminal battery-only gate solves all 480 historical F1 branches. Post-gate feasibility
+is 480/480, while raw authoritative feasibility is 0/480. The required corrections
+are model-specific. DeepSeek's median correction is 131.58~kWh and Qwen3.6's is 5221.84~kWh. The
+median post-gate regret is 3.12~USD for each model. The common median reflects the gate and scenario
+set more than the raw action distribution.
+
+Table~\ref{tab:gate-zero} reports matched differences against a zero proposal under the same gate.
+DeepSeek has zero median differences in correction and regret; 218/240 correction differences and
+224/240 regret differences are exactly zero. Qwen3.6 requires 5187.50~kWh more median correction
+than zero. Its mean regret is 0.126~USD lower than zero, but the median is zero and the difference
+is confined to 8/240 branches. The gate supplies feasibility in every branch. The raw proposal
+supplies limited and comparator-dependent economic information.
+
+% Evidence: OFFLINE_RECOMPUTE_SUMMARY.json, matched_llm_minus_baseline.
+\begin{table}[!htbp]
+\centering
+\caption{Matched LLM-minus-zero differences under the battery-only gate. Support is
+positive/zero/negative. Negative regret favors the LLM proposal. Intervals are
+scenario-resampling stability intervals.}
+\label{tab:gate-zero}
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+Model & Mean $\Delta D$ (kWh) & Median $\Delta D$ & $\Delta D$ support & Mean $\Delta$regret (USD) & Median & Regret support \\
+\midrule
+DeepSeek-V4-Flash & 337.58 [187.74, 510.46] & 0 & 17/218/5 & 0.253 [-0.330, 1.006] & 0 & 9/224/7 \\
+Qwen3.6-Flash & 4633.93 [4489.48, 4774.67] & 5187.50 & 240/0/0 & -0.126 [-0.245, -0.035] & 0 & 0/232/8 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+The expanded gate uses curtailment in 8/240 branches for each historical model. Most rescues alter
+battery action and charge/discharge mode: 227/240 DeepSeek branches and 231/240 Qwen3.6 branches.
+These counts show that repair can include control variables absent from the language-model action
+space. Post-gate feasibility belongs to the full execution layer.
+
+\subsection{Independent replay closes the physical evidence loop}
+
+The independent checker agrees with the primary implementation on all \PhysicsComparisons{}
+saved comparisons: 1,800 raw replay rows, 2,760 gate trajectories, and 60 deterministic witnesses.
+All \PhysicsFixtures{} hand-specified fixtures pass, including power, SOC upper and lower bounds,
+export, terminal tolerance, reserve, capacity derating, and boundary cases. The maximum numerical
+difference is zero at the stored precision, and no Boolean feasibility verdict differs.
+
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{State grounding is a sequence of contracts}
+
+The experiments reveal distinct points of failure. E2 detects a carrier effect beyond an observed
+repeat null, yet that effect is concentrated in a minority of scenarios and differs by model.
+F1 shows that response magnitude can have a zero median and a large mean. Directional support is
+sparser still. Qwen3.7-Plus provides the final separation: several schedules satisfy the complete
+contract from the represented state, while four lose feasibility under authoritative replay.
+
+These results support a contract view of state grounding. A physically grounded schedule should
+show state-dependent behavior beyond repeat variation, align with the direction of the
+intervention, and retain validity under the state that the plant will execute. Each contract has a
+different evidence object. Response uses paired raw actions; direction uses signed intervention;
+feasibility uses deterministic replay; authority transfer requires the same action under two
+initial states. A single success rate would hide these distinctions.
+
+\subsection{The repeat null changes the interpretation of sensitivity}
+
+The E2 byte-identical distance is 44\% of the pooled canonical--stale distance. Treating identical
+calls as deterministic would assign that entire difference to SOC. The within-block duplicate
+provides a direct service-window reference. It also exposes model heterogeneity: DeepSeek's
+adjusted interval stays above zero, while Qwen3.6's does not.
+
+F1 reinforces the need for distributional reporting. DeepSeek's 1173.33-kWh mean ED is supported
+by eight scenarios and a zero median. Qwen3.6 has one negative and three positive scenarios. These
+patterns resemble thresholded or episodic state use more than a smooth controller response. The
+50/75/100-kWh strata do not yield a monotone curve.
+
+\subsection{Dual replay identifies a deployment-relevant failure}
+
+Carrier-consistent replay measures internal validity under the state presented to the model.
+Authoritative replay measures the action that would reach the plant. The four Qwen3.7 authority
+losses are especially clear because the schedule has no nonterminal violation in either replay;
+the initial SOC shift alone moves the terminal state outside tolerance. A conventional single
+replay would classify these rows according to whichever initial state the evaluator happened to
+choose.
+
+The distinction applies beyond batteries. Any physical agent that receives an estimated,
+cached, or model-maintained state can produce an action that is valid in that representation and
+invalid in the execution state. Dual replay offers a general evaluation pattern when the dynamics
+are deterministic enough to reconstruct both trajectories.
+
+\subsection{Execution gates need matched attribution}
+
+The F1 gate restores feasibility for every historical branch, including zero proposals and highly
+active infeasible proposals. Its output combines the raw action, the exact-terminal contract, the
+lexicographic objective, and additional variables such as curtailment and mode. The matched zero
+comparison shows how little of the final result can be inferred from post-gate feasibility alone.
+DeepSeek largely reproduces the zero baseline. Qwen3.6 occasionally changes cost by a small amount,
+while requiring several megawatt-hours of additional trajectory correction.
+
+This suggests a practical division of labor. Authoritative state belongs in a plant-side estimator
+or digital twin. Deterministic optimization owns modeled feasibility. Language models can serve as
+interfaces, intent translators, or proposal generators, as in solver-mediated and orchestration-focused energy architectures \cite{su2026microgrid,zhao2026carbonagent}. Their contribution should be measured
+against simple proposals under the same execution layer. This comparison is more
+informative than reporting a repaired success rate.
+
+\subsection{Implications for benchmark design}
+
+A physical-agent benchmark gains diagnostic power from four design choices. First, intervene on a
+state variable whose physical consequence is known. Second, include identical-payload repeats in
+the same service window. Third, preserve the represented state and the authoritative state as
+separate replay inputs. Fourth, store raw and gated actions with stable row-level identifiers.
+These choices support causal interpretation at the protocol level without requiring a model-based
+judge.
+
+The protocol also favors endpoint families over composite scores. Parseability, response,
+direction, violation severity, authoritative feasibility, correction distance, and regret answer
+different questions. Reporting them together preserves the path from model output to physical
+execution.
+
+\section{Limitations}
+\label{sec:limitations}
+
+The 60 scenarios form a purpose-built challenge set. Admission selects state-sensitive,
+constraint-active cases, so the observed feasibility rates do not estimate ordinary PV--battery
+operation. The candidate archive preserves selection metadata. Complete PV, load, and price vectors were
+not retained for every rejected candidate, so a full counterfactual reselection cannot be
+reconstructed.
+
+The main hosted conditions are DeepSeek-V4-Flash and Qwen3.6-Flash under direct, one-shot,
+structured-output prompts. Qwen3.7-Plus is a separate sensitivity tier. Reasoning tools, code
+execution, solver calls, iterative correction, constrained decoding beyond JSON output, and
+closed-loop replanning are outside the experiment. The results characterize schedule-proposal
+reliability under these contracts.
+
+E2 has three repetitions per scenario--model cell and a byte-identical null. F1 has two calls per
+carrier, which makes Eq.~\eqref{eq:ed} variable and permits negative estimates. We report support,
+trimmed summaries, deletion analyses, and a pairing null, but more repetitions would estimate the
+full hosted-output distribution more precisely.
+
+The prompt specifies feasibility and the terminal target. It does not specify Eq.~\eqref{eq:cost}
+as the optimization objective. We exclude MPC trajectory distance as a measure of model
+optimality.
+Post-gate regret measures the execution system produced from each proposal.
+
+The substrate synchronizes public PV, load, and price data from different sources and is not a
+co-located field installation. The model proposes one open-loop suffix after one event. Sensor
+error, battery ageing, network power flow, demand charges, hardware timing, receding-horizon
+execution, and field protection remain untested.
+
+The archived E2 projection population retains \EIIProjectionTimeouts{}/\EIIProjectionRows{}
+timeouts and has status \texttt{PARTIAL\_WITH\_TIMEOUTS}. It is excluded from the complete-denominator
+gate claims in this paper. The matched F1 gate population used in Section~\ref{sec:results} solves
+all 480 branches.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+This study evaluates whether direct language-model battery schedules use physical state in a form
+that survives execution. A controlled SOC intervention changes some proposals beyond an
+identical-payload repeat null, but the response is sparse, model-dependent, and non-monotone over
+50, 75, and 100~kWh. The historical Flash conditions produce no authoritative-feasible schedule
+under the complete contract. Qwen3.7-Plus produces a small set of carrier-consistent feasible
+schedules, four of which fail when replay begins from the authoritative state. A deterministic
+gate restores feasibility, while matched baselines show that the gate and the proposal contribute
+different parts of the final result.
+
+The central evaluation object is the path from state intervention to authoritative replay. This
+path separates action sensitivity, directional use of state, physical validity in the represented
+world, physical validity at the plant, and downstream proposal value. The resulting protocol is
+applicable to other continuous physical agents whenever actions can be replayed under both
+represented and authoritative dynamics.
+
+\section*{Data and code availability}
+
+Data and code supporting the findings are available in the accompanying reproducibility
+repository at
+\url{https://github.com/Jiangwei-Xue/paper-05-llm-battery-state-grounding}.
+The repository provides the frozen tasks, prompts and request payloads, raw hosted-model
+responses, parsed actions, deterministic dual replay, scores, branch comparisons, matched gate
+baselines, claim-level hashes, analysis code, reference outputs, and a one-command offline
+workflow that regenerates the reported analyses from saved provider records and validates the
+VCR/H5/E5 evidence chain. The workflow does not repeat nondeterministic hosted-model calls.
+The analysis code is released under the MIT License. Original project documentation and derived
+result tables are licensed under CC BY 4.0. Third-party data, hosted-model records, and bundled
+dependencies remain subject to their respective terms.
+
+\section*{Competing interests}
+The authors declare no competing interests.
+
+\section*{Funding}
+This research received no specific grant from any funding agency in the public, commercial, or
+not-for-profit sectors.
+
+\appendix
+
+\section{Frozen schedule prompt contract}
+\label{app:prompt}
+
+The complete-contract prompt asks for one JSON object with a single \texttt{actions} field. Each
+segment contains \texttt{start\_offset}, \texttt{end\_offset\_exclusive}, and \texttt{power\_kw}.
+Segments must be sorted and non-overlapping; uncovered offsets expand to zero. Positive power
+charges the battery and negative power discharges it. The prompt states Eq.~\eqref{eq:soc}, all
+interval-specific power, reserve, capacity and export limits, Eq.~\eqref{eq:grid}, and the
+terminal condition in Eq.~\eqref{eq:terminal}. It also states that raw actions are scored before
+clipping, projection, or repair. The task JSON contains the carrier state and complete suffix time
+series. Explanations and fields outside the schema are disallowed.
+
+\section{Event-family heterogeneity in E2}
+\label{app:event}
+
+Table~\ref{tab:event} reports post-hoc event-family estimates. Each row contains 12 scenario
+clusters. The intervals describe challenge-set resampling stability.
+
+\begin{table}[!htbp]
+\centering
+\caption{E2 null-adjusted action distance by event family.}
+\label{tab:event}
+\small
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Event family & Mean (kWh) & Stability interval & Support ($+$/0/$-$) \\
+\midrule
+Battery-capacity derating & 831.7 & [221.6, 1425.8] & 8/3/1 \\
+Export-limit update & -67.5 & [-312.5, 156.7] & 2/8/2 \\
+Forecast revision & -1.0 & [-550.0, 557.3] & 2/8/2 \\
+Power-limit derating & 421.0 & [133.1, 734.4] & 5/6/1 \\
+Reserve-commitment update & 114.6 & [0.0, 264.6] & 3/9/0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Authority-transfer witnesses}
+\label{app:witnesses}
+
+Table~\ref{tab:witnesses} lists the four schedules with
+$F^{\mathrm{carrier}}=1$ and $F^{\mathrm{auth}}=0$. All are Qwen3.7-Plus stale-carrier outputs.
+The signed gap is canonical SOC minus stale SOC.
+
+\begin{table}[!htbp]
+\centering
+\caption{Saved authority-transfer failures. Terminal errors are absolute kWh.}
+\label{tab:witnesses}
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}llllrrr@{}}
+\toprule
+Tier & Branch & Event & Location/season & Signed SOC gap & Carrier error & Authoritative error \\
+\midrule
+F1 & S1 & Forecast revision & Sacramento/winter & -75 & 0.71 & 75.71 \\
+F1 & S1 & Export-limit update & Fresno/spring & +100 & 0.19 & 99.81 \\
+F1 & S1 & Capacity derating & Sacramento/autumn & -50 & 0.19 & 50.19 \\
+F0 subset & S2 & Export-limit update & San Diego/autumn & -50 & 0.03 & 49.97 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\section{Deterministic reference baselines}
+\label{app:baselines}
+
+Table~\ref{tab:baselines} gives aggregate battery-only gate outcomes for the five deterministic
+proposal sources over the 60 F1 scenarios. These rows use the same authoritative state and exact
+terminal gate. Direct MPC is the zero-regret reference by construction.
+
+\begin{table}[!htbp]
+\centering
+\caption{Deterministic proposal baselines under the common battery-only gate.}
+\label{tab:baselines}
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Proposal source & Raw feasible (/60) & Median correction (kWh) & Median cost (USD) & Median regret (USD) \\
+\midrule
+Direct MPC & 60 & 0.00 & 337.38 & 0.00 \\
+Simple heuristic & 60 & 0.00 & 354.47 & 5.15 \\
+Stale-optimal plan & 0 & 71.25 & 337.38 & 0.00 \\
+Zero schedule & 0 & 131.58 & 353.16 & 3.31 \\
+Random static-range schedule & 0 & 368.50 & 361.49 & 27.23 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begingroup
+\small
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+\endgroup
+
+\end{document}

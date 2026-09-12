@@ -1,0 +1,21 @@
+{
+  "counts": {
+    "canonical_witness_feasible": 60,
+    "canonical_witness_parse": 60,
+    "h_segment_roundtrip": 60,
+    "offset_regression": 60,
+    "request_identity_all_models": 60,
+    "stale_witness_feasible": 60,
+    "stale_witness_parse": 60,
+    "treatment_diff_only_soc": 60,
+    "zero_negative_parse": 60,
+    "zero_negative_physical_failure": 60
+  },
+  "export_interpretation": "strict_raw_grid_constraint_no_automatic_curtailment",
+  "network_attempts": 0,
+  "provider_calls_performed": 0,
+  "schema_version": "e2b_v2_provider_free_controls_v1",
+  "status": "pass",
+  "terminal_engineering_tolerance_kwh": 1.0,
+  "unique_scenarios": 60
+}

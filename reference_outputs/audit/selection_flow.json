@@ -1,0 +1,36 @@
+{
+  "E1": {
+    "admitted": 184,
+    "candidate_detail_boundary": "Admission manifests preserve selection variables and rejection codes. Full PV/load/price vectors are frozen for selected tasks; rejected-candidate vectors are not all retained.",
+    "candidates": 320,
+    "exclusion_reasons": {
+      "canonical_feasible": 3,
+      "event_stale_l1_ge_25": 102,
+      "forecast_plan_changes_if_applicable": 43,
+      "solver:RuntimeError": 31
+    },
+    "rejected": 136,
+    "selected": 20
+  },
+  "E2": {
+    "admitted": 205,
+    "candidate_detail_boundary": "Admission manifests preserve selection variables and rejection codes. Full PV/load/price vectors are frozen for selected tasks; rejected-candidate vectors are not all retained.",
+    "candidates": 280,
+    "exclusion_reasons": {
+      "binding_slack_fraction_le_005": 20,
+      "forecast_plan_changes_if_applicable": 33,
+      "solver:RuntimeError": 17,
+      "solver:ValueError": 6
+    },
+    "rejected": 75,
+    "selected": 60
+  },
+  "legacy": {
+    "admitted": 372,
+    "candidate_detail_boundary": "Admission manifests preserve selection variables and rejection codes. Full PV/load/price vectors are frozen for selected tasks; rejected-candidate vectors are not all retained.",
+    "candidates": 480,
+    "exclusion_reasons": {},
+    "rejected": 108,
+    "selected": 372
+  }
+}

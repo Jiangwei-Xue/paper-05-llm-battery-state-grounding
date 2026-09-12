@@ -1,0 +1,26 @@
+experiment_id: v2_e1_interface_confirmation
+tier: confirmatory_interface
+protocol_version: energybench-v2.1-two-condition-20260801
+scenario_count: 20
+models: [deepseek_formal, qwen_flash]
+repetitions: 3
+interfaces: [I0, I3]
+I_best: I3
+I_best_source: experiments_v2/reports/P0_I_BEST_DECISION.json
+stages: [stage1, stage2]
+planned_calls_per_model: 240
+planned_calls_total: 480
+co_primary_endpoints: [nontrivial_action_rate, raw_feasibility_rate]
+secondary_endpoints: [terminal_soc_error, projection_distance_kwh, savings_capture, parse_failure]
+admission:
+  canonical_feasible: true
+  zero_action_infeasible: true
+  terminal_target_kwh: 325.0
+  canonical_mpc_action_min_kwh: 50.0
+  event_stale_action_l1_min_kwh: 25.0
+  zero_minus_mpc_min_usd: 5.0
+  zero_minus_mpc_relative_min: 0.02
+  forecast_plan_must_change: true
+model_balance_required: true
+outcome_dependent_model_replacement: forbidden
+budget_hard_stop: false

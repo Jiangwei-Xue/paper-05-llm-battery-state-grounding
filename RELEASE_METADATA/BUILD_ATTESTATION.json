@@ -1,0 +1,7 @@
+{
+  "created_utc": "2026-09-12T00:00:00Z",
+  "method": "byte-for-byte duplicate archive build",
+  "publication_rule": "Builder aborts before atomic publication if duplicate bytes differ.",
+  "source_date_epoch": 1789171200,
+  "status": "PASS"
+}

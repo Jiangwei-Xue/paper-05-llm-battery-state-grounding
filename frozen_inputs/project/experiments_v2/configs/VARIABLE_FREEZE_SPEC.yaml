@@ -1,0 +1,123 @@
+schema_version: experiments_v2_variable_freeze_v1
+protocol_version: energybench-v2.1-two-condition-20260801
+status: offline_control_spec_p0_pending
+
+matrix_axes:
+  - experiment_tier
+  - interface_condition
+  - carrier_branch
+  - authority_branch
+  - model_condition
+  - event_family
+  - repetition
+
+model_axis:
+  allowed_conditions: [deepseek_formal, qwen_flash]
+  balanced_in: [P0, E1, E2, E3]
+  bridge_exception: deepseek_formal_only_version_descriptive
+  removed_before_provider_calls: [qwen_plus]
+  outcome_dependent_add_drop_or_replace: forbidden
+
+disallowed_hidden_variables:
+  - provider_model_alias_drift
+  - provider_route_or_fallback
+  - provider_tools_or_web_search
+  - provider_reasoning_mode
+  - temperature_or_sampling_default
+  - timeout_or_retry_semantics
+  - cache_reuse
+  - prompt_or_schema_repair
+  - scorer_or_threshold_changes
+  - future_oracle_in_carrier
+  - cross_tier_scenario_reuse
+  - complete_case_filtering
+
+inherited_control_sources:
+  - path: configs/frozen_protocol.yaml
+    role: data_and_physical_system
+    sha256: 90f13c9ba1477259c9f5815065018c354ebf59896ec35a1d3b2692807f248d03
+  - path: protocol/DATA_CONTRACT_V1_2.yaml
+    role: claim_bearing_data_contract
+    sha256: fd2b28b6222735aae004f7f07cc37272b0db7ae16b9925570b9b83c842374035
+  - path: protocol/FORMAL_EXPERIMENT_SPEC_V1.yaml
+    role: inherited_episode_contract
+    sha256: 310342a96ae644637dec12dca36010fbb52d34fceeec45f827540c7fc54c6990
+  - path: protocol/METRIC_SPEC_V1.yaml
+    role: inherited_metric_definitions
+    sha256: caa460d96afa4bab5702bbe2d0eff4b91c9b273d5439965b399b1cb987393acc
+  - path: protocol/OPERATIONAL_SUCCESS_SPEC_V1.yaml
+    role: inherited_operational_endpoint
+    sha256: d00396dc5fb8905a1bab5c05eae08c5a242b8dba8fe8f049b9f225a3287b14b3
+  - path: protocol/OUTPUT_SCHEMA_SPEC_V2.yaml
+    role: parser_and_output_boundary
+    sha256: 326f988bf19f2f811bcd5613b8e2292b83f156057312fac395caf0080dc0bd35
+  - path: protocol/RETRY_AND_FAILURE_SPEC_V3.yaml
+    role: retry_and_failure_accounting
+    sha256: 379df6cc67601b1c1ebf8bab82a6e224558a60ee83590c84bbac3837398e37ef
+  - path: protocol/ROUTE_AND_TRANSPORT_SPEC_V4.yaml
+    role: route_and_transport_contract
+    sha256: 7fd208e788e5f205b403815b9377267a6078b712498d65ed75a421f66dc77d3c
+  - path: protocol/MODEL_CONDITIONS_FINAL_V1.yaml
+    role: inherited_provider_defaults
+    sha256: 14ddce9044ed462bb19a3239105bad84f572c44adcf53f4df22b1244c536135b
+  - path: protocol/SCENARIO_GENERATION_SPEC_V1.yaml
+    role: event_and_selection_semantics
+    sha256: 5a8ab99c189dbaee96b2b4b4d541d23081f4273b6ffcb726b5636708ae6f4711
+
+inherited_values:
+  study_year: 2024
+  canonical_timezone: America/Los_Angeles
+  internal_storage_timezone: UTC
+  resolution_minutes: 15
+  leap_day_excluded: true
+  battery:
+    energy_capacity_kwh: 500.0
+    max_charge_kw: 250.0
+    max_discharge_kw: 250.0
+    charge_efficiency: 0.95
+    discharge_efficiency: 0.95
+    initial_soc_kwh: 250.0
+    reserve_soc_kwh: 75.0
+    terminal_soc_kwh: 250.0
+    export_limit_kw: 150.0
+    degradation_cost_per_kwh: 0.008
+    violation_penalty_per_kwh: 100.0
+  event_families:
+    - forecast_revision
+    - battery_capacity_derating
+    - power_limit_derating
+    - export_limit_update
+    - reserve_commitment_update
+  selection_seed: 20260713
+  event_generation_seed: 20260714
+  bootstrap_seed: 20260716
+  failure_accounting: failure_as_zero
+  human_labels: forbidden
+  llm_as_judge: forbidden
+  fallback: forbidden
+  tools: disabled
+  web_search: disabled
+  temperature: 0.0
+  max_output_tokens: 16000
+  attempt_timeout_seconds: 240
+  stage_timeout_seconds: 600
+  episode_timeout_seconds: 1260
+  retryable_http_statuses: [429, 502, 503, 504]
+  content_retry: forbidden
+  cache: disabled
+  concurrency: 5
+
+v2_additions:
+  v2_interface_seed: 20260801
+  v2_prefix_seed: 20260802
+  v2_run_order_seed: 20260803
+  note: new seeds govern only V2 construction and run order; inherited selection/event/bootstrap seeds remain unchanged
+
+pre_call_requirements:
+  - immutable_snapshot_or_frozen_rolling_hosted_identity_policy
+  - returned_model_match_rule
+  - direct_endpoint_and_route_metadata
+  - provider_capability_verification
+  - prompt_schema_config_environment_hash_manifest
+  - scenario_disjointness_manifest
+  - first_call_ledger_before_request
