@@ -19,7 +19,7 @@ CC BY 4.0.
 The corresponding repository files and their hashes are identified in
 `paper_reference/LICENSE.md` and `LATEST_PAPER.json`.
 
-Reproducibility package version: 1.5.1.
+Reproducibility package version: 1.5.2.
 
 ## One-command offline reproduction
 

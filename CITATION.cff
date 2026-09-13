@@ -2,8 +2,8 @@ cff-version: 1.2.0
 message: "Please cite the corresponding Zenodo paper when using this reproduction package."
 type: software
 title: "State Sensitivity Is Not Grounding: Reproducibility Package"
-version: "1.5.1"
-date-released: 2026-09-12
+version: "1.5.2"
+date-released: 2026-09-13
 authors:
   - family-names: Xue
     given-names: Jiangwei
