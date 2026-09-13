@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "paper_reference/main.tex",
-      "role": "authoritative_arxiv_latex_source",
+      "role": "authoritative_latex_source_for_zenodo_version",
       "sha256": "c88791450724e4319a0393ca8afed8cc0fa197a17f6a4782a11f6f5a99e92988"
     },
     {
@@ -29,7 +29,10 @@
   "layout": "standard_arxiv_article",
   "schema_version": "state_grounding_latest_paper_v2",
   "doi": "10.5281/zenodo.22707487",
+  "concept_doi": "10.5281/zenodo.22707486",
+  "license_scope_file": "paper_reference/LICENSE.md",
   "paper_license": "CC BY 4.0",
+  "public_record": "https://doi.org/10.5281/zenodo.22707487",
   "reproducibility_repository": "https://github.com/Jiangwei-Xue/paper-05-llm-battery-state-grounding",
   "title": "State Sensitivity Is Not Grounding: Dual Replay for LLM Battery Scheduling"
 }

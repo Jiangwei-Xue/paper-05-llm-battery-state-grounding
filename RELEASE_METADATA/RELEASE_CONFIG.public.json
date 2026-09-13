@@ -51,7 +51,11 @@
       "experiment_scaffolding/EXPERIMENT_MAP.md",
       "experiment_scaffolding/LIVE_RUNNER_GUIDE.md",
       "results/README.md",
+      "LICENSE",
       "LICENSE.md",
+      "LICENSES/README.md",
+      "LICENSES/THIRD_PARTY.md",
+      "paper_reference/LICENSE.md",
       "environment/PLATFORM_BOUNDARY.md"
     ],
     "stale_patterns": [
@@ -67,7 +71,7 @@
     ]
   },
   "release_class": "public",
-  "release_name": "state_grounding_reproducibility_package_v1_5_1_20260912",
+  "release_name": "state_grounding_reproducibility_package_v1_5_1_licensing_r2_20260913",
   "schema_version": 1,
   "source_date_epoch": 1789171200,
   "statistical_claims": [],

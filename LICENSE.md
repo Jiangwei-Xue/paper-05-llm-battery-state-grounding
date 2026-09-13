@@ -1,23 +1,2 @@
-# License and reuse boundaries
-
-## Analysis code
-
-Copyright (c) 2026 the project contributors.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of the analysis scripts and associated software files in this package, to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-## Paper, project documentation, and derived tables
-
-The paper, original project documentation, and derived result tables are licensed under the Creative Commons Attribution 4.0 International license: https://creativecommons.org/licenses/by/4.0/
-
-## Materials not relicensed here
-
-- Bundled Python libraries retain their upstream licenses, included in their distribution metadata.
-- Source public datasets retain their upstream terms and attribution requirements.
-- Hosted-model requests and responses remain subject to applicable provider terms.
-
-Nothing in this file overrides third-party terms.
+This repository uses layered licensing. See `LICENSE` for the
+controlling material and path-level license map.

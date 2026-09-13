@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "Please cite the corresponding Zenodo paper when using this reproduction package."
+type: software
+title: "State Sensitivity Is Not Grounding: Reproducibility Package"
+version: "1.5.1"
+date-released: 2026-09-12
+authors:
+  - family-names: Xue
+    given-names: Jiangwei
+  - family-names: Qin
+    given-names: Zhida
+  - family-names: Bi
+    given-names: Yuda
+repository-code: "https://github.com/Jiangwei-Xue/paper-05-llm-battery-state-grounding"
+url: "https://github.com/Jiangwei-Xue/paper-05-llm-battery-state-grounding"
+license:
+  - MIT
+  - CC-BY-4.0
+preferred-citation:
+  type: article
+  title: "State Sensitivity Is Not Grounding: Dual Replay for LLM Battery Scheduling"
+  authors:
+    - family-names: Xue
+      given-names: Jiangwei
+    - family-names: Qin
+      given-names: Zhida
+    - family-names: Bi
+      given-names: Yuda
+  doi: "10.5281/zenodo.22707487"
+  year: 2026

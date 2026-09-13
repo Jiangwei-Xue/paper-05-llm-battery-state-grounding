@@ -1,6 +1,6 @@
 # Paper evidence scope
 
-The canonical paper snapshot in this package is the 17-page, three-author arXiv manuscript titled **State Sensitivity Is Not Grounding: Dual Replay for LLM Battery Scheduling**.
+The canonical paper snapshot in this package is the 17-page, three-author Zenodo manuscript titled **State Sensitivity Is Not Grounding: Dual Replay for LLM Battery Scheduling**.
 
 The paper draws on four distinct evidence layers:
 
@@ -14,4 +14,3 @@ E1 is retained because it is used by the supporting completion and activity audi
 Historical E2 projection sidecars are preserved only as partial evidence. The frozen result is 1,178 computed rows, 569 parser/not-applicable rows, and 53 timeouts from a denominator of 1,800. The package does not convert those timeouts into solved rows and does not use a later projection implementation as a retroactive replacement.
 
 The manuscript PDF is a reference snapshot, not the executable analysis input. All manuscript claims must be checked against `CLAIM_TO_EVIDENCE_MAP.json` and the machine-readable registry in `reference_outputs/audit/`.
-

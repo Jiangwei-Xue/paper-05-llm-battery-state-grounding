@@ -4,6 +4,23 @@ This package contains the latest paper and the smallest complete evidence closur
 
 The bundled paper is **State Sensitivity Is Not Grounding: Dual Replay for LLM Battery Scheduling** by Jiangwei Xue, Zhida Qin, and Yuda Bi (DOI: [10.5281/zenodo.22707487](https://doi.org/10.5281/zenodo.22707487)). The exact LaTeX, bibliography, frozen BBL, and 17-page PDF are under `paper_reference/`; their hashes are recorded in `LATEST_PAPER.json`.
 
+## Public manuscript
+
+The publicly available manuscript version associated with this reproduction
+package is available on Zenodo:
+
+https://doi.org/10.5281/zenodo.22707487
+
+Concept DOI: https://doi.org/10.5281/zenodo.22707486
+
+The author-owned manuscript material in that version is licensed under
+CC BY 4.0.
+
+The corresponding repository files and their hashes are identified in
+`paper_reference/LICENSE.md` and `LATEST_PAPER.json`.
+
+Reproducibility package version: 1.5.1.
+
 ## One-command offline reproduction
 
 The tested execution target is CPython 3.12 on macOS arm64. From the extracted package root run:
@@ -64,8 +81,25 @@ separately supplied environment credentials and explicit authorization.
 - Prospective live runs create new evidence and do not replace the frozen
   records or reference outputs used by the paper.
 
-## Environment and license
+## Environment
 
 Dependency versions and the tested compatibility boundary are recorded in `PUBLIC_ENVIRONMENT.json` and `environment/requirements-lock.json`. The workflow uses explicit UTC experiment timestamps and does not depend on the host time zone.
 
-Analysis code is MIT-licensed. The paper, original project documentation, and derived result tables are licensed under CC BY 4.0. Third-party data, hosted-model records, and bundled libraries remain subject to their respective terms; see `LICENSE.md`.
+## Licensing
+
+This repository uses layered licensing:
+
+- project-authored analysis, replay, verification, testing, and utility
+  code: MIT License;
+- the author-owned paper, original project documentation, and
+  author-generated derived results: CC BY 4.0;
+- bundled Python libraries: their included upstream licenses;
+- public data, hosted-model records, provider metadata, and other
+  third-party material: their original applicable terms.
+
+The manuscript-specific notice is in
+`paper_reference/LICENSE.md`.
+
+See `LICENSE`, `LICENSES/README.md`, and
+`LICENSES/THIRD_PARTY.md` for the controlling path and material
+boundaries. No single license applies to the repository as a whole.

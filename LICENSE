@@ -1,0 +1,145 @@
+# Layered licensing notice
+
+Copyright (c) 2026 the project contributors.
+
+This repository is not governed by one blanket license. Different
+licenses and upstream terms apply to different material classes.
+
+## Project-authored software: MIT License
+
+The MIT License applies to project-authored analysis, replay,
+verification, testing, and utility software, including:
+
+- `RUN_ALL_OFFLINE.py`;
+- project-authored software under `protocol_code/`;
+- project-authored software under `scripts/`;
+- project-authored software under `tests/`;
+- project-authored software under `tools/`;
+- project-authored executable code under `reference_outputs/`; and
+- project-authored software files under `frozen_inputs/project/`.
+
+The complete MIT License is provided in `LICENSES/MIT.txt`.
+
+The MIT grant applies only to project-authored software. It does not
+apply to data, provider records, model outputs, copied third-party
+material, bundled dependencies, or files carrying a more specific
+notice.
+
+The presence of a file under `frozen_inputs/project/` does not by
+itself establish that the file is project-authored software. Its
+provenance and any file-specific notice continue to control.
+
+## Paper and project-authored research material: CC BY 4.0
+
+Creative Commons Attribution 4.0 International applies, to the extent
+copyright or database rights exist and the authors hold the necessary
+rights, to:
+
+- the author-owned manuscript material identified in
+  `paper_reference/LICENSE.md`;
+- `README.md`;
+- original project documentation;
+- author-created audit and provenance reports;
+- author-created derived result tables and figures;
+- author-created scientific summaries; and
+- author-created metadata and manifests, to the extent copyright
+  applies.
+
+This includes project-authored documentation such as:
+
+- `EVIDENCE_CHAIN.md`;
+- `EXPERIMENT_DESIGN_AUDIT.md`;
+- `EXPERIMENT_TIMELINE.md`;
+- `METHOD_VERSION_HISTORY.md`;
+- `PAPER_EVIDENCE_SCOPE.md`;
+- `RELEASE_AUDIT.md`;
+- `REPRODUCTION_SCAFFOLDING_AUDIT.md`;
+- `RESULT_PROVENANCE_AUDIT.md`; and
+- project-authored documentation under `results/`,
+  `reference_outputs/`, and `experiment_scaffolding/`.
+
+The complete CC BY 4.0 legal text is provided in
+`LICENSES/CC-BY-4.0.txt`.
+
+## Public manuscript
+
+The publicly available manuscript version associated with this
+repository is:
+
+“State Sensitivity Is Not Grounding: Dual Replay for LLM Battery
+Scheduling”
+
+Authors:
+
+- Jiangwei Xue
+- Zhida Qin
+- Yuda Bi
+
+Zenodo version DOI:
+
+https://doi.org/10.5281/zenodo.22707487
+
+Concept DOI:
+
+https://doi.org/10.5281/zenodo.22707486
+
+The author-owned manuscript material in that Zenodo version is licensed
+under Creative Commons Attribution 4.0 International.
+
+Within this repository, the manuscript license applies only to the
+covered files listed in `paper_reference/LICENSE.md` and identified in
+`LATEST_PAPER.json`.
+
+This grant applies only to material for which the authors hold the
+necessary rights. It does not relicense third-party quotations,
+bibliographic material, datasets, software, figures, trademarks, or
+other incorporated material.
+
+## Bundled Python libraries
+
+Software under `runtime/vendor/` is third-party software. It is not
+licensed under this repository's project-level MIT or CC BY 4.0
+grants.
+
+Each bundled distribution retains its upstream license, copyright
+notices, and associated license files.
+
+Bundled distributions currently include:
+
+- NumPy 2.5.1;
+- pandas 3.0.3;
+- SciPy 1.18.0;
+- PyYAML 6.0.3; and
+- python-dateutil 2.9.0.post0.
+
+The included upstream license files and distribution metadata control.
+See `LICENSES/THIRD_PARTY.md`.
+
+## Public data and provider-governed records
+
+No new license is granted by this repository for:
+
+- source public datasets;
+- transformed or compact records derived from public datasets;
+- hosted-model requests or responses;
+- provider-generated content;
+- provider metadata;
+- third-party repository content;
+- third-party software;
+- trademarks; or
+- any file carrying an upstream or file-specific notice.
+
+Those materials remain subject to their original licenses, dataset
+terms, provider terms, attribution requirements, and applicable law.
+
+A material does not automatically become MIT- or CC BY-licensed merely
+because it has been parsed, transformed, converted to JSON or CSV, or
+included in this repository.
+
+## Controlling rule
+
+A file-specific or upstream notice controls where it applies.
+
+The MIT and CC BY 4.0 licenses apply to different material classes.
+They are not alternative licenses from which a user may choose for the
+repository as a whole.
